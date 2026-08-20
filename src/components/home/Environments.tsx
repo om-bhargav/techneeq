@@ -159,7 +159,7 @@ export default function Environments() {
                       opacity: isActive ? 1 : 0,
                     }}
                     transition={{ duration: 0.35 }}
-                    className="pointer-events-none absolute inset-0 bg-foreground/[0.025]"
+                    className="pointer-events-none absolute inset-0 "
                   />
 
                   <button
