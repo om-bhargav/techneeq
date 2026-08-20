@@ -35,7 +35,7 @@ export default function SectionHeader({
           className="
             max-w-5xl
             font-display
-            text-4xl
+            text-3xl
             font-normal
             leading-[0.98]
             tracking-[-0.045em]
@@ -60,7 +60,7 @@ export default function SectionHeader({
 
         {description && (
           <div className="mt-8 flex max-w-xl items-start gap-4">
-            <span className="mt-[7px] h-px w-10 shrink-0 bg-foreground/20" />
+            <span className="mt-1.75 max-md:hidden h-px w-10 shrink-0 bg-foreground/20" />
 
             <p className="max-w-md text-sm leading-6 text-muted-foreground">
               {description}

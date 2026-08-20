@@ -91,7 +91,7 @@ export default function Services() {
         label="Our Services"
         title="Technology that"
         highlight="creates meaningful impact."
-        description="We combine strategy, design, engineering, and intelligence to build digital experiences that move businesses forward."
+        description="We combine strategy, design, engineering, and intelligence to build digital experiences that move businesses forward."        className="mb-6"
       />
 
       {/* ---------------------------------------------
@@ -139,35 +139,7 @@ export default function Services() {
               </div>
             </nav>
 
-            {/* Mobile / tablet */}
 
-            {/* <div className="flex gap-2 overflow-x-auto pb-2 lg:hidden">
-              {services.map((service, index) => {
-                const isActive = index === activeIndex;
-
-                return (
-                  <button
-                    key={service.id}
-                    onClick={() => setActiveIndex(index)}
-                    className={`
-                  shrink-0
-                  rounded-full
-                  border
-                  px-4
-                  py-2
-                  text-xs
-                  transition
-                  ${isActive
-                        ? "border-foreground bg-foreground text-background"
-                        : "border-foreground/10 text-muted-foreground"
-                      }
-                `}
-                  >
-                    {service.category}
-                  </button>
-                );
-              })}
-            </div> */}
           </div>
 
           {/* ---------------------------------------------

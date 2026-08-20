@@ -18,7 +18,7 @@ function Section({
   return (
     <section
       className={cn(
-        "bg-background px-6 py-5 md:px-10 md:py-10 lg:px-14",
+        "bg-background px-4 md:px-10 lg:px-14",
         className
       )}
       {...props}
@@ -45,7 +45,7 @@ function SectionBody({
   className,
 }: SectionBodyProps) {
   return (
-    <div className={cn("relative", className)}>
+    <div className={cn("relative mt-10", className)}>
       {children}
     </div>
   );

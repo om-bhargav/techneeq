@@ -66,9 +66,9 @@ export default function HeroSlider() {
 
     return (
         <section className="relative h-screen max-md:min-h-150 md:min-h-screen w-full overflow-hidden text-white">
-            {/* =========================================================
+        {/* =========================================================
           BACKGROUND
-      ========================================================= */}
+        ========================================================= */}
 
             <AnimatePresence initial={false} custom={direction}>
                 <motion.div
@@ -114,8 +114,8 @@ export default function HeroSlider() {
           MAIN CONTENT
       ========================================================= */}
 
-            <div className="relative z-10 mx-auto flex h-full max-w-[1440px] flex-col justify-end px-6 pb-40 md:px-10 md:pb-44 lg:px-14">
-                <div className="max-w-[850px]">
+            <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-6 pb-40 md:px-10 md:pb-44 lg:px-6">
+                <div className="max-w-212.5">
                     {/* Small label */}
 
                     <AnimatePresence mode="wait">
@@ -215,8 +215,8 @@ export default function HeroSlider() {
       ========================================================= */}
 
             <div className="absolute bottom-0 left-0 right-0 z-20">
-                <div className="mx-auto max-w-[1440px] px-6 pb-8 md:px-10 lg:px-14">
-                    <div className="relative h-[2px] w-full overflow-hidden bg-white/25">
+                <div className="mx-auto max-w-7xl px-6 pb-8 md:px-6">
+                    <div className="relative h-0.5 w-full overflow-hidden bg-white/25">
                         <motion.div
                             key={`progress-${activeSlide.id}`}
                             initial={{

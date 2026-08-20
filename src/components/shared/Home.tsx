@@ -8,11 +8,10 @@ import Intelligence from "@/components/home/Intelligence";
 import Services from "@/components/home/Services";
 import Solutions from "@/components/home/Solutions";
 import Transformation from "@/components/home/Transformation";
-import React from "react";
 
 function Home() {
   return (
-    <React.Fragment>
+    <div className="grid max-md:gap-10 md:gap-20">
       <Hero />
       <Intelligence />
       <Services />
@@ -23,7 +22,7 @@ function Home() {
       <Expertise />
       <Faq />
       <CTA />
-    </React.Fragment>
+    </div>
   );
 }
 

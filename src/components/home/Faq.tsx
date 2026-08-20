@@ -140,7 +140,7 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <Section className="py-20 md:py-28 lg:py-36">
+    <Section>
       <Section.Header
         label="FAQ"
         title="Questions,"

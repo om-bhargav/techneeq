@@ -30,88 +30,205 @@ const stages = [
 export default function BusinessOutcome() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
+  const mobileTimelineRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end end"],
   });
-
+  const { scrollYProgress: mobileProgress } = useScroll({
+    target: mobileTimelineRef,
+    offset: ["start 70%", "end 30%"],
+  });
   return (
-<Section
-  ref={sectionRef}
-  className="relative h-[400vh] p-0"
-  containerClassName="h-full max-w-none"
->
-  <div className="sticky top-0 h-screen overflow-hidden">
-    <div className="mx-auto flex h-full w-full max-w-7xl flex-col px-6 md:px-10 lg:px-14">
+    <Section
+      ref={sectionRef}
+      className="relative bg-background md:h-[400vh]"
+      containerClassName="h-full max-w-none"
+    >
+      <div className="md:sticky md:top-0 md:flex md:h-screen md:items-center md:overflow-hidden">
+        <div className="mx-auto w-full max-w-7xl">
 
-      <Section.Header
-        label="Business outcome"
-        title="Data isn't valuable until"
-        highlight="it changes what you do."
-        description="Every engagement is scoped around a decision your business needs to make faster. The architecture follows from there."
-        className="mb-0 shrink-0 pt-10 md:pt-16"
-      />
-         
+          <Section.Header
+            label="Business outcome"
+            title="Data isn't valuable until"
+            highlight="it changes what you do."
+            description="Every engagement is scoped around a decision your business needs to make faster. The architecture follows from there."
+            className="
+      mb-16
+      md:absolute
+      md:left-10
+      md:top-16
+      md:z-30
+      md:mb-0
+      md:max-w-2xl
+      lg:left-14
+    "
+          />
 
-          {/* Timeline */}
-          <div className="relative mt-20 md:mt-32">
-            {/* Desktop progress line */}
+          {/* Mobile */}
+                   <div
+            ref={mobileTimelineRef}
+            className="
+              relative
+              md:hidden
+            "
+          >
+            {/* Background bar */}
             <div
               className="
-      absolute
-      left-0
-      right-0
-      top-1/2
-      hidden
-      h-1
-      -translate-y-1/2
-      bg-foreground/10
-      md:block
-    "
+                absolute
+                bottom-0
+                left-2
+                top-0
+                w-px
+                bg-foreground/10
+              "
+            />
+
+            {/* Progress bar */}
+            <motion.div
+              style={{
+                scaleY: mobileProgress,
+              }}
+              className="
+                absolute
+                left-2
+                top-0
+                z-10
+                h-full
+                w-px
+                origin-top
+                bg-foreground
+              "
+            />
+
+            {/* Stages */}
+            <div>
+              {stages.map((stage, index) => {
+                const start = index / stages.length;
+
+                const dotScale = useTransform(
+                  mobileProgress,
+                  [
+                    Math.max(0, start - 0.05),
+                    start,
+                    Math.min(1, start + 0.08),
+                  ],
+                  [1, 1, 1.5]
+                );
+
+                const dotOpacity = useTransform(
+                  mobileProgress,
+                  [
+                    Math.max(0, start - 0.05),
+                    start,
+                  ],
+                  [0.35, 1]
+                );
+
+                return (
+                  <div
+                    key={stage.id}
+                    className="
+                      relative
+                      min-h-[180px]
+                      pl-10
+                      py-8
+                    "
+                  >
+                    {/* Dot */}
+                    <motion.div
+                      style={{
+                        scale: dotScale,
+                        opacity: dotOpacity,
+                      }}
+                      className="
+                        absolute
+                        left-2
+                        top-10
+                        z-20
+                        flex
+                        size-3
+                        -translate-x-1/2
+                        items-center
+                        justify-center
+                        rounded-full
+                        bg-foreground
+                      "
+                    >
+                      <div className="size-1 rounded-full bg-background" />
+                    </motion.div>
+
+                    {/* Content */}
+                    <div>
+                      <span
+                        className="
+                          font-mono
+                          text-[10px]
+                          tracking-[0.15em]
+                          text-muted-foreground
+                        "
+                      >
+                        {stage.id}
+                      </span>
+
+                      <h3
+                        className="
+                          mt-3
+                          font-display
+                          text-3xl
+                          leading-none
+                          tracking-[-0.045em]
+                        "
+                      >
+                        {stage.title}
+                      </h3>
+
+                      <p
+                        className="
+                          mt-3
+                          max-w-[280px]
+                          text-xs
+                          leading-5
+                          text-muted-foreground
+                        "
+                      >
+                        {stage.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          {/* Desktop */}
+          <div className="relative mt-20 hidden md:block md:mt-32">
+
+            {/* Progress line */}
+            <div
+              className="
+        absolute
+        left-0
+        right-0
+        top-1/2
+        h-1
+        -translate-y-1/2
+        bg-foreground/10
+      "
             >
               <motion.div
                 style={{ scaleX: scrollYProgress }}
                 className="
-        absolute
-        inset-0
-        origin-left
-        bg-foreground
-      "
-              />
-            </div>
-
-            {/* Mobile vertical line */}
-            <div
-              className="
-      absolute
-      bottom-0
-      left-3
-      top-0
-      w-px
-      bg-foreground/10
-      md:hidden
-    "
-            >
-              <motion.div
-                style={{ scaleY: scrollYProgress }}
-                className="
-        absolute
-        inset-0
-        origin-top
-        bg-foreground
-      "
+          absolute
+          inset-0
+          origin-left
+          bg-foreground
+        "
               />
             </div>
 
             {/* Stages */}
-            <div
-              className="
-      grid
-      grid-cols-1
-      gap-0
-      md:grid-cols-4
-    "
-            >
+            <div className="grid grid-cols-4">
               {stages.map((stage, index) => (
                 <Stage
                   key={stage.id}
@@ -123,29 +240,6 @@ export default function BusinessOutcome() {
             </div>
           </div>
 
-          {/* Scroll indicator */}
-          <motion.div
-            style={{
-              opacity: useTransform(
-                scrollYProgress,
-                [0, 0.08],
-                [1, 0]
-              ),
-            }}
-            className="
-              absolute
-              bottom-4
-              left-1/2
-              -translate-x-1/2
-              text-[10px]
-              font-medium
-              uppercase
-              tracking-[0.2em]
-              text-foreground/30
-            "
-          >
-            Scroll to explore
-          </motion.div>
         </div>
       </div>
     </Section>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ArrowUpRight, Activity, Boxes, Database, BarChart3, BrainCircuit, Code2 } from "lucide-react";
 import SectionHeader from "@/components/global/section/SectionHeader";
+import Section from "../global/section/Section";
 
 const intelligenceLayers = [
   {
@@ -66,20 +67,20 @@ export default function Intelligence() {
   const ActiveIcon = activeLayer.icon;
 
   return (
-    <section className="bg-background px-6 py-24 md:px-10 md:py-32 lg:px-14">
+    <Section>
       <div className="mx-auto max-w-[1440px]">
 
         {/* Header */}
 
         <SectionHeader
-          label="03 — The Intelligence Engine"
+          label="The Intelligence Engine"
           title="Six layers of one system."
           description="Capabilities engineered for speed. We structure every deployment around one metric: how fast can we automate your next critical decision?"
         />
 
         {/* Engine */}
-
-        <div className="mt-20 grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16">
+        <Section.Body>
+        <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16">
 
           {/* Layer navigation */}
 
@@ -87,7 +88,7 @@ export default function Intelligence() {
 
             {/* Mobile selector */}
 
-            <div className="mb-8 flex gap-2 overflow-x-auto pb-2 lg:hidden">
+            <div className="mb-8 flex max-md:flex-wrap gap-2 overflow-x-auto pb-2 lg:hidden">
               {intelligenceLayers.map((layer, index) => {
                 const active = index === activeIndex;
 
@@ -286,7 +287,8 @@ export default function Intelligence() {
             </div>
           </div>
         </div>
+        </Section.Body>
       </div>
-    </section>
+    </Section>
   );
 }

@@ -430,7 +430,7 @@ export function MenuButton({
       onClick={onClick}
       aria-label={open ? "Close menu" : "Open menu"}
       aria-expanded={open}
-      className={cn("group relative flex size-10  items-center justify-center rounded-full",className,scrolled ? "text-foreground" : "text-background")}
+      className={cn("group relative flex size-10  items-center justify-center rounded-full", className, scrolled ? "text-foreground" : "text-background")}
     >
       <span className="sr-only">
         {open ? "Close menu" : "Toggle Menu"}
@@ -441,7 +441,7 @@ export function MenuButton({
       <motion.span
         className={cn(
           "absolute inset-0 rounded-full",
-          scrolled ? "bg-foreground":"bg-background"
+          scrolled ? "bg-foreground" : "bg-background"
         )}
         initial={false}
         animate={{
@@ -487,36 +487,56 @@ export function MenuButton({
           ease: [0.22, 1, 0.36, 1],
         }}
       >
-        {/* First dot */}
 
-        <motion.span
-          className={cn("absolute size-1 rounded-full",scrolled ? "bg-background":"bg-foreground")}
-          animate={{
-            x: open ? 0 : -4.6,
-            y: open ? 0 : 0,
-            scale: open ? 1 : 1,
-          }}
-          transition={{
-            duration: 0.4,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-        />
+        <div className="relative flex h-4 w-8 items-center justify-center sm:w-9 md:w-10">
+          {/* First dot */}
+          <motion.span
+            className={cn(
+              "absolute size-1 rounded-full",
+              scrolled ? "bg-background" : "bg-foreground"
+            )}
+            animate={{
+              left: open ? "50%" : "15%",
+              x: "-50%",
+            }}
+            transition={{
+              duration: 0.4,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          />
 
-        {/* Second dot */}
+          {/* Second dot */}
+          <motion.span
+            className={cn(
+              "absolute size-1 rounded-full",
+              scrolled ? "bg-background" : "bg-foreground"
+            )}
+            animate={{
+              left: "50%",
+              x: "-50%",
+            }}
+            transition={{
+              duration: 0.4,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          />
 
-        <motion.span
-          className={cn("absolute size-1 rounded-full",scrolled ? "bg-background":"bg-foreground")}
-          animate={{
-            x: open ? 0 : 4.6,
-            y: open ? 0 : 0,
-            scale: open ? 1 : 1,
-          }}
-          transition={{
-            duration: 0.4,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-        />
-
+          {/* Third dot */}
+          <motion.span
+            className={cn(
+              "absolute size-1 rounded-full",
+              scrolled ? "bg-background" : "bg-foreground"
+            )}
+            animate={{
+              left: open ? "50%" : "85%",
+              x: "-50%",
+            }}
+            transition={{
+              duration: 0.4,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          />
+        </div>
         {/* Horizontal line */}
 
         <motion.span

@@ -236,3 +236,18 @@ body{
 *::-webkit-scrollbar {
   display: none;
 }
+
+body {
+  font-family: "NeueMachina", sans-serif;
+}
+
+/* All headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "TestSohne", sans-serif;
+  font-weight: 400;
+}
