@@ -1,27 +1,59 @@
-import BusinessOutcome from "@/components/home/BusinessOutcome";
-import CTA from "@/components/home/CTA";
-import Environments from "@/components/home/Environments";
-import Expertise from "@/components/home/Expertise";
-import Faq from "@/components/home/Faq";
+import { lazy, Suspense } from "react";
+
 import Hero from "@/components/home/Hero";
-import Intelligence from "@/components/home/Intelligence";
-import Services from "@/components/home/Services";
-import Solutions from "@/components/home/Solutions";
-import Transformation from "@/components/home/Transformation";
+
+const Intelligence = lazy(
+  () => import("@/components/home/Intelligence")
+);
+
+const Services = lazy(
+  () => import("@/components/home/Services")
+);
+
+const Solutions = lazy(
+  () => import("@/components/home/Solutions")
+);
+
+const Environments = lazy(
+  () => import("@/components/home/Environments")
+);
+
+const Transformation = lazy(
+  () => import("@/components/home/Transformation")
+);
+
+const BusinessOutcome = lazy(
+  () => import("@/components/home/BusinessOutcome")
+);
+
+const Expertise = lazy(
+  () => import("@/components/home/Expertise")
+);
+
+const Faq = lazy(
+  () => import("@/components/home/Faq")
+);
+
+const CTA = lazy(
+  () => import("@/components/home/CTA")
+);
 
 function Home() {
   return (
     <div className="grid max-md:gap-10 md:gap-20">
       <Hero />
-      <Intelligence />
-      <Services />
-      <Solutions />
-      <Environments />
-      <Transformation />
-      <BusinessOutcome />
-      <Expertise />
-      <Faq />
-      <CTA />
+
+      <Suspense fallback={null}>
+        <Intelligence />
+        <Services />
+        <Solutions />
+        <Environments />
+        <Transformation />
+        <BusinessOutcome />
+        <Expertise />
+        <Faq />
+        <CTA />
+      </Suspense>
     </div>
   );
 }

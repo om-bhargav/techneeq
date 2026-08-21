@@ -245,11 +245,11 @@ export default function Intelligence() {
 
                 </div>
 
-                <h3 className="max-w-2xl font-display text-4xl leading-[0.95] tracking-[-0.045em] sm:text-5xl md:text-6xl">
+                <h3 className="max-w-2xl font-display text-2xl leading-[0.95] tracking-[-0.045em] sm:text-5xl md:text-6xl">
                   {activeLayer.subtitle}
                 </h3>
 
-                <p className="mt-7 max-w-lg text-sm leading-6 text-muted-foreground">
+                <p className="mt-7 max-w-lg text-xs leading-6 text-muted-foreground">
                   {activeLayer.description}
                 </p>
 

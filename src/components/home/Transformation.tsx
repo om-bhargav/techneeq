@@ -66,7 +66,7 @@ export default function Transformation() {
               className="
                 group
                 relative
-                min-h-[360px]
+                min-h-60
                 overflow-hidden
                 border-b
                 border-r

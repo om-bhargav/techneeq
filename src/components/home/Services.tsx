@@ -264,11 +264,11 @@ export default function Services() {
                       />
                     </div>
 
-                    <h3 className="max-w-[650px] font-display text-3xl leading-[0.95] tracking-[-0.045em] sm:text-4xl lg:text-5xl">
+                    <h3 className="max-w-[650px] font-display text-2xl leading-[0.95] tracking-[-0.045em] sm:text-4xl lg:text-5xl">
                       {activeService.title}
                     </h3>
 
-                    <p className="mt-6 max-w-[500px] text-sm leading-6 text-muted-foreground">
+                    <p className="mt-6 max-w-[500px] text-xs md:text-sm leading-6 text-muted-foreground">
                       {activeService.description}
                     </p>
 
