@@ -40,9 +40,8 @@ export default function SectionHeader({
             leading-[0.98]
             tracking-[-0.045em]
             text-foreground
-            sm:text-5xl
-            md:text-6xl
-            lg:text-[72px]
+            sm:text-3xl
+            md:text-5xl
           "
         >
           {title}

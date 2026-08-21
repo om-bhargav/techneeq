@@ -45,7 +45,7 @@ export default function BusinessOutcome() {
       className="relative bg-background md:h-[400vh]"
       containerClassName="h-full max-w-none"
     >
-      <div className="md:sticky md:top-0 md:flex md:h-screen md:items-center md:overflow-hidden">
+      <div className="md:sticky md:top-16 md:flex md:h-screen md:items-start md:overflow-hidden">
         <div className="mx-auto w-full max-w-7xl">
 
           <Section.Header
@@ -53,16 +53,6 @@ export default function BusinessOutcome() {
             title="Data isn't valuable until"
             highlight="it changes what you do."
             description="Every engagement is scoped around a decision your business needs to make faster. The architecture follows from there."
-            className="
-      mb-16
-      md:absolute
-      md:left-10
-      md:top-16
-      md:z-30
-      md:mb-0
-      md:max-w-2xl
-      lg:left-14
-    "
           />
 
           {/* Mobile */}
