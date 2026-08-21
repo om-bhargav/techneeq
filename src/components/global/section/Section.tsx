@@ -38,14 +38,17 @@ function Section({
 interface SectionBodyProps {
   children: ReactNode;
   className?: string;
+  ref?: any;
+  style?: any;
 }
 
 function SectionBody({
   children,
   className,
+  ...props
 }: SectionBodyProps) {
   return (
-    <div className={cn("relative mt-10", className)}>
+    <div {...props} className={cn("relative mt-5 md:mt-10", className)}>
       {children}
     </div>
   );

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowUpRight, Activity, Boxes, Database, BarChart3, BrainCircuit, Code2 } from "lucide-react";
 import SectionHeader from "@/components/global/section/SectionHeader";
 import Section from "../global/section/Section";
@@ -65,7 +65,13 @@ export default function Intelligence() {
 
   const activeLayer = intelligenceLayers[activeIndex];
   const ActiveIcon = activeLayer.icon;
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % intelligenceLayers.length);
+    }, 4000);
 
+    return () => clearInterval(interval);
+  }, []);
   return (
     <Section>
       <div className="mx-auto max-w-[1440px]">
@@ -107,7 +113,7 @@ export default function Intelligence() {
                       }
                     `}
                   >
-                    {layer.keyword}
+                    {layer.title}
                   </button>
                 );
               })}

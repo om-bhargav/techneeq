@@ -1,3 +1,5 @@
+"use client";
+
 import {
   ArrowUpRight,
   BarChart3,
@@ -20,7 +22,6 @@ const expertise = [
     description:
       "Warehouses, lakehouses, semantic layers and the reporting estate that sits on top.",
     icon: BarChart3,
-    className: "md:col-span-2 md:row-span-2",
   },
   {
     id: "02",
@@ -28,7 +29,6 @@ const expertise = [
     description:
       "Integrating and extending the core systems that run finance, operations and service.",
     icon: Database,
-    className: "md:col-span-4",
   },
   {
     id: "03",
@@ -36,7 +36,6 @@ const expertise = [
     description:
       "Moving manual, document-heavy processes onto measurable digital rails.",
     icon: FileDigit,
-    className: "md:col-span-2",
   },
   {
     id: "04",
@@ -44,7 +43,6 @@ const expertise = [
     description:
       "Landing zones, migration, cost governance and security on Microsoft Azure.",
     icon: Cloud,
-    className: "md:col-span-2",
   },
   {
     id: "05",
@@ -52,7 +50,6 @@ const expertise = [
     description:
       "Roadmaps, delivery governance and the discipline to keep programs shipping.",
     icon: Route,
-    className: "md:col-span-3",
   },
   {
     id: "06",
@@ -60,7 +57,6 @@ const expertise = [
     description:
       "Models and assistants taken from notebook to production with monitoring in place.",
     icon: Bot,
-    className: "md:col-span-3",
   },
 ];
 
@@ -74,44 +70,41 @@ export default function Expertise() {
         description="Deep technical capability across data, enterprise systems, cloud infrastructure and intelligent automation."
       />
 
-      <Section.Body>
-        <div className="grid gap-4 md:grid-cols-6 md:grid-rows-[250px_280px_280px]">
+      <Section.Body className="mt-12 md:mt-24">
+        {/* We use a vertical flex layout with padding at the bottom so the final card has room to scroll and stick */}
+        <div className="flex flex-col gap-6 pb-[20vh] md:gap-8">
           {expertise.map((item, index) => {
             const Icon = item.icon;
 
             return (
               <motion.article
                 key={item.id}
-                initial={{
-                  opacity: 0,
-                  y: 30,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{
-                  once: true,
-                  amount: 0.15,
-                }}
-                transition={{
-                  duration: 0.7,
-                  delay: index * 0.06,
-                  ease: [0.22, 1, 0.36, 1],
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                style={{
+                  // MAGIC TRICK: This dynamically spaces the sticky top limit for each card.
+                  // 120px is the base top margin (under header/nav).
+                  // index * 24 adds incremental spacing so they look like a stacked deck.
+                  top: `calc(120px + ${index * 24}px)`,
                 }}
                 className={`
                   group
+                  sticky
                   relative
                   overflow-hidden
-                  rounded-[22px]
+                  rounded-[32px]
                   border
+                  w-full
                   border-foreground/[0.08]
-                  bg-muted/30
-                  ${item.className}
+                  /* CRITICAL: Must be a solid background so it hides cards underneath it! */
+                  bg-background
+                  shadow-xl
                 `}
               >
-                {/* Decorative background */}
-                <div className="pointer-events-none absolute inset-0 overflow-hidden">
+                {/* Decorative background effects */}
+                <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[32px]">
                   {/* Glow */}
                   <div
                     className="
@@ -121,12 +114,12 @@ export default function Expertise() {
                       h-64
                       w-64
                       rounded-full
-                      bg-foreground/[0.04]
+                      bg-foreground/[0.03]
                       blur-3xl
                       transition-all
                       duration-700
                       group-hover:scale-150
-                      group-hover:bg-foreground/[0.08]
+                      group-hover:bg-foreground/[0.06]
                     "
                   />
 
@@ -145,76 +138,74 @@ export default function Expertise() {
                   <div
                     className="
                       absolute
-                      -bottom-24
+                      -bottom-48
                       -right-20
-                      h-64
-                      w-64
+                      h-80
+                      w-80
                       rounded-full
                       border
-                      border-foreground/[0.05]
+                      border-foreground/[0.04]
                       transition-transform
                       duration-1000
                       group-hover:scale-110
                     "
                   />
-
                   <div
                     className="
                       absolute
-                      -bottom-16
+                      -bottom-32
                       -right-12
-                      h-44
-                      w-44
+                      h-56
+                      w-56
                       rounded-full
                       border
-                      border-foreground/[0.05]
+                      border-foreground/[0.04]
                     "
                   />
                 </div>
 
-                {/* Content */}
-                <div className="relative z-10 flex h-full flex-col p-6 md:p-7 lg:p-8">
-                  {/* Icon */}
-                  <div
-                    className="
-                      flex
-                      size-10
-                      items-center
-                      justify-center
-                      rounded-xl
-                      border
-                      border-foreground/10
-                      bg-background/50
-                      backdrop-blur-sm
-                      transition-all
-                      duration-500
-                      group-hover:-translate-y-1
-                      group-hover:bg-foreground
-                      group-hover:text-background
-                    "
-                  >
-                    <Icon
-                      className="size-[18px]"
-                      strokeWidth={1.5}
-                    />
-                  </div>
-
-                  {/* Content */}
-                  <div className="mt-auto max-w-[360px]">
-                    <div className="mb-3 font-mono text-[10px] tracking-widest text-muted-foreground">
+                {/* Content Layout (Changed to Horizontal row for stacking) */}
+                <div className="relative z-10 flex flex-col items-start gap-8 p-8 md:flex-row md:items-center md:gap-12 md:p-12">
+                  
+                  {/* Left: Icon & ID */}
+                  <div className="flex shrink-0 flex-col items-start gap-4">
+                    <div
+                      className="
+                        flex
+                        size-14
+                        items-center
+                        justify-center
+                        rounded-2xl
+                        border
+                        border-foreground/10
+                        bg-background/50
+                        backdrop-blur-sm
+                        transition-all
+                        duration-500
+                        group-hover:-translate-y-1
+                        group-hover:bg-foreground
+                        group-hover:text-background
+                      "
+                    >
+                      <Icon className="size-6" strokeWidth={1.5} />
+                    </div>
+                    <div className="font-mono text-xs tracking-widest text-muted-foreground">
                       {item.id}
                     </div>
+                  </div>
 
+                  {/* Middle: Text Content */}
+                  <div className="flex-1 md:pr-12">
                     <h3
                       className="
                         font-display
                         text-2xl
-                        leading-[0.95]
-                        tracking-[-0.045em]
+                        leading-tight
+                        tracking-tight
                         transition-transform
                         duration-500
                         group-hover:translate-x-1
-                        sm:text-3xl
+                        md:text-4xl
                       "
                     >
                       {item.title}
@@ -223,27 +214,26 @@ export default function Expertise() {
                     <p
                       className="
                         mt-4
-                        max-w-75
-                        text-xs
-                        leading-5
+                        max-w-[500px]
+                        text-sm
+                        leading-relaxed
                         text-muted-foreground
                         transition-colors
                         duration-500
-                        group-hover:text-foreground/60
+                        group-hover:text-foreground/70
+                        md:text-base
                       "
                     >
                       {item.description}
                     </p>
                   </div>
 
-                  {/* Arrow */}
+                  {/* Right: Action Arrow */}
                   <div
                     className="
-                      absolute
-                      right-6
-                      top-6
                       flex
-                      size-9
+                      size-12
+                      shrink-0
                       items-center
                       justify-center
                       rounded-full
@@ -258,8 +248,9 @@ export default function Expertise() {
                       group-hover:opacity-100
                     "
                   >
-                    <ArrowUpRight className="size-4" />
+                    <ArrowUpRight className="size-5" />
                   </div>
+                  
                 </div>
               </motion.article>
             );

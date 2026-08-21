@@ -66,7 +66,7 @@ export default function HeroSlider() {
 
     return (
         <section className="relative h-screen max-md:min-h-150 md:min-h-screen w-full overflow-hidden text-white">
-        {/* =========================================================
+            {/* =========================================================
           BACKGROUND
         ========================================================= */}
 
@@ -114,28 +114,29 @@ export default function HeroSlider() {
           MAIN CONTENT
       ========================================================= */}
 
-            <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-6 pb-40 md:px-10 md:pb-44 lg:px-6">
+            <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-6 pb-40 md:px-10 md:pb-34 lg:px-4">
                 <div className="max-w-212.5">
-                    {/* Small label */}
-
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={`label-${activeSlide.id}`}
                             initial={{
                                 opacity: 0,
-                                y: 20,
+                                x: -18,
+                                filter: "blur(6px)",
                             }}
                             animate={{
                                 opacity: 1,
-                                y: 0,
+                                x: 0,
+                                filter: "blur(0px)",
                             }}
                             exit={{
                                 opacity: 0,
-                                y: -20,
+                                x: 18,
+                                filter: "blur(6px)",
                             }}
                             transition={{
-                                duration: 0.5,
-                                delay: 0.1,
+                                duration: 0.45,
+                                ease: [0.22, 1, 0.36, 1],
                             }}
                             className="mb-5 text-[10px] font-medium uppercase tracking-[0.22em] text-white/60"
                         >
@@ -143,26 +144,29 @@ export default function HeroSlider() {
                         </motion.div>
                     </AnimatePresence>
 
-                    {/* Heading */}
-
                     <AnimatePresence mode="wait">
                         <motion.h1
                             key={`title-${activeSlide.id}`}
                             initial={{
                                 opacity: 0,
-                                y: 45,
+                                y: 55,
+                                scale: 0.96,
+                                filter: "blur(10px)",
                             }}
                             animate={{
                                 opacity: 1,
                                 y: 0,
+                                scale: 1,
+                                filter: "blur(0px)",
                             }}
                             exit={{
                                 opacity: 0,
-                                y: -30,
+                                y: -35,
+                                scale: 1.02,
+                                filter: "blur(8px)",
                             }}
                             transition={{
                                 duration: 0.7,
-                                delay: 0.08,
                                 ease: [0.22, 1, 0.36, 1],
                             }}
                             className="max-w-[850px] text-3xl font-medium leading-[1.05] tracking-[-0.04em] sm:text-4xl md:text-5xl lg:text-[56px]"
@@ -171,29 +175,33 @@ export default function HeroSlider() {
                         </motion.h1>
                     </AnimatePresence>
 
-                    {/* Description */}
-
                     <AnimatePresence mode="wait">
                         <motion.p
                             key={`description-${activeSlide.id}`}
                             initial={{
                                 opacity: 0,
-                                y: 25,
+                                y: 20,
+                                x: 12,
+                                filter: "blur(5px)",
                             }}
                             animate={{
                                 opacity: 1,
                                 y: 0,
+                                x: 0,
+                                filter: "blur(0px)",
                             }}
                             exit={{
                                 opacity: 0,
-                                y: -15,
+                                y: -12,
+                                x: -8,
+                                filter: "blur(5px)",
                             }}
                             transition={{
-                                duration: 0.6,
-                                delay: 0.18,
+                                duration: 0.55,
                                 ease: [0.22, 1, 0.36, 1],
+                                delay: 0.1,
                             }}
-                            className="mt-6 max-w-[680px] text-sm leading-6 text-white/75 md:text-base"
+                            className="mt-5 max-w-[600px] text-sm leading-6 text-white/60"
                         >
                             {activeSlide.description}
                         </motion.p>

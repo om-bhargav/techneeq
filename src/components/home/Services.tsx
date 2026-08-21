@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowLeft,
   ArrowRight,
@@ -79,7 +79,13 @@ export default function Services() {
       (current) => (current - 1 + services.length) % services.length
     );
   };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % services.length);
+    }, 4000);
 
+    return () => clearInterval(interval);
+  }, []);
   return (
     <Section className="overflow-hidden">
 
@@ -91,23 +97,20 @@ export default function Services() {
         label="Our Services"
         title="Technology that"
         highlight="creates meaningful impact."
-        description="We combine strategy, design, engineering, and intelligence to build digital experiences that move businesses forward."        className="mb-6"
+        description="We combine strategy, design, engineering, and intelligence to build digital experiences that move businesses forward." className="mb-6"
       />
 
       {/* ---------------------------------------------
           SERVICE CONTENT
       --------------------------------------------- */}
       <Section.Body className="overflow-hidden">
-        <div className="grid gap-12 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-16 mb-5">
+        <div className="grid gap-12 lg:gap-16 mb-5">
 
           {/* Service navigation */}
 
           <div className="lg:pt-2 overflow-hidden">
-
-            {/* Desktop navigation */}
-
             <nav className="hidden lg:block">
-              <div className="space-y-1">
+              <div className="flex flex-wrap gap-2">
                 {services.map((service, index) => {
                   const isActive = index === activeIndex;
 
@@ -116,21 +119,21 @@ export default function Services() {
                       key={service.id}
                       onClick={() => setActiveIndex(index)}
                       className={`
-                      relative
-                      block
-                      w-full
-                      border-l
-                      py-2.5
-                      pl-4
-                      text-left
-                      text-sm
-                      transition-all
-                      duration-300
-                      ${isActive
-                          ? "border-foreground text-foreground"
-                          : "border-transparent text-muted-foreground hover:border-foreground/20 hover:text-foreground"
+              shrink-0
+              rounded-full
+              border
+              px-4
+              py-2
+              text-[11px]
+              uppercase
+              tracking-[0.12em]
+              transition-all
+              duration-300
+              ${isActive
+                          ? "border-foreground bg-foreground text-background"
+                          : "border-foreground/10 text-muted-foreground hover:border-foreground/30 hover:text-foreground"
                         }
-                    `}
+            `}
                     >
                       {service.category}
                     </button>
@@ -138,8 +141,6 @@ export default function Services() {
                 })}
               </div>
             </nav>
-
-
           </div>
 
           {/* ---------------------------------------------
@@ -161,7 +162,6 @@ export default function Services() {
                 }}
                 exit={{
                   opacity: 0,
-                  x: -30,
                 }}
                 transition={{
                   duration: 0.45,
@@ -264,7 +264,7 @@ export default function Services() {
                       />
                     </div>
 
-                    <h3 className="max-w-[650px] font-display text-2xl leading-[0.95] tracking-[-0.045em] sm:text-4xl lg:text-5xl">
+                    <h3 className="max-w-[650px] font-display text-2xl leading-[0.95] tracking-[-0.045em] sm:text-4xl">
                       {activeService.title}
                     </h3>
 
