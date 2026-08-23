@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 import Section from "../global/section/Section";
 import CTA from "../home/CTA";
+import { SITE_NAME } from "@/config";
 const process = [
   {
     id: "01",
@@ -93,7 +94,7 @@ export default function About() {
 
       <Section className="relative mx-auto">
        <Section.Header
-            label="About / Techneeq"
+            label={`About / ${SITE_NAME}`}
             title="We build the systems"
             highlight="enterprises run on."
             description="Techneeq is a data science, AI and custom software team helping enterprise organizations replace guesswork with engineering."

@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Section from "../global/section/Section";
 import CTA from "../home/CTA";
 import PillButton from "../elements/PillButton";
+import { SITE_NAME } from "@/config";
 
 
 const contactDetails = [
@@ -56,7 +57,7 @@ export default function Contact() {
 
       <Section className="relative mx-auto">
         <Section.Header
-          label="Contact / Techneeq"
+          label={`Contact / ${SITE_NAME}`}
           title="Let's build something"
           highlight="worth building."
           description="Tell us what you're trying to solve. We'll help you determine what to build, how to build it and what it takes to put it into production."
