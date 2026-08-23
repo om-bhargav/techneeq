@@ -72,7 +72,7 @@ export default function Expertise() {
 
       <Section.Body className="mt-12 md:mt-24">
         {/* We use a vertical flex layout with padding at the bottom so the final card has room to scroll and stick */}
-        <div className="flex flex-col gap-6 pb-[20vh] md:gap-8">
+        <div className="flex flex-col gap-6 md:pb-[20vh] md:gap-8">
           {expertise.map((item, index) => {
             const Icon = item.icon;
 

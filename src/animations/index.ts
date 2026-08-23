@@ -50,7 +50,7 @@ export function useGsapSplitTextReveal(
         // =========================
 
         split = SplitText.create(element, {
-          type,
+          type: type === "chars" ? "chars,words" : type,
           mask: maskLines ? "lines" : undefined,
         });
 

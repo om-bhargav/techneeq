@@ -389,7 +389,7 @@ export default function Environments() {
       >
         {/* FIX: Removed `min-h-screen`, changed top-0 to top-24, added padding. 
             Now it hugs the content's natural height instead of forcing empty space! */}
-        <div className="sticky top-24 flex w-full flex-col justify-center overflow-hidden pb-24 pt-8 md:pt-12">
+        <div className="sticky top-24 flex w-full flex-col justify-center overflow-hidden md:pb-24 pt-8 md:pt-12">
           
           <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 md:grid-cols-[1fr_0.8fr] md:gap-16">
             
@@ -458,7 +458,7 @@ export default function Environments() {
             {/* =========================
                 RIGHT — IMAGE STACK
             ========================= */}
-            <div className="relative h-[300px] w-full overflow-hidden rounded-none! md:h-[550px]">
+            <div className="relative max-md:hidden h-[300px] w-full overflow-hidden rounded-none! md:h-[550px]">
               {environments.map((env, index) => (
                 <ScrollImage
                   key={env.id}

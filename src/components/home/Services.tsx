@@ -82,7 +82,7 @@ export default function Services() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % services.length);
-    }, 4000);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, []);

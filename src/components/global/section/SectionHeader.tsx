@@ -10,6 +10,10 @@ interface SectionHeaderProps {
   highlight?: string;
   description?: ReactNode;
   className?: string;
+  wantStrip?: boolean;
+  paragarphClassName?: string;
+  labelclassName?: string;
+  titleclassName?: string;
 }
 
 export default function SectionHeader({
@@ -18,6 +22,10 @@ export default function SectionHeader({
   highlight,
   description,
   className,
+  wantStrip = true,
+  paragarphClassName = "items-start",
+  labelclassName = "",
+  titleclassName = ""
 }: SectionHeaderProps) {
   const labelRef = useRef<HTMLSpanElement>(null);
   const titleRef = useRef<HTMLSpanElement>(null);
@@ -107,14 +115,13 @@ export default function SectionHeader({
         <div className="pt-2 overflow-hidden">
           <span
             ref={labelRef}
-            className="
+            className={cn(`
               inline-block
               text-[11px]
               font-medium
               uppercase
               tracking-[0.2em]
-              text-foreground/45
-            "
+              text-foreground/45`,labelclassName)}
           >
             {label}
           </span>
@@ -126,7 +133,7 @@ export default function SectionHeader({
       ========================= */}
       <div>
         <h2
-          className="
+          className={cn(`
             max-w-5xl
             font-display
             text-3xl
@@ -136,7 +143,7 @@ export default function SectionHeader({
             text-foreground
             sm:text-3xl
             md:text-5xl
-          "
+          `,titleclassName)}
         >
           {/* Title */}
           <span
@@ -168,8 +175,8 @@ export default function SectionHeader({
             DESCRIPTION
         ========================= */}
         {description && (
-          <div className="mt-8 flex max-w-xl items-start gap-4">
-            <span
+          <div className={cn("mt-8 flex max-w-xl gap-4",paragarphClassName)}>
+            {wantStrip && <span
               className="
                 mt-1.75
                 max-md:hidden
@@ -178,7 +185,7 @@ export default function SectionHeader({
                 shrink-0
                 bg-foreground/20
               "
-            />
+            />}
 
             <p
               ref={descriptionRef}
