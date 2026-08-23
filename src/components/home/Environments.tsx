@@ -282,7 +282,7 @@
 // }
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   motion,
   useScroll,
@@ -360,6 +360,37 @@ export default function Environments() {
       setActiveIndex(newIndex);
     }
   });
+// NEW: Zero-lag Intersection Observer
+  useEffect(() => {
+    const htmlElement = document.documentElement;
+    const currentRef = containerRef.current;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {
+          htmlElement.classList.add("dark");
+        } else {
+          htmlElement.classList.remove("dark");
+        }
+      },
+      {
+        // Adjust these to control exactly when the color swaps
+        // rootMargin: "-30% 0px" means it triggers when the section reaches 30% from the top/bottom
+        rootMargin: "-30% 0px -30% 0px", 
+      }
+    );
+
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) observer.unobserve(currentRef);
+      // Optional: don't automatically remove "dark" on unmount if navigating to a dark page
+      htmlElement.classList.remove("dark"); 
+    };
+  }, []);
 
   const activeEnvironment = environments[activeIndex];
 

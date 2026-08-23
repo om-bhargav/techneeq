@@ -18,7 +18,7 @@ function Section({
   return (
     <section
       className={cn(
-        "bg-background px-4 md:px-10 lg:px-14",
+        "px-4 transition-colors! md:px-10 lg:px-14",
         className
       )}
       {...props}
