@@ -4,22 +4,22 @@ import { X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { SITE_NAME } from "@/config";
-import {LetsTalkButton} from "../navbar/LetsTalkButton";
+import { LetsTalkButton } from "../navbar/LetsTalkButton";
 const menuItems = [
   {
     number: "01",
-    label: "Solutions",
-    href: "/solutions",
-  },
-  {
-    number: "02",
     label: "About",
     href: "/about",
   },
   {
-    number: "03",
+    number: "02",
     label: "Industries",
-    href: "/insights",
+    href: "/#industries",
+  },
+  {
+    number: "03",
+    label: "Solutions",
+    href: "/solutions",
   },
   {
     number: "04",
@@ -36,24 +36,39 @@ function MenuItem({
   label,
   href,
   index,
+  onClose
 }: {
   number: string;
   label: string;
   href: string;
   index: number;
+  onClose: () => void;
 }) {
   const [hovered, setHovered] = useState(false);
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // 1. Always close the menu when a link is clicked
+    if (onClose) onClose();
+
+    // 2. Check if the link contains a hash
+    if (href.includes("#")) {
+      const hash = href.split("#")[1];
+      const element = document.getElementById(hash);
+
+      // 3. If the element exists on the CURRENT page, handle smooth scroll
+      if (element) {
+        e.preventDefault();
+        element.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState(null, "", href);
+      }
+      // If element is null (e.g., navigating from /about), we do nothing else here. 
+      // React Router takes over and routes you to the home page.
+    }
+  };
   return (
     <motion.div
-      initial={{
-        opacity: 0,
-        x: 40,
-      }}
-      animate={{
-        opacity: 1,
-        x: 0,
-      }}
+      initial={{ opacity: 0, x: 40 }}
+      animate={{ opacity: 1, x: 0 }}
       transition={{
         duration: 0.7,
         delay: 0.15 + index * 0.08,
@@ -62,41 +77,33 @@ function MenuItem({
     >
       <Link
         to={href}
+        onClick={handleClick} // <-- Added the click handler here
         className="group flex items-start"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
         {/* Number */}
-
         <motion.span
           className="mt-[0.7em] mr-5 w-7 shrink-0 text-xs text-muted-foreground"
           animate={{
             x: hovered ? 5 : 0,
             opacity: hovered ? 0.5 : 1,
           }}
-          transition={{
-            duration: 0.4,
-            ease,
-          }}
+          transition={{ duration: 0.4, ease }}
         >
           {number}
         </motion.span>
 
         {/* Text */}
-
         <span className="relative inline-block py-2 pr-4">
           {/* Normal text */}
-
           <motion.span
             className="relative block whitespace-nowrap font-display text-5xl leading-none tracking-[-0.06em] sm:text-6xl"
             animate={{
               opacity: hovered ? 0 : 1,
               x: hovered ? 15 : 0,
             }}
-            transition={{
-              duration: 0.45,
-              ease,
-            }}
+            transition={{ duration: 0.45, ease }}
           >
             {label.split("").map((char, i) => (
               <motion.span
@@ -118,45 +125,23 @@ function MenuItem({
           </motion.span>
 
           {/* Hover / italic text */}
-
           <motion.span
             className="
-              pointer-events-none
-              absolute
-              left-0
-              top-2
-              whitespace-nowrap
-              font-sans
-              text-5xl
-              italic
-              leading-none
-              tracking-[-0.06em]
-              sm:text-6xl
+              pointer-events-none absolute left-0 top-2 whitespace-nowrap font-sans text-5xl italic leading-none tracking-[-0.06em] sm:text-6xl
             "
-            initial={{
-              x: -18,
-              opacity: 0,
-            }}
+            initial={{ x: -18, opacity: 0 }}
             animate={{
               x: hovered ? 0 : -18,
               opacity: hovered ? 1 : 0,
             }}
-            transition={{
-              duration: 0.4,
-              ease,
-            }}
+            transition={{ duration: 0.4, ease }}
           >
             {label.split("").map((char, i) => (
               <motion.span
                 key={`hover-${i}`}
                 className="inline-block"
-                style={{
-                  transformOrigin: "left center",
-                }}
-                initial={{
-                  opacity: 0,
-                  scaleX: 0,
-                }}
+                style={{ transformOrigin: "left center" }}
+                initial={{ opacity: 0, scaleX: 0 }}
                 animate={{
                   opacity: hovered ? 1 : 0,
                   scaleX: hovered ? 1 : 0,
@@ -173,27 +158,17 @@ function MenuItem({
           </motion.span>
 
           {/* Underline */}
-
           <motion.span
             className="absolute bottom-0 left-0 h-px bg-foreground"
-            initial={{
-              scaleX: 0,
-              transformOrigin: "left",
-            }}
-            animate={{
-              scaleX: hovered ? 1 : 0,
-            }}
-            transition={{
-              duration: 0.5,
-              ease,
-            }}
+            initial={{ scaleX: 0, transformOrigin: "left" }}
+            animate={{ scaleX: hovered ? 1 : 0 }}
+            transition={{ duration: 0.5, ease }}
           />
         </span>
       </Link>
     </motion.div>
   );
 }
-
 function MenuPanel({
   onClose,
 }: {
@@ -277,6 +252,7 @@ function MenuPanel({
                 key={item.label}
                 {...item}
                 index={index}
+                onClose={onClose}
               />
             ))}
           </div>

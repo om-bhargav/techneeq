@@ -7,6 +7,7 @@ interface SectionProps extends HTMLAttributes<HTMLElement> {
   className?: string;
   containerClassName?: string;
   ref?: any;
+  id?: string;
 }
 
 function Section({

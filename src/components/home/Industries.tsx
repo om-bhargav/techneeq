@@ -18,7 +18,7 @@ const environments = [
     eyebrow: "PATIENTS · RESEARCH · CARE",
     description:
       "Connect clinical, operational and research data to improve decisions across the care journey.",
-    image: "https://picsum.photos/1200/1600?random=1",
+    image: "/industries/1.png",
   },
   {
     id: "02",
@@ -26,7 +26,7 @@ const environments = [
     eyebrow: "RISK · CAPITAL · PERFORMANCE",
     description:
       "Bring financial data together to improve risk visibility, forecasting and decision-making.",
-    image: "https://picsum.photos/1200/1600?random=2",
+    image: "/industries/2.png",
   },
   {
     id: "03",
@@ -34,7 +34,7 @@ const environments = [
     eyebrow: "POLICIES · CLAIMS · LOSS",
     description:
       "Underwriting and claims intelligence, loss modeling, and automation of document-heavy workflows.",
-    image: "https://picsum.photos/1200/1600?random=3",
+    image: "/industries/3.png",
   },
   {
     id: "04",
@@ -42,7 +42,7 @@ const environments = [
     eyebrow: "OPERATIONS · SUPPLY · QUALITY",
     description:
       "Connect production, supply chain and operational data to create a clearer view of performance.",
-    image: "https://picsum.photos/1200/1600?random=4",
+    image: "/industries/4.png",
   },
   {
     id: "05",
@@ -50,7 +50,7 @@ const environments = [
     eyebrow: "CUSTOMER · DEMAND · COMMERCE",
     description:
       "Turn fragmented customer and commercial data into intelligence that improves every interaction.",
-    image: "https://picsum.photos/1200/1600?random=5",
+    image: "/industries/5.png",
   },
   {
     id: "06",
@@ -58,7 +58,7 @@ const environments = [
     eyebrow: "CITIZENS · SERVICES · GOVERNANCE",
     description:
       "Create trusted data foundations for better public services, transparency and decision-making.",
-    image: "https://picsum.photos/1200/1600?random=6",
+    image: "/industries/6.png",
   },
 ];
 
@@ -77,7 +77,6 @@ export default function Environments() {
       setActiveIndex(newIndex);
     }
   });
-  // NEW: Zero-lag Intersection Observer
 
   useDarkSection(containerRef);
 
@@ -93,7 +92,7 @@ export default function Environments() {
   };
 
   return (
-    <Section>
+    <Section id="industries">
       <Section.Header
         label="Environments"
         title="One intelligence architecture."

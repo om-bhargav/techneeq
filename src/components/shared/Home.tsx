@@ -15,7 +15,7 @@ const Solutions = lazy(
 );
 
 const Environments = lazy(
-  () => import("@/components/home/Environments")
+  () => import("@/components/home/Industries")
 );
 const Transformation = lazy(
   () => import("@/components/home/Transformation")
