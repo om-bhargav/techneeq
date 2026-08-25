@@ -1,64 +1,13 @@
-import { lazy, Suspense, useEffect, useRef, useState } from "react";
-
-const ContactSection = lazy(() => import("../contact/ContactSection"));
-const Locations = lazy(() => import("../contact/Locations"));
-const CTA = lazy(() => import("../home/CTA"));
-
-function LazySection({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const element = ref.current;
-
-    if (!element) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      {
-        rootMargin: "300px 0px",
-      }
-    );
-
-    observer.observe(element);
-
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div ref={ref}>
-      {visible && (
-        <Suspense fallback={null}>
-          {children}
-        </Suspense>
-      )}
-    </div>
-  );
-}
+import ContactSection from "../contact/ContactSection";
+import Locations from "../contact/Locations";
+import CTA from "../home/CTA";
 
 export default function Contact() {
   return (
     <main className="grid gap-8 pt-20 md:gap-20">
-      <LazySection>
-        <ContactSection />
-      </LazySection>
-
-      <LazySection>
-        <Locations />
-      </LazySection>
-
-      <LazySection>
-        <CTA />
-      </LazySection>
+      <ContactSection />
+      <Locations />
+      <CTA />
     </main>
   );
 }
