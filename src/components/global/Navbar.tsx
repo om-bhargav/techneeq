@@ -1,32 +1,28 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { SITE_NAME } from "@/config";
+import {LetsTalkButton} from "../navbar/LetsTalkButton";
 const menuItems = [
   {
     number: "01",
-    label: "Services",
-    href: "/services",
-  },
-  {
-    number: "02",
     label: "Solutions",
     href: "/solutions",
   },
   {
-    number: "03",
+    number: "02",
     label: "About",
     href: "/about",
   },
   {
-    number: "04",
-    label: "Insights",
+    number: "03",
+    label: "Industries",
     href: "/insights",
   },
   {
-    number: "05",
+    number: "04",
     label: "Contact",
     href: "/contact",
   },
@@ -343,7 +339,7 @@ function MenuPanel({
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
+  const { pathname } = useLocation();
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -382,19 +378,22 @@ export default function Navbar() {
             className={cn(
               "font-display text-xl uppercase tracking-[-0.04em]",
               "transition-colors duration-500",
-              scrolled ? "text-foreground" : "text-background"
+              scrolled ? "text-foreground" : pathname === "/" ? "text-background" : "text-foreground"
             )}
           >
             {SITE_NAME}
           </Link>
 
-          {/* Menu */}
-          <MenuButton
-            open={menuOpen}
-            onClick={() => setMenuOpen((prev) => !prev)}
-            className={"transition-colors duration-500"}
-            scrolled={scrolled}
-          />
+          <div className="flex items-center gap-3">
+            <LetsTalkButton />
+            {/* Menu */}
+            <MenuButton
+              open={menuOpen}
+              onClick={() => setMenuOpen((prev) => !prev)}
+              className={"transition-colors duration-500"}
+              scrolled={scrolled}
+            />
+          </div>
         </div>
       </header>
 
@@ -424,13 +423,14 @@ export function MenuButton({
   className = "",
   scrolled
 }: MenuButtonProps) {
+  const { pathname } = useLocation();
   return (
     <button
       type="button"
       onClick={onClick}
       aria-label={open ? "Close menu" : "Open menu"}
       aria-expanded={open}
-      className={cn("group relative flex size-10  items-center justify-center rounded-full", className, scrolled ? "text-foreground" : "text-background")}
+      className={cn("group relative flex size-10  items-center justify-center rounded-full", className, scrolled ? "text-foreground" : pathname === "/" ? "text-background" : "text-foreground")}
     >
       <span className="sr-only">
         {open ? "Close menu" : "Toggle Menu"}
@@ -441,7 +441,7 @@ export function MenuButton({
       <motion.span
         className={cn(
           "absolute inset-0 rounded-full",
-          scrolled ? "bg-foreground" : "bg-background"
+          scrolled ? "bg-foreground" : pathname === "/" ? "bg-background" : "bg-foreground"
         )}
         initial={false}
         animate={{
@@ -493,7 +493,7 @@ export function MenuButton({
           <motion.span
             className={cn(
               "absolute size-1 rounded-full",
-              scrolled ? "bg-background" : "bg-foreground"
+              scrolled ? "bg-background" : pathname === "/" ? "bg-foreground" : "bg-background"
             )}
             animate={{
               left: open ? "50%" : "15%",
@@ -509,7 +509,7 @@ export function MenuButton({
           <motion.span
             className={cn(
               "absolute size-1 rounded-full",
-              scrolled ? "bg-background" : "bg-foreground"
+              scrolled ? "bg-background" : pathname === "/" ? "bg-foreground" : "bg-background"
             )}
             animate={{
               left: "50%",
@@ -525,7 +525,7 @@ export function MenuButton({
           <motion.span
             className={cn(
               "absolute size-1 rounded-full",
-              scrolled ? "bg-background" : "bg-foreground"
+              scrolled ? "bg-background" : pathname === "/" ? "bg-foreground" : "bg-background"
             )}
             animate={{
               left: open ? "50%" : "85%",

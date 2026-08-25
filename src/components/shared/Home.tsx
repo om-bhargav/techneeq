@@ -17,7 +17,6 @@ const Solutions = lazy(
 const Environments = lazy(
   () => import("@/components/home/Environments")
 );
-import {motion} from "framer-motion";
 const Transformation = lazy(
   () => import("@/components/home/Transformation")
 );
@@ -42,14 +41,6 @@ function Home() {
   return (
     <div className="grid max-md:gap-10 md:gap-20">
       <Hero />
-      <motion.div
-  className="absolute size-20 rounded-full border border-white/30"
-  animate={{
-    scale: [0, 4],
-    opacity: [0.5, 0],
-  }}
-  transition={{ duration: 1.2 }}
-/>
       <Suspense fallback={null}>
         <Intelligence />
         <Services />

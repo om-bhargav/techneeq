@@ -1,7 +1,21 @@
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 
-const ContactSection = lazy(() => import("../contact/ContactSection"));
-const Locations = lazy(() => import("../contact/Locations"));
+const InteractiveScrollSection = lazy(
+  () => import("../solutions/InteractiveScrollSection")
+);
+
+const SolutionsProvided = lazy(
+  () => import("../solutions/SolutionsProvided")
+);
+
+const TechStacks = lazy(
+  () => import("../solutions/TechStacks")
+);
+
+const BusinessOutcome = lazy(
+  () => import("../home/BusinessOutcome")
+);
+
 const CTA = lazy(() => import("../home/CTA"));
 
 function LazySection({
@@ -45,15 +59,23 @@ function LazySection({
   );
 }
 
-export default function Contact() {
+export default function Solutions() {
   return (
-    <main className="grid gap-8 pt-20 md:gap-20">
+    <main className="grid gap-8 md:gap-20">
       <LazySection>
-        <ContactSection />
+        <InteractiveScrollSection />
       </LazySection>
 
       <LazySection>
-        <Locations />
+        <SolutionsProvided />
+      </LazySection>
+
+      <LazySection>
+        <TechStacks />
+      </LazySection>
+
+      <LazySection>
+        <BusinessOutcome />
       </LazySection>
 
       <LazySection>

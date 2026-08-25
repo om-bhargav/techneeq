@@ -1,34 +1,45 @@
 "use client";
 
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import Lenis from "lenis";
-
-interface SmoothScrollProps {
-  children: any;
-}
 
 export default function SmoothScroll({
   children,
-}: SmoothScrollProps) {
+}: React.PropsWithChildren) {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
+      // smoother motion
+      lerp: 0.075,
+      duration: 1.25,
+
+      easing: (t: number) => 1 - Math.pow(1 - t, 4),
+
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+
       smoothWheel: true,
+
+      // touch control
+      touchMultiplier: 0.9,
       syncTouch: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 1,
-      lerp: 0.1,
+      syncTouchLerp: 0.08,
+
+      infinite: false,
+      autoResize: true,
+      allowNestedScroll: true
     });
 
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
+    let frameId = 0;
 
-    const animationFrame = requestAnimationFrame(raf);
+    const raf = (time: number) => {
+      lenis.raf(time);
+      frameId = requestAnimationFrame(raf);
+    };
+
+    frameId = requestAnimationFrame(raf);
 
     return () => {
-      cancelAnimationFrame(animationFrame);
+      cancelAnimationFrame(frameId);
       lenis.destroy();
     };
   }, []);

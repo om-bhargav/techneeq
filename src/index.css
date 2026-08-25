@@ -36,7 +36,7 @@
   }
 
   --background: oklch(1 0 0);
-
+  --secondary-background: oklch(98.212% 0.00011 271.152);
   --foreground: oklch(0.145 0 0);
 
   --card: oklch(1 0 0);
@@ -163,6 +163,7 @@ body{
 
 .dark {
   --background: oklch(0.145 0 0);
+  --secondary-background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -256,4 +257,10 @@ h6 {
   
   font-family: "NeueMachina", sans-serif;
   font-weight: 400;
+}
+
+@media (min-width: 768px) {
+  .process-card {
+    top: calc(96px + (var(--card-index) * 22px));
+  }
 }

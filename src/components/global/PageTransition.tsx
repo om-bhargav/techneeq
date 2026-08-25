@@ -1,8 +1,18 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useLocation, Outlet } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function PageTransition() {
   const location = useLocation();
+
+  useEffect(() => {
+    // Move to the top immediately when the route changes
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+  }, [location.pathname]);
 
   return (
     <AnimatePresence mode="wait">
@@ -33,6 +43,7 @@ export default function PageTransition() {
           },
         }}
       >
+        {/* Page wipe */}
         <motion.div
           className="fixed inset-0 z-[9999] bg-black pointer-events-none"
           variants={{
@@ -61,6 +72,7 @@ export default function PageTransition() {
           }}
         />
 
+        {/* Page content */}
         <motion.div
           variants={{
             initial: {

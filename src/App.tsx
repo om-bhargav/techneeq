@@ -2,11 +2,11 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import PageTransition from "@/components/global/PageTransition";
 import Home from "@/components/shared/Home";
-import Services from "@/components/shared/Services";
 import About from "@/components/shared/About";
 import Contact from "@/components/shared/Contact";
 import Expertise from "./components/shared/Expertise";
 import PageLayout from "./components/global/PageLayout";
+import Solutions from "./components/shared/Solutions";
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
 
             <Route path="/expertise" element={<Expertise />} />
 
-            <Route path="/services" element={<Services />} />
+            <Route path="/solutions" element={<Solutions />} />
 
             <Route path="/about" element={<About />} />
 

@@ -25,7 +25,10 @@ type AnchorProps = BaseProps &
         href: string;
     };
 
-type PillButtonProps = ButtonProps | AnchorProps;
+type Props = {
+    spanClassName?: string;
+}
+type PillButtonProps = (ButtonProps | AnchorProps) & Props;
 
 export default function PillButton(props: PillButtonProps) {
     const {
@@ -33,16 +36,16 @@ export default function PillButton(props: PillButtonProps) {
         icon: Icon,
         variant = "default",
         className,
+        spanClassName
     } = props;
 
     const isDark = variant === "dark";
 
     const sharedClassName = cn(
-        "group relative inline-flex w-fit items-center gap-3 overflow-hidden rounded-full",
+        "group relative inline-flex w-fit items-center justify-center gap-3 overflow-hidden rounded-full",
         "px-5 py-2.5",
         "text-xs font-medium uppercase tracking-[0.15em]",
         "transition-colors duration-300",
-        // Transparent by default
         "bg-transparent",
         "border backdrop-blur-sm",
         className,
@@ -89,7 +92,8 @@ export default function PillButton(props: PillButtonProps) {
                     // Default
                     isDark
                         ? "text-foreground group-hover:text-background"
-                        : "text-background group-hover:text-foreground"
+                        : "text-background group-hover:text-foreground",
+                    spanClassName
                 )}
             >
                 {children}
@@ -108,8 +112,8 @@ export default function PillButton(props: PillButtonProps) {
                             : "bg-background text-foreground",
 
                         // Hover icon background
-                        isDark ? "group-hover:bg-background group-hover:text-foreground" 
-                        : "group-hover:bg-foreground group-hover:text-background"
+                        isDark ? "group-hover:bg-background group-hover:text-foreground"
+                            : "group-hover:bg-foreground group-hover:text-background"
                     )}
                 >
                     <motion.span
