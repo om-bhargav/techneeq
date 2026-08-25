@@ -5,7 +5,7 @@ import {  useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, MoveRight } from "lucide-react";
 // import { Sparkles } from "lucide-react";
-import { useDarkSection } from "@/hooks/useDarkSection";
+// import { useDarkSection } from "@/hooks/useDarkSection";
 // import FastMarquee from "react-fast-marquee";
 import SectionHeader from "../global/section/SectionHeader";
 
@@ -29,7 +29,7 @@ export default function ExpertiseTransition() {
     // 1. Wait a bit, then scroll text up between 15% and 35% of the way down.
     const contentY = useTransform(scrollYProgress, [0.15, 0.35], ["0vh", "-100vh"]);
 
-    useDarkSection(containerRef);
+    // useDarkSection(containerRef);
 
     return (
         <section
