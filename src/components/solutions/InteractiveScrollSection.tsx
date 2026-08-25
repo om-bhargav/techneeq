@@ -2,14 +2,15 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Sparkles, ArrowRight, MoveRight } from "lucide-react";
+import { ArrowRight, MoveRight } from "lucide-react";
+// import { Sparkles } from "lucide-react";
 import { useDarkSection } from "@/hooks/useDarkSection";
-import FastMarquee from "react-fast-marquee";
+// import FastMarquee from "react-fast-marquee";
 import SectionHeader from "../global/section/SectionHeader";
 
 // This checks if your bundler wrapped the component in a module object.
 // If it did, it unwraps it. If it didn't, it just uses it normally.
-const Marquee = (FastMarquee as any).default || FastMarquee;
+// const Marquee = (FastMarquee as any).default || FastMarquee;
 
 export default function ExpertiseTransition() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -68,10 +69,10 @@ export default function ExpertiseTransition() {
                     </div>
                 </motion.div>
 
-                <motion.div
+                {/* <motion.div
                     className="absolute bottom-0 left-0 flex w-full overflow-hidden border-t border-foreground/10 py-6"
-                >
-                    {isMounted && 
+                > */}
+                    {/* {isMounted && 
                         <Marquee
                         speed={50}
                         autoFill={true}
@@ -84,8 +85,8 @@ export default function ExpertiseTransition() {
                             <Sparkles className="size-6 text-foreground/40" />
                         </div>
                     </Marquee>
-                    }
-                </motion.div>
+                    } */}
+                {/* </motion.div> */}
 
                 {/* =========================================
                     3. HORIZONTAL EXPANDING LINES OVERLAY
