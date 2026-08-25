@@ -1,16 +1,7 @@
 import { lazy, Suspense } from "react";
-
-const InteractiveScrollSection = lazy(
-  () => import("../solutions/InteractiveScrollSection")
-);
-
-const SolutionsProvided = lazy(
-  () => import("../solutions/SolutionsProvided")
-);
-
-const TechStacks = lazy(
-  () => import("../solutions/TechStacks")
-);
+import TechStacks from "../solutions/TechStacks";
+import SolutionsProvided from "../solutions/SolutionsProvided";
+import ExpertiseTransition from "../solutions/InteractiveScrollSection";
 
 const BusinessOutcome = lazy(
   () => import("../home/BusinessOutcome")
@@ -23,10 +14,10 @@ const CTA = lazy(
 export default function Solutions() {
   return (
     <main className="grid gap-8 md:gap-20">
+      <ExpertiseTransition />
+      <SolutionsProvided />
+      <TechStacks />
       <Suspense fallback={null}>
-        <InteractiveScrollSection />
-        <SolutionsProvided />
-        <TechStacks />
         <BusinessOutcome />
         <CTA />
       </Suspense>
