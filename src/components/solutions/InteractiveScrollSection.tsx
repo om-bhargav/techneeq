@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Sparkles, ArrowRight, MoveRight } from "lucide-react";
 import { useDarkSection } from "@/hooks/useDarkSection";
@@ -13,7 +13,11 @@ const Marquee = (FastMarquee as any).default || FastMarquee;
 
 export default function ExpertiseTransition() {
     const containerRef = useRef<HTMLDivElement>(null);
+    const [isMounted, setIsMounted] = useState(false);
 
+        useEffect(() => {
+            setIsMounted(true);
+        }, []);
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start start", "end end"],
@@ -67,7 +71,8 @@ export default function ExpertiseTransition() {
                 <motion.div
                     className="absolute bottom-0 left-0 flex w-full overflow-hidden border-t border-foreground/10 py-6"
                 >
-                    <Marquee
+                    {isMounted && 
+                        <Marquee
                         speed={50}
                         autoFill={true}
                         gradient={false}
@@ -79,6 +84,7 @@ export default function ExpertiseTransition() {
                             <Sparkles className="size-6 text-foreground/40" />
                         </div>
                     </Marquee>
+                    }
                 </motion.div>
 
                 {/* =========================================
