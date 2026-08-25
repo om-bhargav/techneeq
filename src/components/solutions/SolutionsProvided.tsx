@@ -109,21 +109,21 @@ export default function Solutions() {
   const stepSize = 1 / (totalItems * 2 - 1);
 
   // Generate the stepped keyframes for the text column to scroll up
-// Generate the stepped keyframes for the text column to scroll up
+  // Generate the stepped keyframes for the text column to scroll up
   const textInputs: number[] = [];
   const textOutputs: string[] = [];
 
   for (let i = 0; i < totalItems; i++) {
     // Hold phase (freeze)
     textInputs.push(i * 2 * stepSize);
-    
+
     // FIX: Using vh instead of % so it moves exactly 1 screen height at a time
-    textOutputs.push(`-${i * 100}vh`); 
-    
+    textOutputs.push(`-${i * 100}vh`);
+
     textInputs.push((i * 2 + 1) * stepSize);
-    
+
     // FIX: Using vh instead of % 
-    textOutputs.push(`-${i * 100}vh`); 
+    textOutputs.push(`-${i * 100}vh`);
   }
 
   // Transform the scroll progress into a stepped Y-axis translation
@@ -137,13 +137,13 @@ export default function Solutions() {
   return (
     <Section className="md:px-0!" containerClassName="max-w-full!">
       <div className="mx-auto max-w-7xl">
-      <Section.Header
-        label="Solutions"
-        title="Technology that"
-        highlight="moves the business forward."
-        description="From digital experiences to intelligent infrastructure, we design and engineer technology around the outcomes that matter."
-        className="max-w-4xl"
-      />
+        <Section.Header
+          label="Solutions"
+          title="Technology that"
+          highlight="moves the business forward."
+          description="From digital experiences to intelligent infrastructure, we design and engineer technology around the outcomes that matter."
+          className="max-w-4xl"
+        />
       </div>
       <Section.Body>
         <div
@@ -266,7 +266,7 @@ function SolutionSlideImage({
   image: string;
 }) {
   const stepSize = 1 / (total * 2 - 1);
-  
+
   // Calculate precisely when THIS specific image should begin sliding up
   const slideStart = (index * 2 - 1) * stepSize;
   const slideEnd = index * 2 * stepSize;
@@ -325,16 +325,11 @@ function SolutionContent({
         </div>
       </div>
 
-      {/* Heading */}
-      <h3 className="mt-12 max-w-xl font-display text-3xl leading-[0.98] tracking-[-0.04em] sm:text-4xl lg:text-5xl">
-        {solution.title}
-      </h3>
-
-      {/* Description */}
-      <p className="mt-6 max-w-md text-xs leading-5 text-muted-foreground sm:text-sm sm:leading-6">
-        {solution.description}
-      </p>
-
+      <Section.Header
+        title={solution.title}
+        description={solution.description}
+        wantStrip={false}
+      />
       {/* Capability list */}
       <div className="mt-12 max-w-lg">
         <div className="mb-4 font-mono text-[8px] uppercase tracking-[0.18em] text-foreground/30">

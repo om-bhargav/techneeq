@@ -1,25 +1,25 @@
 "use client";
 
-import {  useRef } from "react";
-// import { useEffect, useState } from "react";
+import { useRef } from "react";
+import { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, MoveRight } from "lucide-react";
-// import { Sparkles } from "lucide-react";
-// import { useDarkSection } from "@/hooks/useDarkSection";
-// import FastMarquee from "react-fast-marquee";
+import { Sparkles } from "lucide-react";
+import { useDarkSection } from "@/hooks/useDarkSection";
+import FastMarquee from "react-fast-marquee";
 import SectionHeader from "../global/section/SectionHeader";
 
 // This checks if your bundler wrapped the component in a module object.
 // If it did, it unwraps it. If it didn't, it just uses it normally.
-// const Marquee = (FastMarquee as any).default || FastMarquee;
+const Marquee = (FastMarquee as any).default || FastMarquee;
 
 export default function ExpertiseTransition() {
     const containerRef = useRef<HTMLDivElement>(null);
-    // const [isMounted, setIsMounted] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
 
-        // useEffect(() => {
-        //     setIsMounted(true);
-        // }, []);
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start start", "end end"],
@@ -29,7 +29,7 @@ export default function ExpertiseTransition() {
     // 1. Wait a bit, then scroll text up between 15% and 35% of the way down.
     const contentY = useTransform(scrollYProgress, [0.15, 0.35], ["0vh", "-100vh"]);
 
-    // useDarkSection(containerRef);
+    useDarkSection(containerRef);
 
     return (
         <section
@@ -46,7 +46,7 @@ export default function ExpertiseTransition() {
                 >
                     {/* === GROUP 1 (SCREEN 1) === */}
                     <div className="flex h-screen w-full flex-col items-center justify-center">
-                        <SectionHeader label="What We Do" title="Area of Expertise" titleclassName="md:text-6xl!"/>
+                        <SectionHeader label="What We Do" title="Area of Expertise" titleclassName="md:text-6xl!" />
                     </div>
 
                     {/* === GROUP 2 (SCREEN 2) === */}
@@ -70,24 +70,24 @@ export default function ExpertiseTransition() {
                     </div>
                 </motion.div>
 
-                {/* <motion.div
-                    className="absolute bottom-0 left-0 flex w-full overflow-hidden border-t border-foreground/10 py-6"
-                > */}
-                    {/* {isMounted && 
-                        <Marquee
-                        speed={50}
-                        autoFill={true}
-                        gradient={false}
+                {isMounted &&
+                    <motion.div
+                        className="absolute bottom-0 left-0 flex bg-background w-full overflow-hidden border-t border-foreground/10 py-6"
                     >
-                        <div className="flex items-center gap-8 pr-8">
-                            <span className="font-display text-2xl uppercase tracking-wider text-foreground/90">
-                                Digital Transformation
-                            </span>
-                            <Sparkles className="size-6 text-foreground/40" />
-                        </div>
-                    </Marquee>
-                    } */}
-                {/* </motion.div> */}
+                        <Marquee
+                            speed={50}
+                            autoFill={true}
+                            gradient={false}
+                        >
+                            <div className="flex items-center gap-8 pr-8">
+                                <span className="font-display text-2xl uppercase tracking-wider text-foreground/90">
+                                    Digital Transformation
+                                </span>
+                                <Sparkles className="size-6 text-foreground/40" />
+                            </div>
+                        </Marquee>
+                    </motion.div>
+                }
 
                 {/* =========================================
                     3. HORIZONTAL EXPANDING LINES OVERLAY
@@ -126,10 +126,10 @@ function ExpandingLine({
 
     return (
         <motion.div
-            style={{ 
+            style={{
                 height,
                 // Pins the lines exactly at 0%, 20%, 40%, 60%, 80%
-                top: `${index * 20}%` 
+                top: `${index * 20}%`
             }}
             className="absolute left-0 w-full bg-foreground"
         />

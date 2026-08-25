@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 
 import { motion, AnimatePresence } from "framer-motion";
@@ -129,7 +127,6 @@ export default function TechStacks() {
 
               <div className="relative mt-8 h-px w-16 bg-foreground/20">
                 <motion.div
-                  layoutId="tech-line"
                   className="absolute inset-y-0 left-0 w-full bg-foreground"
                 />
               </div>
