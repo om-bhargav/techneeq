@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import {  useRef } from "react";
+// import { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, MoveRight } from "lucide-react";
 // import { Sparkles } from "lucide-react";
@@ -14,11 +15,11 @@ import SectionHeader from "../global/section/SectionHeader";
 
 export default function ExpertiseTransition() {
     const containerRef = useRef<HTMLDivElement>(null);
-    const [isMounted, setIsMounted] = useState(false);
+    // const [isMounted, setIsMounted] = useState(false);
 
-        useEffect(() => {
-            setIsMounted(true);
-        }, []);
+        // useEffect(() => {
+        //     setIsMounted(true);
+        // }, []);
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start start", "end end"],
