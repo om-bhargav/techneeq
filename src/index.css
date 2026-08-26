@@ -5,102 +5,138 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* =========================================================
+   TECHNEEQ DESIGN SYSTEM
+   Cloud Dancer × Transformative Teal
+   Vite + React + Tailwind CSS v4 + shadcn/ui
+   ========================================================= */
+
 :root {
-  /* =========================================================
-     TECHNEEQ COLOR SYSTEM
-     Cloud Dancer × Transformative Teal
-     ========================================================= */
+  /* ---------------------------------------------------------
+     BRAND COLORS
+     --------------------------------------------------------- */
 
-  --cloud: #f0eee7;
-  --cloud-deep: #e6e3da;
-  --cloud-soft: #f7f6f1;
+  /* Cloud Dancer family */
+  --cloud: #F0EEE9;
+  --cloud-soft: #F7F6F2;
+  --cloud-deep: #E6E3DC;
 
-  --teal: #0e9f92;
-  --teal-deep: #087a71;
-  --teal-pale: #d8f0ec;
+  /* Transformative Teal family */
+  --teal-950: #0B292A;
+  --teal-900: #103738;
+  --teal-800: #164444;
+  --teal-700: #1C4D4D;
+  --teal-600: #287373;
+  --teal-500: #3F8986;
+  --teal-400: #5FA6A0;
+  --teal-300: #8BBDB8;
+  --teal-200: #B8D5D1;
+  --teal-100: #D8E8E5;
 
-  --ink: #111412;
-  --ink-soft: #292e2b;
+  /* Typography */
+  --ink: #111918;
+  --ink-soft: #596563;
 
-  /* =========================================================
-     BASE
-     ========================================================= */
+  /* ---------------------------------------------------------
+     GENERAL UI
+     --------------------------------------------------------- */
 
-  --text: #292e2b;
-  --text-h: #111412;
-  --bg: #f0eee7;
+  --text: var(--ink);
+  --text-h: var(--ink);
+  --bg: var(--cloud);
 
-  --border: #d9d7cf;
-  --code-bg: #e6e3da;
+  --border: #D9D7CF;
+  --input: #D9D7CF;
 
-  --accent: #0e9f92;
-  --accent-bg: rgba(14, 159, 146, 0.1);
-  --accent-border: rgba(14, 159, 146, 0.4);
+  --code-bg: var(--cloud-deep);
 
-  --social-bg: rgba(230, 227, 218, 0.55);
+  --accent: var(--teal-700);
+  --accent-bg: rgba(28, 77, 77, 0.08);
+  --accent-border: rgba(28, 77, 77, 0.24);
+
+  --social-bg: rgba(230, 227, 220, 0.55);
+
+  /* ---------------------------------------------------------
+     SHADOWS
+     --------------------------------------------------------- */
 
   --shadow:
-    rgba(17, 20, 18, 0.08) 0 10px 15px -3px,
-    rgba(17, 20, 18, 0.04) 0 4px 6px -2px;
+    rgba(17, 25, 24, 0.08) 0 10px 15px -3px,
+    rgba(17, 25, 24, 0.04) 0 4px 6px -2px;
 
-  /* =========================================================
-     SHADCN
-     ========================================================= */
+  /* ---------------------------------------------------------
+     SHADCN UI
+     --------------------------------------------------------- */
 
-  --background: #f0eee7;
-  --secondary-background: #e6e3da;
+  --background: var(--cloud);
+  --foreground: var(--ink);
 
-  --foreground: #111412;
+  --card: var(--cloud-soft);
+  --card-foreground: var(--ink);
 
-  --card: #f7f6f1;
-  --card-foreground: #111412;
+  --popover: var(--cloud-soft);
+  --popover-foreground: var(--ink);
 
-  --popover: #f7f6f1;
-  --popover-foreground: #111412;
+  /* Primary = Transformative Teal */
+  --primary: var(--teal-700);
+  --primary-foreground: #FFFFFF;
 
-  --primary: #0e9f92;
-  --primary-foreground: #ffffff;
+  /* Secondary = Cloud */
+  --secondary: var(--cloud-deep);
+  --secondary-foreground: var(--ink);
 
-  --secondary: #e6e3da;
-  --secondary-foreground: #111412;
+  /* Muted */
+  --muted: var(--cloud-deep);
+  --muted-foreground: #69716E;
 
-  --muted: #e6e3da;
-  --muted-foreground: #6b716d;
+  /* Accent */
+  --accent: var(--teal-100);
+  --accent-foreground: var(--teal-800);
 
-  --accent: #d8f0ec;
-  --accent-foreground: #087a71;
-
+  /* Destructive */
   --destructive: oklch(0.577 0.245 27.325);
 
-  --input: #d9d7cf;
-  --ring: #0e9f92;
+  /* Form */
+  --ring: var(--teal-600);
 
-  --chart-1: #0e9f92;
-  --chart-2: #087a71;
-  --chart-3: #4bb8ad;
-  --chart-4: #7bcfc6;
-  --chart-5: #a7ded8;
+  /* ---------------------------------------------------------
+     DATA VISUALIZATION
+     --------------------------------------------------------- */
 
-  --radius: 0.625rem;
+  --chart-1: var(--teal-700);
+  --chart-2: var(--teal-600);
+  --chart-3: var(--teal-500);
+  --chart-4: var(--teal-400);
+  --chart-5: var(--teal-300);
 
-  --sidebar: #f7f6f1;
-  --sidebar-foreground: #111412;
+  /* ---------------------------------------------------------
+     SHADCN RADIUS
+     --------------------------------------------------------- */
 
-  --sidebar-primary: #0e9f92;
-  --sidebar-primary-foreground: #ffffff;
+  --radius: 0.75rem;
 
-  --sidebar-accent: #d8f0ec;
-  --sidebar-accent-foreground: #087a71;
+  /* ---------------------------------------------------------
+     SIDEBAR
+     --------------------------------------------------------- */
 
-  --sidebar-border: #d9d7cf;
-  --sidebar-ring: #0e9f92;
+  --sidebar: var(--cloud-soft);
+  --sidebar-foreground: var(--ink);
 
-  /* =========================================================
+  --sidebar-primary: var(--teal-700);
+  --sidebar-primary-foreground: #FFFFFF;
+
+  --sidebar-accent: var(--teal-100);
+  --sidebar-accent-foreground: var(--teal-800);
+
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--teal-600);
+
+  /* ---------------------------------------------------------
      TYPOGRAPHY
-     ========================================================= */
+     --------------------------------------------------------- */
 
-  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
-  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
+  --sans: "TestSohne", system-ui, sans-serif;
+  --heading: "NeueMachina", system-ui, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
   font: 18px/145% var(--sans);
@@ -120,27 +156,44 @@
 
 
 /* =========================================================
-   TAILWIND V4 THEME
+   TAILWIND CSS v4 THEME
    ========================================================= */
 
 @theme inline {
-  /* Fonts */
-  --font-heading: var(--font-sans);
-  --font-sans: "Geist Variable", sans-serif;
 
-  /* Techneeq */
+  /* ---------------------------------------------------------
+     Fonts
+     --------------------------------------------------------- */
+
+  --font-sans: "TestSohne", sans-serif;
+  --font-heading: "NeueMachina", sans-serif;
+
+  /* ---------------------------------------------------------
+     Techneeq Brand Colors
+     --------------------------------------------------------- */
+
   --color-cloud: var(--cloud);
-  --color-cloud-deep: var(--cloud-deep);
   --color-cloud-soft: var(--cloud-soft);
+  --color-cloud-deep: var(--cloud-deep);
 
-  --color-teal: var(--teal);
-  --color-teal-deep: var(--teal-deep);
-  --color-teal-pale: var(--teal-pale);
+  --color-teal-950: var(--teal-950);
+  --color-teal-900: var(--teal-900);
+  --color-teal-800: var(--teal-800);
+  --color-teal-700: var(--teal-700);
+  --color-teal-600: var(--teal-600);
+  --color-teal-500: var(--teal-500);
+  --color-teal-400: var(--teal-400);
+  --color-teal-300: var(--teal-300);
+  --color-teal-200: var(--teal-200);
+  --color-teal-100: var(--teal-100);
 
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
 
-  /* Shadcn */
+  /* ---------------------------------------------------------
+     shadcn/ui
+     --------------------------------------------------------- */
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
@@ -164,12 +217,11 @@
 
   --color-destructive: var(--destructive);
 
-  /* THIS FIXES border-border */
   --color-border: var(--border);
-
   --color-input: var(--input);
   --color-ring: var(--ring);
 
+  /* Charts */
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -205,110 +257,154 @@
    ========================================================= */
 
 .dark {
-  --background: #111412;
-  --secondary-background: #191d1b;
+  --background: var(--teal-950);
+  --foreground: var(--cloud);
 
-  --foreground: #f0eee7;
+  --card: var(--teal-900);
+  --card-foreground: var(--cloud);
 
-  --card: #191d1b;
-  --card-foreground: #f0eee7;
+  --popover: var(--teal-900);
+  --popover-foreground: var(--cloud);
 
-  --popover: #191d1b;
-  --popover-foreground: #f0eee7;
+  --primary: var(--teal-400);
+  --primary-foreground: var(--teal-950);
 
-  --primary: #0e9f92;
-  --primary-foreground: #ffffff;
+  --secondary: var(--teal-800);
+  --secondary-foreground: var(--cloud);
 
-  --secondary: #292e2b;
-  --secondary-foreground: #f0eee7;
+  --muted: var(--teal-800);
+  --muted-foreground: #A5B5B2;
 
-  --muted: #292e2b;
-  --muted-foreground: #a5aaa7;
+  --accent: var(--teal-800);
+  --accent-foreground: var(--teal-200);
 
-  --accent: #123f3b;
-  --accent-foreground: #7bcfc6;
+  --border: rgba(240, 238, 233, 0.12);
+  --input: rgba(240, 238, 233, 0.16);
 
-  --border: rgba(240, 238, 231, 0.12);
-  --input: rgba(240, 238, 231, 0.16);
+  --ring: var(--teal-400);
 
-  --ring: #0e9f92;
+  --sidebar: var(--teal-900);
+  --sidebar-foreground: var(--cloud);
+
+  --sidebar-primary: var(--teal-400);
+  --sidebar-primary-foreground: var(--teal-950);
+
+  --sidebar-accent: var(--teal-800);
+  --sidebar-accent-foreground: var(--teal-200);
+
+  --sidebar-border: rgba(240, 238, 233, 0.12);
+  --sidebar-ring: var(--teal-400);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-}
 
 /* =========================================================
-   BODY
+   BASE
    ========================================================= */
 
-body {
-  min-height: 100vh;
-  background: var(--background);
-  color: var(--foreground);
+@layer base {
+
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+
+    min-height: 100vh;
+
+    font-family: "TestSohne", sans-serif;
+
+    transition:
+      background-color 700ms cubic-bezier(0.4, 0, 0.2, 1),
+      color 700ms cubic-bezier(0.4, 0, 0.2, 1),
+      border-color 700ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "NeueMachina", sans-serif;
+    font-weight: 400;
+  }
 }
 
 
 /* =========================================================
-   TECHNEEQ UTILITIES
+   TECHNEEQ GRADIENTS
    ========================================================= */
 
 .techneeq-gradient {
+
   background:
     radial-gradient(
       circle at 20% 20%,
-      rgba(14, 159, 146, 0.16),
+      rgba(95, 166, 160, 0.18),
       transparent 35%
     ),
     linear-gradient(
       135deg,
-      #f0eee7 0%,
-      #e6e3da 50%,
-      #d8f0ec 100%
+      var(--cloud) 0%,
+      var(--cloud-deep) 52%,
+      var(--teal-100) 100%
     );
 }
 
-.techneeq-glow {
-  box-shadow:
-    0 0 80px rgba(14, 159, 146, 0.16),
-    0 0 160px rgba(14, 159, 146, 0.08);
+
+/* Dark atmospheric gradient */
+
+.techneeq-gradient-dark {
+
+  background:
+    radial-gradient(
+      circle at 75% 25%,
+      rgba(95, 166, 160, 0.20),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(28, 77, 77, 0.45),
+      transparent 40%
+    ),
+    var(--teal-950);
 }
-@layer base {
-  * {
-    @apply border-border outline-ring/50;}
-  body {
-    @apply bg-background text-foreground;
-    transition-property: background-color, color, border-color;
-    transition-duration: 700ms;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  html {
-    @apply font-sans;}}
 
 
+/* =========================================================
+   TECHNEEQ GLOW
+   ========================================================= */
+
+.techneeq-glow {
+
+  box-shadow:
+    0 0 80px rgba(95, 166, 160, 0.16),
+    0 0 160px rgba(40, 115, 115, 0.08);
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* =========================================================
+   CUSTOM FONTS
+   ========================================================= */
 
 @font-face {
   font-family: "TestSohne";
@@ -328,43 +424,24 @@ body {
   font-display: swap;
 }
 
+
+/* =========================================================
+   CUSTOM FONT UTILITIES
+   ========================================================= */
+
 @theme {
   --font-test-sohne: "TestSohne", sans-serif;
   --font-neue-machina: "NeueMachina", sans-serif;
 }
 
-* {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
 
-*::-webkit-scrollbar {
-  display: none;
-}
-
-body {
-  
-  font-family: "TestSohne", sans-serif;
-}
-
-/* All headings */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  
-  font-family: "NeueMachina", sans-serif;
-  font-weight: 400;
-}
+/* =========================================================
+   PROCESS CARD RESPONSIVENESS
+   ========================================================= */
 
 @media (min-width: 768px) {
+
   .process-card {
     top: calc(96px + (var(--card-index) * 22px));
   }
-}
-
-[data-aifx-wm] {
-  display: none !important;
 }

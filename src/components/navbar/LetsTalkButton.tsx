@@ -160,7 +160,7 @@ export function LetsTalkButton() {
               overflow-y-auto
               max-md:h-full!
               md:rounded-lg
-              bg-white
+              bg-background
               text-black
               shadow-[0_20px_70px_rgba(0,0,0,0.18)]
               sm:right-0
@@ -188,7 +188,7 @@ export function LetsTalkButton() {
                 rounded-full
                 border
                 border-black/15
-                bg-white
+                bg-background
                 text-black/50
                 transition-all
                 duration-300
@@ -424,7 +424,7 @@ function FormInput({
             right-3
             -top-[5px]
             z-10
-            bg-white
+            bg-background
             px-1.5
             text-[8px]
             uppercase
@@ -482,7 +482,7 @@ function FormSelect({
           right-3
           -top-[5px]
           z-10
-          bg-white
+          bg-background
           px-1.5
           text-[8px]
           uppercase
@@ -562,7 +562,7 @@ function FormTextarea({
           right-3
           -top-[5px]
           z-10
-          bg-white
+          bg-background
           px-1.5
           text-[8px]
           uppercase
