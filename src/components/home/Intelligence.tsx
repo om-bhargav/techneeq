@@ -81,7 +81,7 @@ export default function Intelligence() {
     return () => clearInterval(interval);
   }, []);
   return (
-    <Section>
+    <Section className="relative">
       <div className="mx-auto max-w-[1440px]">
 
         {/* Header */}

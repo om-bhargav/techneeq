@@ -2,6 +2,7 @@ import { ArrowUpRight, Bot, Cloud, Database, Shield, Sparkles, Workflow } from "
 import { motion } from "motion/react";
 import SectionHeader from "../global/section/SectionHeader";
 import Section from "../global/section/Section";
+import AIDesignerEffect from "../global/AIDesignerEffect";
 
 const solutions = [
   {
@@ -62,9 +63,9 @@ const solutions = [
 
 export default function Solutions() {
   return (
-    <Section>
+    <Section className="relative dark py-12">
       {/* Heading */}
-
+      <AIDesignerEffect/>
       <SectionHeader
         label="Our Solutions"
         title="Technology that"
@@ -106,6 +107,7 @@ export default function Solutions() {
                   border
                   border-foreground/[0.08]
                   bg-muted/30
+                  dark:bg-foreground/40
                   ${solution.className}
                 `}
               >
@@ -194,6 +196,7 @@ export default function Solutions() {
                       border
                       border-foreground/10
                       bg-background/50
+                      dark:bg-foreground/50
                       backdrop-blur-sm
                       transition-all
                       duration-500
@@ -234,6 +237,7 @@ export default function Solutions() {
                         text-xs
                         leading-5
                         text-muted-foreground
+                        dark:text-muted
                         transition-colors
                         duration-500
                         group-hover:text-foreground/60

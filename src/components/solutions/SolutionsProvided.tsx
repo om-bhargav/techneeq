@@ -28,6 +28,7 @@ const solutions: {
   icon: LucideIcon;
   className: string;
   variant: string;
+  image: string;
 }[] = [
     {
       id: "01",
@@ -37,6 +38,7 @@ const solutions: {
       icon: Sparkles,
       className: "md:col-span-2 md:row-span-2",
       variant: "large",
+      image: "/solutions/1.png"
     },
     {
       id: "02",
@@ -46,6 +48,7 @@ const solutions: {
       icon: Bot,
       className: "md:col-span-4",
       variant: "wide",
+      image: "/solutions/2.png"
     },
     {
       id: "03",
@@ -55,6 +58,7 @@ const solutions: {
       icon: Cloud,
       className: "md:col-span-2",
       variant: "normal",
+      image: "/solutions/3.png"
     },
     {
       id: "04",
@@ -64,6 +68,7 @@ const solutions: {
       icon: Database,
       className: "md:col-span-2",
       variant: "normal",
+      image: "/solutions/4.png"
     },
     {
       id: "05",
@@ -73,6 +78,7 @@ const solutions: {
       icon: Workflow,
       className: "md:col-span-3",
       variant: "bottom",
+      image: "/solutions/5.png"
     },
     {
       id: "06",
@@ -82,17 +88,9 @@ const solutions: {
       icon: Shield,
       className: "md:col-span-3",
       variant: "bottom",
+      image: "/solutions/6.png"
     },
   ];
-
-const images = [
-  "https://picsum.photos/id/1015/1200/1400",
-  "https://picsum.photos/id/1011/1200/1400",
-  "https://picsum.photos/id/1016/1200/1400",
-  "https://picsum.photos/id/1025/1200/1400",
-  "https://picsum.photos/id/1040/1200/1400",
-  "https://picsum.photos/id/1035/1200/1400",
-];
 
 export default function Solutions() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -161,7 +159,7 @@ export default function Solutions() {
                   index={index}
                   total={totalItems}
                   scrollYProgress={scrollYProgress}
-                  image={images[index]}
+                  image={solutions[index].image}
                 />
               ))}
             </div>
@@ -216,7 +214,7 @@ export default function Solutions() {
                 className="overflow-hidden border border-foreground/10 bg-secondary-background"
               >
                 <img
-                  src={images[index]}
+                  src={solutions[index].image}
                   alt=""
                   className="h-full w-full object-cover"
                 />

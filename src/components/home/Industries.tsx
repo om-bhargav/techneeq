@@ -92,11 +92,11 @@ export default function Environments() {
   };
 
   return (
-    <Section id="industries">
+    <Section id="industries" className="relative">
       <Section.Header
-        label="Environments"
+        label="Industries"
         title="One intelligence architecture."
-        highlight="Multiple business environments."
+        highlight="Multiple business Industries."
         description="The architecture rarely changes across sectors — the constraints do. Regulation, data latency tolerance and who is allowed to see what shape every engagement, so we start from your domain's rules rather than a reference diagram."
       />
 
