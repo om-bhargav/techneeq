@@ -14,6 +14,8 @@ import { AnimatePresence, motion } from "motion/react";
 
 import Section from "@/components/global/section/Section";
 import SectionHeader from "../global/section/SectionHeader";
+
+
 const services = [
   {
     id: "01",
@@ -152,9 +154,7 @@ export default function Services() {
           {/* ---------------------------------------------
             CURRENT SERVICE ONLY
         --------------------------------------------- */}
-
           <div className="min-w-0">
-
             <AnimatePresence mode="wait">
               <motion.article
                 key={activeService.id}
@@ -163,32 +163,28 @@ export default function Services() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                 className="
-                  relative
-                  min-h-[430px]
-                  overflow-hidden
-                  rounded-[24px]
-                  border
-                  border-foreground/[0.08]
-                  bg-muted/30
-                  p-7
-                  sm:p-9
-                  lg:p-10
-                "
+        relative
+        min-h-100
+        overflow-hidden
+        rounded-[24px]
+        border
+        border-foreground/[0.08]
+        bg-muted/30
+        p-7
+        sm:p-9
+        lg:p-10
+      "
               >
-                {/* Background (Kept exactly the same) */}
-                <div className="pointer-events-none absolute inset-0">
-                  <div className="absolute -right-24 -top-24 h-[360px] w-[360px] rounded-full bg-foreground/[0.035] blur-3xl" />
-                  <div className="absolute -bottom-32 -right-20 h-[400px] w-[400px] rounded-full border border-foreground/[0.05]" />
-                  <div className="absolute inset-0 opacity-[0.025] [background-image:linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)] [background-size:36px_36px]" />
-                </div>
-
-                {/* Content Container (Changed to flex-row on desktop) */}
-                <div className="relative z-10 flex min-h-[370px] flex-col md:flex-row md:items-end md:justify-between gap-8">
+                {/* 
+        Changed to `md:items-center` (or you can use md:items-start) 
+        so the fixed 400px height isn't overridden by flex-stretch 
+      */}
+                <div className="relative z-10 flex min-h-100 flex-col md:flex-row md:items-center md:justify-between gap-8">
 
                   {/* Left Column (Text & Button) */}
-                  <div className="flex flex-1 flex-col h-full justify-between">
+                  <div className="flex flex-1 flex-col h-full justify-center">
                     {/* Top */}
-                    <div className="flex items-start justify-between md:justify-start md:gap-8">
+                    <div className="flex items-start justify-between md:justify-start md:gap-8 mb-auto">
                       <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
                         {activeService.category}
                       </span>
@@ -198,21 +194,24 @@ export default function Services() {
                     </div>
 
                     {/* Main */}
-                    <div className="mt-auto max-w-[500px]">
+                    <div className="mt-8 max-w-[500px]">
                       {/* Icon */}
                       <div className="mb-8 flex size-11 items-center justify-center rounded-xl border border-foreground/10 bg-background/60">
                         <activeService.icon className="size-5" strokeWidth={1.4} />
                       </div>
-                      <h3 className="font-display text-2xl leading-[0.95] tracking-[-0.045em] sm:text-4xl">
-                        {activeService.title}
-                      </h3>
-                      <div className="relative w-full lg:hidden overflow-hidden md:max-w-[320px] lg:max-w-[400px]">
+
+                      {/* Mobile Image */}
+                      <div className="mb-8 relative rounded-xl shadow-md w-full lg:hidden overflow-hidden md:max-w-[320px] lg:max-w-[400px]">
                         <img
                           src={activeService.image}
                           alt={activeService.title}
-                          className="aspect-video w-full object-contain md:aspect-square"
+                          className="aspect-video w-full object-cover"
                         />
                       </div>
+
+                      <h3 className="font-display text-2xl leading-[0.95] tracking-[-0.045em] sm:text-4xl">
+                        {activeService.title}
+                      </h3>
 
                       <p className="mt-6 text-xs md:text-sm leading-6 text-muted-foreground">
                         {activeService.description}
@@ -226,93 +225,21 @@ export default function Services() {
                   </div>
 
                   {/* Right Column (The Image) */}
-                  {/* Add an 'image' property to your activeService object */}
-                  <div className="relative w-full max-lg:hidden overflow-hidden md:max-w-[320px] lg:max-w-[400px]">
+                  {/* 
+                      Applied exact dimensions: w-[600px] h-[400px].
+                      Added `shrink-0` so the text column doesn't squish the image width.
+                    */}
+                  <div className="relative hidden lg:block rounded-xl shadow-md overflow-hidden w-[600px] h-[400px] shrink-0">
                     <img
                       src={activeService.image}
                       alt={activeService.title}
-                      className="aspect-video w-full object-contain md:aspect-square"
+                      className="h-full w-full object-cover"
                     />
                   </div>
 
                 </div>
               </motion.article>
             </AnimatePresence>
-
-            {/* ---------------------------------------------
-              CONTROLS
-          --------------------------------------------- */}
-
-            <div className="mt-8 flex items-center gap-5">
-
-              {/* Progress */}
-
-              <div className="relative h-px flex-1 bg-foreground/10">
-                <motion.div
-                  className="absolute inset-y-0 left-0 bg-foreground"
-                  animate={{
-                    width: `${((activeIndex + 1) / services.length) * 100}%`,
-                  }}
-                  transition={{
-                    duration: 0.4,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                />
-              </div>
-
-              {/* Counter */}
-
-              <span className="hidden font-mono text-[10px] text-muted-foreground sm:block">
-                {String(activeIndex + 1).padStart(2, "0")} /{" "}
-                {String(services.length).padStart(2, "0")}
-              </span>
-
-              {/* Previous */}
-
-              <button
-                onClick={goPrevious}
-                aria-label="Previous service"
-                className="
-                flex
-                size-11
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-foreground/10
-                bg-background
-                transition
-                hover:border-foreground/30
-                hover:bg-muted
-              "
-              >
-                <ArrowLeft className="size-4" />
-              </button>
-
-              {/* Next */}
-
-              <button
-                onClick={goNext}
-                aria-label="Next service"
-                className="
-                flex
-                size-11
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-foreground/10
-                bg-background
-                transition
-                hover:border-foreground/30
-                hover:bg-muted
-              "
-              >
-                <ArrowRight className="size-4" />
-              </button>
-
-            </div>
-
           </div>
         </div>
       </Section.Body>

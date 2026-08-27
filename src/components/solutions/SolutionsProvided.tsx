@@ -288,7 +288,7 @@ function SolutionSlideImage({
       <img
         src={image}
         alt=""
-        className="h-full w-full object-cover"
+        className="h-full w-full rounded-none! object-cover"
       />
     </motion.article>
   );

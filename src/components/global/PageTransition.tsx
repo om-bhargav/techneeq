@@ -45,7 +45,7 @@ export default function PageTransition() {
       >
         {/* Page wipe */}
         <motion.div
-          className="fixed inset-0 z-[9999] bg-black pointer-events-none"
+          className="fixed inset-0 z-[9999] bg-background pointer-events-none"
           variants={{
             initial: {
               scaleY: 1,

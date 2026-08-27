@@ -68,6 +68,7 @@
      SHADCN UI
      --------------------------------------------------------- */
 
+  --secondary-background: oklch(98.212% 0.00011 271.152);
   --background: var(--cloud);
   --foreground: var(--ink);
 
@@ -259,7 +260,7 @@
 .dark {
   --background: var(--teal-950);
   --foreground: var(--cloud);
-
+  --secondary-background: oklch(0.145 0 0);
   --card: var(--teal-900);
   --card-foreground: var(--cloud);
 
@@ -332,6 +333,8 @@
   h6 {
     font-family: "NeueMachina", sans-serif;
     font-weight: 400;
+    
+    letter-spacing: normal !important;
   }
 }
 
@@ -417,7 +420,7 @@
 
 @font-face {
   font-family: "NeueMachina";
-  src: url("./fonts/sources/NeueMachina-Regular.otf")
+  src: url("./fonts/sources/AeonikTRIAL-Regular.otf")
     format("opentype");
   font-weight: 400;
   font-style: normal;
@@ -444,4 +447,9 @@
   .process-card {
     top: calc(96px + (var(--card-index) * 22px));
   }
+}
+
+
+img{
+  @apply rounded-xl shadow-md;
 }

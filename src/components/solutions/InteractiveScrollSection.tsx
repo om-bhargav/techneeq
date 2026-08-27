@@ -8,6 +8,7 @@ import { Sparkles } from "lucide-react";
 import { useDarkSection } from "@/hooks/useDarkSection";
 import FastMarquee from "react-fast-marquee";
 import SectionHeader from "../global/section/SectionHeader";
+// import GalaxySection from "../global/GalaxySection";
 
 // This checks if your bundler wrapped the component in a module object.
 // If it did, it unwraps it. If it didn't, it just uses it normally.
@@ -39,7 +40,7 @@ export default function ExpertiseTransition() {
         >
             {/* Sticky Screen */}
             <div className="sticky top-0 flex h-screen w-full flex-col justify-between overflow-hidden bg-background text-foreground">
-
+                
                 <motion.div
                     style={{ y: contentY }}
                     className="flex flex-col items-center px-6 text-center"

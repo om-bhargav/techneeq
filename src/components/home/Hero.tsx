@@ -95,7 +95,7 @@ export default function HeroSlider() {
                     <img
                         src={activeSlide.image}
                         alt=""
-                        className="h-full w-full object-cover"
+                        className="h-full rounded-none! w-full object-cover"
                     />
                 </motion.div>
             </AnimatePresence>
@@ -222,7 +222,7 @@ export default function HeroSlider() {
           BOTTOM SLIDER NAVIGATION
       ========================================================= */}
 
-            <div className="absolute bottom-0 left-0 right-0 z-20">
+            {/* <div className="absolute bottom-0 left-0 right-0 z-20">
                 <div className="mx-auto max-w-7xl px-6 pb-8 md:px-6">
                     <div className="relative h-0.5 w-full overflow-hidden bg-white/25">
                         <motion.div
@@ -241,7 +241,7 @@ export default function HeroSlider() {
                         />
                     </div>
                 </div>
-            </div>
+            </div> */}
         </section>
     );
 }

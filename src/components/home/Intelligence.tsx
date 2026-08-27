@@ -176,24 +176,23 @@ export default function Intelligence() {
 
             {/* Active layer */}
 
-            <div className="relative min-h-[440px] overflow-hidden rounded-[28px] border border-foreground/[0.08] bg-muted/20">
+              <div className="relative h-[500px] overflow-hidden rounded-[28px] border border-foreground/[0.08] bg-muted/20">
 
-              {/* Technical background */}
-              <div
-                className="
-                  pointer-events-none absolute inset-0 opacity-[0.035]
-                  [background-image:linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)]
-                  [background-size:40px_40px]
-                "
-              />
+                {/* Technical background */}
+                <div
+                  className="
+                    pointer-events-none absolute inset-0 opacity-[0.035]
+                    [background-image:linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)]
+                    [background-size:40px_40px]
+                  "
+                />
 
-              {/* Large ring */}
-              <div className="pointer-events-none absolute -right-32 -top-32 size-[420px] rounded-full border border-foreground/[0.06]" />
-              <div className="pointer-events-none absolute -right-20 -top-20 size-[300px] rounded-full border border-foreground/[0.05]" />
+                {/* Large ring */}
+                <div className="pointer-events-none absolute -right-32 -top-32 size-[420px] rounded-full border border-foreground/[0.06]" />
+                <div className="pointer-events-none absolute -right-20 -top-20 size-[300px] rounded-full border border-foreground/[0.05]" />
 
-              {/* Content */}
-              <div className="relative flex h-full flex-col justify-between p-7 md:p-10 lg:p-12">
-
+                {/* Content */}
+                <div className="relative flex h-full flex-col justify-between p-7 md:p-10 lg:p-12">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeLayer.id}
@@ -238,7 +237,7 @@ export default function Intelligence() {
                     </div>
 
                     {/* Main */}
-                    <div className="mt-20">
+                    <div className="mt-14">
 
                       <div className="mb-5 flex items-center gap-3">
                         <span className="h-px w-8 bg-foreground/30" />

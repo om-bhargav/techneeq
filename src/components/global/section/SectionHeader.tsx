@@ -3,6 +3,7 @@ import { useRef } from "react";
 
 import { cn } from "@/lib/utils";
 import { useGsapSplitTextReveal } from "@/animations";
+import ScrambleText from "../ScrambleText";
 
 interface SectionHeaderProps {
   label?: string;
@@ -28,64 +29,9 @@ export default function SectionHeader({
   titleclassName = ""
 }: SectionHeaderProps) {
   const labelRef = useRef<HTMLSpanElement>(null);
-  const titleRef = useRef<HTMLSpanElement>(null);
-  const highlightRef = useRef<HTMLSpanElement>(null);
   const descriptionRef = useRef<HTMLParagraphElement>(null);
-  /*
-   * =========================
-   * LABEL — WORD REVEAL
-   * =========================
-   */
-  useGsapSplitTextReveal(labelRef, {
-    type: "words",
-    y: 20,
-    opacity: 0,
-    stagger: 0.05,
-    duration: 1,
-    ease: "power3.out",
-    delay: 0.5,
-    start: "top 90%",
-    once: true,
-    maskLines: true,
-  });
 
-  /*
-   * =========================
-   * TITLE — CHARACTER REVEAL
-   * =========================
-   */
-  useGsapSplitTextReveal(titleRef, {
-    type: "chars",
-    y: 30,
-    opacity: 0,
-    rotateX: -25,
-    stagger: 0.025,
-    duration: 0.9,
-    ease: "power4.out",
-    delay: 1,
-    start: "top 90%",
-    once: true,
-    maskLines: true,
-  });
 
-  /*
-   * =========================
-   * HIGHLIGHT — CHARACTER REVEAL
-   * =========================
-   */
-  useGsapSplitTextReveal(highlightRef, {
-    type: "chars",
-    y: 30,
-    opacity: 0,
-    rotateX: -25,
-    stagger: 0.025,
-    duration: 0.9,
-    ease: "power4.out",
-    delay: 1.3,
-    start: "top 90%",
-    once: true,
-    maskLines: true,
-  });
 
   /*
    * =========================
@@ -146,12 +92,7 @@ export default function SectionHeader({
           `,titleclassName)}
         >
           {/* Title */}
-          <span
-            ref={titleRef}
-            className="inline-block"
-          >
-            {title}
-          </span>
+          <ScrambleText text={title}/>
 
           {/* Highlight */}
           {highlight && (
@@ -159,13 +100,12 @@ export default function SectionHeader({
               <br />
 
               <span
-                ref={highlightRef}
                 className="
                   inline-block
                   text-foreground/40
                 "
               >
-                {highlight}
+                <ScrambleText text={highlight}/>
               </span>
             </>
           )}

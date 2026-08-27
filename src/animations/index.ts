@@ -1,5 +1,5 @@
 import {gsap,SplitText,ScrollTrigger} from "@/lib/gsap";
-import { type RefObject } from "react";
+import { useEffect, useRef, type RefObject } from "react";
 import {useGSAP} from "@gsap/react";
 
 type SplitType = "chars" | "words" | "lines";
@@ -111,4 +111,78 @@ export function useGsapSplitTextReveal(
       revertOnUpdate: true,
     }
   );
+}
+
+const SPECIAL_CHARS = "!@#$%^&*()_+{}[]<>?/~";
+
+export function useScrambleText(text: string) {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const textRef = useRef<HTMLDivElement | null>(null);
+  const trailRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!textRef.current || !trailRef.current || !containerRef.current || !text) return;
+
+    const split = new SplitText(textRef.current, { type: "chars,words,lines" });
+    const chars = split.chars;
+
+    gsap.set(chars, { opacity: 0 });
+
+    const anim = { index: 0 };
+    
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 85%", 
+        once: true,
+      }
+    });
+
+    tl.to(anim, {
+      index: chars.length,
+      duration: chars.length * 0.05, 
+      ease: "none",
+      onUpdate: () => {
+        if (!trailRef.current || !containerRef.current) return;
+        const charIndex = Math.min(Math.floor(anim.index), chars.length - 1);
+        
+        for (let i = 0; i < charIndex; i++) {
+          gsap.set(chars[i], { opacity: 1 });
+        }
+
+        if (anim.index < chars.length) {
+          const currentChar = chars[charIndex] as HTMLElement;
+          
+          // FIX: Calculate exact coordinates based on the viewport, bypassing SplitText's nesting layout
+          const charRect = currentChar.getBoundingClientRect();
+          const containerRect = containerRef.current.getBoundingClientRect();
+          
+          gsap.set(trailRef.current, {
+            x: charRect.left - containerRect.left,
+            y: charRect.top - containerRect.top,
+            opacity: 1
+          });
+
+          let scrambleTrail = "";
+          for (let i = 0; i < 4; i++) {
+            scrambleTrail += SPECIAL_CHARS[Math.floor(Math.random() * SPECIAL_CHARS.length)];
+          }
+          trailRef.current.innerText = scrambleTrail;
+        }
+      },
+      onComplete: () => {
+        gsap.set(chars, { opacity: 1 });
+        if (trailRef.current) {
+          gsap.set(trailRef.current, { opacity: 0 });
+        }
+      }
+    });
+
+    return () => {
+      tl.kill();
+      split.revert();
+    };
+  }, [text]);
+
+  return { containerRef, textRef, trailRef };
 }

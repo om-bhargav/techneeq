@@ -45,7 +45,7 @@ export default function OurStory() {
           {/* Image — 70% */}
           <div className="overflow-hidden">
             <img
-              src="https://picsum.photos/id/237/1200/800?utm_source=chatgpt.com"
+              src="/about.png"
               alt="Techneeq team"
               className="h-full min-h-[400px] w-full object-cover"
             />

@@ -43,7 +43,6 @@ export default defineConfig([
     },
   },
 ])
-
 ```
 
 You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
@@ -74,4 +73,20 @@ export default defineConfig([
   },
 ])
 
+
+
+see I've a animation which need to be made
+
+you've to keep its text as text-white
+
+and for instance you've to reveal each character one by one
+
+in a word
+
+for example
+if a word is 
+
+technologies
+
+you'll reveal each letter one by one but for each letter you'll show differnt 4 special characters in row and 3 times change them and then just replace it with original one letter and 
 ```

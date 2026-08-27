@@ -1,36 +1,38 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Lenis from "lenis";
+import { useAnimationFrame } from "framer-motion";
 
 export default function SmoothScroll({
   children,
 }: React.PropsWithChildren) {
+  const [lenis, setLenis] = useState<Lenis | null>(null);
+
   useEffect(() => {
-    const lenis = new Lenis({
-      lerp: 0.075, // Keeps your preferred smoothness for desktop
+    const lenisInstance = new Lenis({
+      lerp: 0.075,
       smoothWheel: true,
-      
-      // Removed syncTouch, touchMultiplier, and syncTouchLerp
-      // Let the browser handle touch interactions natively
-      
-      // Optional: If you still want JS scrolling on touch, you can use smoothTouch: true,
-      // but omitting it entirely (defaulting to native) is the most performant approach.
+      // We keep touch properties completely removed here.
+      // Letting mobile devices handle touch scrolling natively is critical
+      // when your page is also busy running Framer Motion calculations.
     });
 
-    let frameId = 0;
-    
-    const raf = (time: number) => {
-      lenis.raf(time);
-      frameId = requestAnimationFrame(raf);
-    };
-    
-    frameId = requestAnimationFrame(raf);
-    
+    setLenis(lenisInstance);
+
     return () => {
-      cancelAnimationFrame(frameId);
-      lenis.destroy();
+      lenisInstance.destroy();
+      setLenis(null);
     };
   }, []);
-  
+
+  // This replaces the standard requestAnimationFrame.
+  // It hooks Lenis directly into Framer Motion's render loop,
+  // eliminating micro-stutters during complex layout animations.
+  useAnimationFrame((time) => {
+    if (lenis) {
+      lenis.raf(time);
+    }
+  });
+
   return <>{children}</>;
 }
