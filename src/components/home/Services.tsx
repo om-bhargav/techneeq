@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import {
-  ArrowLeft,
-  ArrowRight,
   ArrowUpRight,
   BrainCircuit,
   CloudCog,
@@ -78,15 +76,6 @@ export default function Services() {
 
   const activeService = services[activeIndex];
 
-  const goNext = () => {
-    setActiveIndex((current) => (current + 1) % services.length);
-  };
-
-  const goPrevious = () => {
-    setActiveIndex(
-      (current) => (current - 1 + services.length) % services.length
-    );
-  };
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % services.length);
