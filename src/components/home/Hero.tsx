@@ -169,7 +169,7 @@ export default function HeroSlider() {
                                 duration: 0.7,
                                 ease: [0.22, 1, 0.36, 1],
                             }}
-                            className="max-w-[850px] text-3xl font-medium leading-[1.05] tracking-[-0.04em] sm:text-4xl md:text-5xl lg:text-[56px]"
+                            className="max-w-[850px] text-2xl font-medium leading-[1.05] tracking-[-0.04em] sm:text-4xl md:text-5xl lg:text-[56px]"
                         >
                             {activeSlide.title}
                         </motion.h1>
@@ -201,7 +201,7 @@ export default function HeroSlider() {
                                 ease: [0.22, 1, 0.36, 1],
                                 delay: 0.1,
                             }}
-                            className="mt-5 max-w-[600px] text-sm leading-6 text-white/60"
+                            className="mt-5 max-w-[600px] text-xs md:text-sm leading-6 text-white/60"
                         >
                             {activeSlide.description}
                         </motion.p>

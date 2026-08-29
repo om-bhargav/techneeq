@@ -2,10 +2,12 @@ import { ArrowUpRight, Bot, Cloud, Database, Shield, Sparkles, Workflow } from "
 import { motion } from "motion/react";
 import SectionHeader from "../global/section/SectionHeader";
 import Section from "../global/section/Section";
+import { Link } from "react-router-dom";
 
 const solutions = [
   {
     id: "01",
+    slug: "digital-experiences",
     title: "Digital Experiences",
     description:
       "Immersive digital experiences engineered to make brands stand out.",
@@ -15,6 +17,7 @@ const solutions = [
   },
   {
     id: "02",
+    slug: "ai-intelligence",
     title: "AI & Intelligence",
     description:
       "Intelligent systems that turn complex data into meaningful decisions.",
@@ -24,6 +27,7 @@ const solutions = [
   },
   {
     id: "03",
+    slug: "technology-engineering",
     title: "Technology Engineering",
     description:
       "Scalable software and infrastructure built for what's next.",
@@ -33,6 +37,7 @@ const solutions = [
   },
   {
     id: "04",
+    slug: "data-analytics",
     title: "Data & Analytics",
     description:
       "Transform your data into actionable business intelligence.",
@@ -42,6 +47,7 @@ const solutions = [
   },
   {
     id: "05",
+    slug: "digital-transformation",
     title: "Digital Transformation",
     description:
       "Modernize operations and build connected digital ecosystems.",
@@ -51,6 +57,7 @@ const solutions = [
   },
   {
     id: "06",
+    slug: "security-infrastructure",
     title: "Security & Infrastructure",
     description:
       "Resilient technology systems designed for reliability and scale.",
@@ -59,7 +66,6 @@ const solutions = [
     variant: "bottom",
   },
 ];
-
 export default function Solutions() {
   return (
     <Section>
@@ -246,29 +252,30 @@ export default function Solutions() {
 
                   {/* Arrow */}
 
-                  <div
-                    className="
-                      absolute
-                      right-6
-                      top-6
-                      flex
-                      size-9
-                      items-center
-                      justify-center
-                      rounded-full
-                      border
-                      border-foreground/10
-                      opacity-50
-                      transition-all
-                      duration-500
-                      group-hover:-translate-y-1
-                      group-hover:translate-x-1
-                      group-hover:border-foreground/30
-                      group-hover:opacity-100
-                    "
-                  >
-                    <ArrowUpRight className="size-4" />
-                  </div>
+                <Link
+                  to={`/solutions/${solution.slug}`}
+                  className="
+                    absolute
+                    right-6
+                    top-6
+                    flex
+                    size-9
+                    items-center
+                    justify-center
+                    rounded-full
+                    border
+                    border-foreground/10
+                    opacity-50
+                    transition-all
+                    duration-500
+                    group-hover:-translate-y-1
+                    group-hover:translate-x-1
+                    group-hover:border-foreground/30
+                    group-hover:opacity-100
+                  "
+                >
+                  <ArrowUpRight className="size-4" />
+                </Link>
 
                 </div>
               </motion.article>

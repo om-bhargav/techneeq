@@ -7,7 +7,7 @@ import Contact from "@/components/shared/Contact";
 import Expertise from "./components/shared/Expertise";
 import PageLayout from "./components/global/PageLayout";
 import Solutions from "./components/shared/Solutions";
-
+import SolutionDetails from "./components/shared/SolutionPage";
 function App() {
   return (
     <BrowserRouter>
@@ -19,7 +19,10 @@ function App() {
 
             <Route path="/expertise" element={<Expertise />} />
 
-            <Route path="/solutions" element={<Solutions />} />
+              <Route path="/solutions">
+                <Route index element={<Solutions />} />
+                <Route path=":slug" element={<SolutionDetails />} />
+              </Route>
 
             <Route path="/about" element={<About />} />
 
