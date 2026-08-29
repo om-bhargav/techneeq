@@ -164,7 +164,7 @@ export function useScrambleText(text: string) {
           });
 
           let scrambleTrail = "";
-          for (let i = 0; i < 2; i++) {
+          for (let i = 0; i < 1; i++) {
             scrambleTrail += SPECIAL_CHARS[Math.floor(Math.random() * SPECIAL_CHARS.length)];
           }
           trailRef.current.innerText = scrambleTrail;
