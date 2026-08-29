@@ -3,42 +3,16 @@
 import { motion } from "framer-motion";
 import Section from "../global/section/Section";
 import SectionHeader from "../global/section/SectionHeader";
-
-const transformations = [
-  {
-    id: "01",
-    title: "Connect",
-    description:
-      "Systems stop being islands. Records from every platform land in one place, continuously.",
-  },
-  {
-    id: "02",
-    title: "Contextualize",
-    description:
-      "Raw records become modeled facts your teams read the same way, with the same definitions.",
-  },
-  {
-    id: "03",
-    title: "Intelligent",
-    description:
-      "Analytics and models sit on top of live data, so patterns surface before they become history.",
-  },
-  {
-    id: "04",
-    title: "Actionable",
-    description:
-      "Intelligence reaches the person making the call, at the moment the call has to be made.",
-  },
-];
+import { transformations } from "@/data/home";
 
 export default function Transformation() {
   return (
     <Section>
       <SectionHeader
-        label="The transformation"
-        title="From connected data"
-        highlight="to decisive action."
-        description="A continuous path from fragmented systems to intelligence that changes what happens next."
+        label="How we work"
+        title="From first call"
+        highlight="to a system that runs itself."
+        description="A straightforward process, so you always know what's happening and why."
       />
 
       <Section.Body>

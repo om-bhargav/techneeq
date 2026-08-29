@@ -1,64 +1,15 @@
 "use client";
 
 import {
-  ArrowUpRight,
-  BarChart3,
-  Bot,
-  Cloud,
-  Database,
-  FileDigit,
-  Route,
+  ArrowUpRight
 } from "lucide-react";
 
 import { motion } from "motion/react";
-
+import { expertise } from "@/data/home";
 import SectionHeader from "../global/section/SectionHeader";
 import Section from "../global/section/Section";
 
-const expertise = [
-  {
-    id: "01",
-    title: "Big Data, BI & Analytics",
-    description:
-      "Warehouses, lakehouses, semantic layers and the reporting estate that sits on top.",
-    icon: BarChart3,
-  },
-  {
-    id: "02",
-    title: "Enterprise Applications",
-    description:
-      "Integrating and extending the core systems that run finance, operations and service.",
-    icon: Database,
-  },
-  {
-    id: "03",
-    title: "Digital Conversion",
-    description:
-      "Moving manual, document-heavy processes onto measurable digital rails.",
-    icon: FileDigit,
-  },
-  {
-    id: "04",
-    title: "Azure Cloud Infrastructure",
-    description:
-      "Landing zones, migration, cost governance and security on Microsoft Azure.",
-    icon: Cloud,
-  },
-  {
-    id: "05",
-    title: "Strategy & Project Management",
-    description:
-      "Roadmaps, delivery governance and the discipline to keep programs shipping.",
-    icon: Route,
-  },
-  {
-    id: "06",
-    title: "Machine Learning & Conversational AI",
-    description:
-      "Models and assistants taken from notebook to production with monitoring in place.",
-    icon: Bot,
-  },
-];
+
 
 export default function Expertise() {
   return (

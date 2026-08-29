@@ -3,42 +3,9 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Plus } from "lucide-react";
-
+import { faqs } from "@/data/home";
 import Section from "@/components/global/section/Section";
 import { cn } from "@/lib/utils";
-
-const faqs = [
-  {
-    question: "What kind of solutions do you build?",
-    answer:
-      "We design and build digital experiences, intelligent products, and custom software solutions tailored to the way your business operates. Every solution is shaped around your goals, users, and technical requirements.",
-  },
-  {
-    question: "How do you approach a new project?",
-    answer:
-      "We begin by understanding the problem, the users, and the desired outcome. From there, we move through strategy, experience design, development, and refinement to create something that is both purposeful and technically strong.",
-  },
-  {
-    question: "Can you work with an existing product or website?",
-    answer:
-      "Absolutely. We can work with an existing product, website, or codebase and improve its experience, visual language, performance, architecture, or functionality without requiring a complete rebuild.",
-  },
-  {
-    question: "Do you provide custom 3D and interactive experiences?",
-    answer:
-      "Yes. When 3D, motion, or interaction adds meaningful value, we can integrate immersive experiences into the interface while keeping performance, accessibility, and usability at the center.",
-  },
-  {
-    question: "How long does a typical project take?",
-    answer:
-      "The timeline depends on the scope and complexity of the project. Smaller engagements can move quickly, while larger digital products require more time for strategy, design, development, testing, and iteration.",
-  },
-  {
-    question: "Can you help after the project launches?",
-    answer:
-      "Yes. We can continue supporting the product after launch through improvements, new features, performance optimization, maintenance, and ongoing experimentation.",
-  },
-];
 
 function FAQItem({
   index,
@@ -158,8 +125,8 @@ export default function FAQSection() {
               </span>
 
               <p className="mt-5 max-w-xs text-sm leading-6 text-muted-foreground">
-                Have a question that isn't covered here? Let's talk about your
-                project and figure out the right direction together.
+                Have a question that isn't answered here? Let's talk it
+                through — no sales deck required.
               </p>
 
             </div>

@@ -1,29 +1,10 @@
-import { ArrowUpRight, Mail, MapPin, Clock3 } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Section from "../global/section/Section";
 import PillButton from "../elements/PillButton";
-
-
-const contactDetails = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "info@techneeq.com",
-    href: "mailto:info@techneeq.com",
-  },
-  {
-    icon: MapPin,
-    label: "Based in",
-    value: "Connecticut, USA",
-    description: "Working with clients across the United States.",
-  },
-  {
-    icon: Clock3,
-    label: "Response time",
-    value: "Within two business days",
-  },
-];
+import { contactPage } from "@/data/contact";
 export default function ContactSection() {
+  const {contactDetails} = contactPage;
   return (
     <Section>
       <Section.Body>

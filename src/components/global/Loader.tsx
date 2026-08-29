@@ -121,7 +121,7 @@ export default function Loader() {
               className="relative w-[0.6em] h-full flex justify-center"
             >
               <AnimatePresence mode="popLayout">
-                <motion.span
+                <motion.h2
                   key={digit} 
                   initial={{ y: isEven ? "100%" : "-100%", opacity: 0 }}
                   animate={{ y: "0%", opacity: 1 }}
@@ -130,7 +130,7 @@ export default function Loader() {
                   className="absolute"
                 >
                   {digit}
-                </motion.span>
+                </motion.h2>
               </AnimatePresence>
             </div>
           );

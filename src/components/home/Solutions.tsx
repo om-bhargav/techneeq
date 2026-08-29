@@ -1,81 +1,20 @@
-import { ArrowUpRight, Bot, Cloud, Database, Shield, Sparkles, Workflow } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
 import SectionHeader from "../global/section/SectionHeader";
 import Section from "../global/section/Section";
 import { Link } from "react-router-dom";
+import { solutions } from "@/data/home";
 
-const solutions = [
-  {
-    id: "01",
-    slug: "digital-experiences",
-    title: "Digital Experiences",
-    description:
-      "Immersive digital experiences engineered to make brands stand out.",
-    icon: Sparkles,
-    className: "md:col-span-2 md:row-span-2",
-    variant: "large",
-  },
-  {
-    id: "02",
-    slug: "ai-intelligence",
-    title: "AI & Intelligence",
-    description:
-      "Intelligent systems that turn complex data into meaningful decisions.",
-    icon: Bot,
-    className: "md:col-span-4",
-    variant: "wide",
-  },
-  {
-    id: "03",
-    slug: "technology-engineering",
-    title: "Technology Engineering",
-    description:
-      "Scalable software and infrastructure built for what's next.",
-    icon: Cloud,
-    className: "md:col-span-2",
-    variant: "normal",
-  },
-  {
-    id: "04",
-    slug: "data-analytics",
-    title: "Data & Analytics",
-    description:
-      "Transform your data into actionable business intelligence.",
-    icon: Database,
-    className: "md:col-span-2",
-    variant: "normal",
-  },
-  {
-    id: "05",
-    slug: "digital-transformation",
-    title: "Digital Transformation",
-    description:
-      "Modernize operations and build connected digital ecosystems.",
-    icon: Workflow,
-    className: "md:col-span-3",
-    variant: "bottom",
-  },
-  {
-    id: "06",
-    slug: "security-infrastructure",
-    title: "Security & Infrastructure",
-    description:
-      "Resilient technology systems designed for reliability and scale.",
-    icon: Shield,
-    className: "md:col-span-3",
-    variant: "bottom",
-  },
-];
 export default function Solutions() {
   return (
     <Section>
       {/* Heading */}
 
       <SectionHeader
-        label="Our Solutions"
-        title="Technology that"
-        highlight="moves your business forward."
-        description="From intelligent systems to digital experiences, we create solutions designed around your most important challenges."
+        label="What We Do"
+        title="One team,"
+        highlight="every capability you need."
+        description="From data and AI to cloud and security — we build the pieces, and make sure they work together."
       />
       {/* Grid */}
       <Section.Body>

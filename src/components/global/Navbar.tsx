@@ -245,7 +245,7 @@ function MenuPanel({
 
         {/* Navigation */}
 
-        <nav className="flex flex-1 flex-col justify-center px-6 md:px-10">
+        <nav className="flex flex-1 flex-col justify-between max-md:py-10 md:justify-center px-6 md:px-10">
           <div className="flex flex-col">
             {menuItems.map((item, index) => (
               <MenuItem
@@ -256,6 +256,7 @@ function MenuPanel({
               />
             ))}
           </div>
+            <LetsTalkButton className="md:hidden justify-center"/>
         </nav>
 
         {/* Footer */}
@@ -361,7 +362,7 @@ export default function Navbar() {
           </Link>
 
           <div className="flex items-center gap-3">
-            <LetsTalkButton />
+            <LetsTalkButton className="max-md:hidden"/>
             {/* Menu */}
             <MenuButton
               open={menuOpen}
@@ -397,34 +398,48 @@ export function MenuButton({
   open,
   onClick,
   className = "",
-  scrolled
+  scrolled,
 }: MenuButtonProps) {
   const { pathname } = useLocation();
+
+  const textColor = scrolled
+    ? "text-background"
+    : pathname === "/"
+      ? "text-foreground"
+      : "text-background";
+
   return (
     <button
       type="button"
       onClick={onClick}
       aria-label={open ? "Close menu" : "Open menu"}
       aria-expanded={open}
-      className={cn("group relative flex size-10  items-center justify-center rounded-full", className, scrolled ? "text-foreground" : pathname === "/" ? "text-background" : "text-foreground")}
+      className={cn(
+        "group relative flex h-10 w-[128px] items-center justify-center gap-4 overflow-hidden rounded-full",
+        className,
+        textColor
+      )}
     >
       <span className="sr-only">
         {open ? "Close menu" : "Toggle Menu"}
       </span>
 
-      {/* Main circular background */}
-
+      {/* Main pill background */}
       <motion.span
         className={cn(
           "absolute inset-0 rounded-full",
-          scrolled ? "bg-foreground" : pathname === "/" ? "bg-background" : "bg-foreground"
+          scrolled
+            ? "bg-foreground"
+            : pathname === "/"
+              ? "bg-background"
+              : "bg-foreground"
         )}
         initial={false}
         animate={{
-          scale: open ? 0.92 : 1,
+          scale: open ? 0.94 : 1,
         }}
         whileHover={{
-          scale: 1.08,
+          scale: 1.04,
         }}
         transition={{
           duration: 0.4,
@@ -432,8 +447,7 @@ export function MenuButton({
         }}
       />
 
-      {/* Hover inner circle */}
-
+      {/* Hover inner background */}
       <motion.span
         className="absolute inset-0 rounded-full bg-muted"
         initial={{
@@ -451,100 +465,49 @@ export function MenuButton({
         }}
       />
 
-      {/* Menu icon */}
+      {/* MENU + dots */}
+      <span className="relative z-10 flex items-center gap-3">
+        {/* MENU text */}
+        <span className="text-[0.8rem] font-medium tracking-[-0.02em]">
+          MENU
+        </span>
 
-      <motion.span
-        className="relative z-10 flex h-5 w-5 items-center justify-center"
-        animate={{
-          rotate: open ? 45 : 0,
-        }}
-        transition={{
-          duration: 0.45,
-          ease: [0.22, 1, 0.36, 1],
-        }}
-      >
-
-        <div className="relative flex h-4 w-8 items-center justify-center sm:w-9 md:w-10">
+        {/* Dots */}
+        <motion.span
+          className="relative flex h-4 w-4 items-center justify-center"
+          animate={{
+            rotate: open ? 90 : 0,
+          }}
+          transition={{
+            duration: 0.4,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
           {/* First dot */}
-          <motion.span
+          <span
             className={cn(
-              "absolute size-1 rounded-full",
-              scrolled ? "bg-background" : pathname === "/" ? "bg-foreground" : "bg-background"
+              "absolute left-0 size-1 rounded-full",
+              scrolled
+                ? "bg-background"
+                : pathname === "/"
+                  ? "bg-foreground"
+                  : "bg-background"
             )}
-            animate={{
-              left: open ? "50%" : "15%",
-              x: "-50%",
-            }}
-            transition={{
-              duration: 0.4,
-              ease: [0.22, 1, 0.36, 1],
-            }}
           />
 
           {/* Second dot */}
-          <motion.span
+          <span
             className={cn(
-              "absolute size-1 rounded-full",
-              scrolled ? "bg-background" : pathname === "/" ? "bg-foreground" : "bg-background"
+              "absolute right-0 size-1 rounded-full",
+              scrolled
+                ? "bg-background"
+                : pathname === "/"
+                  ? "bg-foreground"
+                  : "bg-background"
             )}
-            animate={{
-              left: "50%",
-              x: "-50%",
-            }}
-            transition={{
-              duration: 0.4,
-              ease: [0.22, 1, 0.36, 1],
-            }}
           />
-
-          {/* Third dot */}
-          <motion.span
-            className={cn(
-              "absolute size-1 rounded-full",
-              scrolled ? "bg-background" : pathname === "/" ? "bg-foreground" : "bg-background"
-            )}
-            animate={{
-              left: open ? "50%" : "85%",
-              x: "-50%",
-            }}
-            transition={{
-              duration: 0.4,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-          />
-        </div>
-        {/* Horizontal line */}
-
-        <motion.span
-          className="absolute h-[2px] w-[13px] rounded-full bg-background"
-          initial={{
-            scaleX: 0,
-          }}
-          animate={{
-            scaleX: open ? 1 : 0,
-          }}
-          transition={{
-            duration: 0.25,
-            ease: "easeOut",
-          }}
-        />
-
-        {/* Vertical line */}
-
-        <motion.span
-          className="absolute h-[13px] w-[2px] rounded-full bg-background"
-          initial={{
-            scaleY: 0,
-          }}
-          animate={{
-            scaleY: open ? 1 : 0,
-          }}
-          transition={{
-            duration: 0.25,
-            ease: "easeOut",
-          }}
-        />
-      </motion.span>
+        </motion.span>
+      </span>
     </button>
   );
 }

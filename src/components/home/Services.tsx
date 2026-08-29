@@ -1,75 +1,14 @@
 import { useEffect, useState } from "react";
 import {
   ArrowUpRight,
-  BrainCircuit,
-  CloudCog,
-  Code2,
-  Database,
-  Layers3,
-  ShieldCheck,
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 
 import Section from "@/components/global/section/Section";
 import SectionHeader from "../global/section/SectionHeader";
+import { services } from "@/data/home";
 
 
-const services = [
-  {
-    id: "01",
-    category: "Digital Engineering",
-    title: "Engineering Digital Experiences That Move Businesses Forward",
-    description:
-      "We design and engineer scalable digital products that combine thoughtful experiences with robust technology.",
-    icon: Code2,
-    image: "/services/1.png"
-  },
-  {
-    id: "02",
-    category: "AI & Intelligence",
-    title: "Intelligent Systems Built for Real-World Impact",
-    description:
-      "From intelligent automation to advanced AI systems, we help organizations turn emerging technology into measurable value.",
-    icon: BrainCircuit,
-    image: "/services/2.png"
-  },
-  {
-    id: "03",
-    category: "Cloud & Infrastructure",
-    title: "Modern Infrastructure for a Connected Enterprise",
-    description:
-      "Build secure, scalable and resilient cloud environments designed to support your next stage of growth.",
-    icon: CloudCog,
-    image: "/services/3.png"
-  },
-  {
-    id: "04",
-    category: "Data & Analytics",
-    title: "Turning Complex Data Into Clear Business Intelligence",
-    description:
-      "We build data platforms and analytics solutions that transform information into actionable business decisions.",
-    icon: Database,
-    image: "/services/4.png"
-  },
-  {
-    id: "05",
-    category: "Digital Transformation",
-    title: "Transforming Operations Through Technology",
-    description:
-      "Modernize legacy systems, streamline workflows and create connected digital ecosystems that evolve with your business.",
-    icon: Layers3,
-    image: "/services/5.png"
-  },
-  {
-    id: "06",
-    category: "Cybersecurity",
-    title: "Secure Technology Built for What's Next",
-    description:
-      "Protect your applications, infrastructure and data with security strategies designed around modern digital environments.",
-    icon: ShieldCheck,
-    image: "/services/6.png"
-  },
-];
 
 export default function Services() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -91,10 +30,10 @@ export default function Services() {
       --------------------------------------------- */}
 
       <SectionHeader
-        label="Our Services"
-        title="Technology that"
-        highlight="creates meaningful impact."
-        description="We combine strategy, design, engineering, and intelligence to build digital experiences that move businesses forward." className="mb-6"
+        label="How We Engage"
+        title="Work with us"
+        highlight="the way that fits your team."
+        description="Every business is at a different stage. Pick the engagement model that matches where you are." className="mb-6"
       />
 
       {/* ---------------------------------------------
@@ -207,7 +146,7 @@ export default function Services() {
                       </p>
 
                       <button className="group mt-8 inline-flex items-center gap-3 rounded-full bg-foreground px-6 py-3 text-sm text-background transition hover:opacity-85">
-                        Explore service
+                        Talk to us about this
                         <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                       </button>
                     </div>

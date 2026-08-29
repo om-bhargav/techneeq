@@ -3,29 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Section from "../global/section/Section";
-
-const stages = [
-  {
-    id: "01",
-    title: "DATA",
-    description: "Records, events, systems",
-  },
-  {
-    id: "02",
-    title: "INSIGHT",
-    description: "Modeled, contextualized",
-  },
-  {
-    id: "03",
-    title: "DECISION",
-    description: "A call someone has to make",
-  },
-  {
-    id: "04",
-    title: "ACTION",
-    description: "The thing that changes",
-  },
-];
+import { stages } from "@/data/home";
 
 export default function BusinessOutcome() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -57,7 +35,7 @@ export default function BusinessOutcome() {
             label="Business outcome"
             title="Data isn't valuable until"
             highlight="it changes what you do."
-            description="Every engagement is scoped around a decision your business needs to make faster. The architecture follows from there."
+            description="Every engagement starts with one question: what decision are you trying to make faster? The technology follows from there."
           />
 
           {/* Mobile Timeline */}

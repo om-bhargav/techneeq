@@ -16,12 +16,101 @@ import {
   useState,
 } from "react";
 import PillButton from "../elements/PillButton";
+import { cn } from "@/lib/utils";
 
-export function LetsTalkButton() {
+interface FormValues {
+  name: string;
+  email: string;
+  company: string;
+  service: string;
+  message: string;
+  budget: string;
+}
+
+const INITIAL_VALUES: FormValues = {
+  name: "",
+  email: "",
+  company: "",
+  service: "",
+  message: "",
+  budget: "",
+};
+
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function validate(values: FormValues) {
+  const errors: Partial<Record<keyof FormValues, string>> = {};
+
+  if (!values.name.trim()) {
+    errors.name = "Enter your name";
+  }
+
+  if (!values.email.trim() || !EMAIL_PATTERN.test(values.email.trim())) {
+    errors.email = "Enter a valid email";
+  }
+
+  if (!values.service) {
+    errors.service = "Select a service";
+  }
+
+  if (values.message.trim().length < 20) {
+    errors.message = "Minimum 20 characters";
+  }
+
+  if (!values.budget) {
+    errors.budget = "Select a budget";
+  }
+
+  return errors;
+}
+interface Props{
+  className?: string;
+}
+export function LetsTalkButton({className}:Props) {
   const [open, setOpen] = useState(false);
+  const [values, setValues] = useState<FormValues>(INITIAL_VALUES);
+  const [touched, setTouched] = useState<Partial<Record<keyof FormValues, boolean>>>({});
+  const [submitted, setSubmitted] = useState(false);
 
   const formRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+
+  const errors = validate(values);
+
+  const fieldError = (field: keyof FormValues) =>
+    (touched[field] || submitted) ? errors[field] : undefined;
+
+  const handleChange =
+    (field: keyof FormValues) =>
+    (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+      setValues((prev) => ({ ...prev, [field]: event.target.value }));
+    };
+
+  const handleBlur = (field: keyof FormValues) => () => {
+    setTouched((prev) => ({ ...prev, [field]: true }));
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSubmitted(true);
+
+    if (Object.keys(validate(values)).length === 0) {
+      // TODO: wire up to real submission endpoint.
+      setValues(INITIAL_VALUES);
+      setTouched({});
+      setSubmitted(false);
+      setOpen(false);
+    }
+  };
+
+  // Reset form state whenever the panel closes.
+  useEffect(() => {
+    if (!open) {
+      setValues(INITIAL_VALUES);
+      setTouched({});
+      setSubmitted(false);
+    }
+  }, [open]);
 
   /*
    * Close when clicking outside the form.
@@ -70,7 +159,7 @@ export function LetsTalkButton() {
         type="button"
         onClick={() => setOpen(true)}
         aria-expanded={open}
-        className="
+        className={cn(`
           group
           relative
           flex
@@ -82,7 +171,8 @@ export function LetsTalkButton() {
           bg-foreground
           px-5
           text-background
-        "
+          ${className}
+        `)}
       >
         <motion.span
           className="
@@ -103,8 +193,7 @@ export function LetsTalkButton() {
           className="
             relative
             z-10
-            font-mono
-            text-[10px]
+            text-[0.8rem]
             uppercase
             tracking-[0.12em]
           "
@@ -243,9 +332,8 @@ export function LetsTalkButton() {
               </div>
 
               <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                }}
+                onSubmit={handleSubmit}
+                noValidate
                 className="space-y-3"
               >
                 {/* Name */}
@@ -253,7 +341,10 @@ export function LetsTalkButton() {
                 <FormInput
                   placeholder="Full Name"
                   label="Enter your name"
-                  error
+                  value={values.name}
+                  onChange={handleChange("name")}
+                  onBlur={handleBlur("name")}
+                  error={fieldError("name")}
                 />
 
                 {/* Email */}
@@ -262,19 +353,25 @@ export function LetsTalkButton() {
                   type="email"
                   placeholder="Email address"
                   label="Enter a valid email"
-                  error
+                  value={values.email}
+                  onChange={handleChange("email")}
+                  onBlur={handleBlur("email")}
+                  error={fieldError("email")}
                 />
 
                 {/* Company */}
 
                 <FormInput
                   placeholder="Company / Website name"
+                  value={values.company}
+                  onChange={handleChange("company")}
                 />
 
                 {/* Service */}
 
                 <FormSelect
                   label="Select a service"
+                  placeholder="Select a service"
                   options={[
                     "Web Development",
                     "AI Development",
@@ -283,6 +380,10 @@ export function LetsTalkButton() {
                     "UI/UX Design",
                     "Other",
                   ]}
+                  value={values.service}
+                  onChange={handleChange("service")}
+                  onBlur={handleBlur("service")}
+                  error={fieldError("service")}
                 />
 
                 {/* Message */}
@@ -290,18 +391,27 @@ export function LetsTalkButton() {
                 <FormTextarea
                   label="Minimum 20 characters"
                   placeholder="Share a little about your goals, timeline, and requirements..."
+                  value={values.message}
+                  onChange={handleChange("message")}
+                  onBlur={handleBlur("message")}
+                  error={fieldError("message")}
                 />
 
                 {/* Budget */}
 
                 <FormSelect
                   label="Select a budget"
+                  placeholder="Select your estimated budget"
                   options={[
                     "Under $2,000",
                     "$2,000 – $5,000",
                     "$5,000 – $10,000",
                     "$10,000+",
                   ]}
+                  value={values.budget}
+                  onChange={handleChange("budget")}
+                  onBlur={handleBlur("budget")}
+                  error={fieldError("budget")}
                 />
 
                 {/* Send */}
@@ -408,12 +518,18 @@ function FormInput({
   placeholder,
   label,
   type = "text",
-  error = false,
+  value,
+  onChange,
+  onBlur,
+  error,
 }: {
   placeholder: string;
   label?: string;
   type?: string;
-  error?: boolean;
+  value?: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: () => void;
+  error?: string;
 }) {
   return (
     <div className="relative">
@@ -439,6 +555,9 @@ function FormInput({
       <input
         type={type}
         placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        onBlur={onBlur}
         className={`
           h-11
           w-full
@@ -469,52 +588,69 @@ function FormInput({
 
 function FormSelect({
   label,
+  placeholder,
   options,
+  value,
+  onChange,
+  onBlur,
+  error,
 }: {
   label: string;
+  placeholder: string;
   options: string[];
+  value?: string;
+  onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  onBlur?: () => void;
+  error?: string;
 }) {
   return (
     <div className="relative">
-      <span
-        className="
-          absolute
-          right-3
-          -top-[5px]
-          z-10
-          bg-background
-          px-1.5
-          text-[8px]
-          uppercase
-          tracking-wide
-          text-red-500
-        "
-      >
-        {label}
-      </span>
+      {error && (
+        <span
+          className="
+            absolute
+            right-3
+            -top-[5px]
+            z-10
+            bg-background
+            px-1.5
+            text-[8px]
+            uppercase
+            tracking-wide
+            text-red-500
+          "
+        >
+          {label}
+        </span>
+      )}
 
       <select
-        defaultValue=""
-        className="
+        value={value}
+        onChange={onChange}
+        onBlur={onBlur}
+        className={`
           h-11
           w-full
           appearance-none
           rounded-md
           border
-          border-red-500
           bg-transparent
           px-4
           pr-10
           text-sm
-          text-black/50
           outline-none
           focus:border-black
-        "
+          ${
+            error
+              ? "border-red-500 text-black/50"
+              : value
+                ? "border-black/15 text-black"
+                : "border-black/15 text-black/50"
+          }
+        `}
       >
         <option value="" disabled>
-          {label === "Select a budget"
-            ? "Select your estimated budget"
-            : "Select a service"}
+          {placeholder}
         </option>
 
         {options.map((option) => (
@@ -550,38 +686,50 @@ function FormSelect({
 function FormTextarea({
   label,
   placeholder,
+  value,
+  onChange,
+  onBlur,
+  error,
 }: {
   label: string;
   placeholder: string;
+  value?: string;
+  onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onBlur?: () => void;
+  error?: string;
 }) {
   return (
     <div className="relative">
-      <span
-        className="
-          absolute
-          right-3
-          -top-[5px]
-          z-10
-          bg-background
-          px-1.5
-          text-[8px]
-          uppercase
-          tracking-wide
-          text-red-500
-        "
-      >
-        {label}
-      </span>
+      {error && (
+        <span
+          className="
+            absolute
+            right-3
+            -top-[5px]
+            z-10
+            bg-background
+            px-1.5
+            text-[8px]
+            uppercase
+            tracking-wide
+            text-red-500
+          "
+        >
+          {label}
+        </span>
+      )}
 
       <textarea
         rows={4}
         placeholder={placeholder}
-        className="
+        value={value}
+        onChange={onChange}
+        onBlur={onBlur}
+        className={`
           w-full
           resize-none
           rounded-md
           border
-          border-red-500
           bg-transparent
           px-4
           py-3
@@ -591,7 +739,12 @@ function FormTextarea({
           outline-none
           placeholder:text-black/40
           focus:border-black
-        "
+          ${
+            error
+              ? "border-red-500"
+              : "border-black/15"
+          }
+        `}
       />
     </div>
   );

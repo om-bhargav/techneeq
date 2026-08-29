@@ -1,65 +1,9 @@
 import { useEffect, useState } from "react";
-import { ArrowUpRight, Activity, Boxes, Database, BarChart3, BrainCircuit, Code2, ArrowRight, ArrowLeft } from "lucide-react";
+import { ArrowUpRight, ArrowRight, ArrowLeft } from "lucide-react";
 import SectionHeader from "@/components/global/section/SectionHeader";
 import Section from "../global/section/Section";
 import { AnimatePresence, motion } from "framer-motion";
-const intelligenceLayers = [
-  {
-    id: "01",
-    title: "Active Intelligence",
-    keyword: "INGEST",
-    subtitle: "Live interconnected data",
-    description:
-      "Replacing static BI with real-time data integration and live KPIs.",
-    icon: Activity,
-  },
-  {
-    id: "02",
-    title: "Digital Transformation",
-    keyword: "INTEGRATE",
-    subtitle: "Fragmented systems becoming one ecosystem",
-    description:
-      "Architecting connected digital growth engines to scale customer engagement.",
-    icon: Boxes,
-  },
-  {
-    id: "03",
-    title: "Data Engineering & DataOps",
-    keyword: "PIPELINE",
-    subtitle: "Data pipeline",
-    description:
-      "Implementing hybrid data delivery, warehouse automation, data transformation and application automation.",
-    icon: Database,
-  },
-  {
-    id: "04",
-    title: "Analytics Services",
-    keyword: "ANALYZE",
-    subtitle: "Dynamic visualization",
-    description:
-      "Visualization, augmented analytics and embedded experiences that put the number inside the workflow.",
-    icon: BarChart3,
-  },
-  {
-    id: "05",
-    title: "Conversational AI and Machine Learning",
-    keyword: "REASON",
-    subtitle: "Neural intelligence network",
-    description:
-      "Forecasts, classifiers and assistants that run in production and are measured against a business metric.",
-    icon: BrainCircuit,
-  },
-  {
-    id: "06",
-    title: "Custom Software Development",
-    keyword: "DELIVER",
-    subtitle: "Modular application architecture",
-    description:
-      "Apps that solve business problems and deliver engaging experiences on Microsoft .NET, Azure, React, Angular and low-code platforms.",
-    icon: Code2,
-  },
-];
-
+import { intelligenceLayers } from "@/data/home"; 
 export default function Intelligence() {
   const [activeIndex, setActiveIndex] = useState(0);
   const goNext = () => {
@@ -87,9 +31,9 @@ export default function Intelligence() {
         {/* Header */}
 
         <SectionHeader
-          label="The Intelligence Engine"
-          title="Six layers of one system."
-          description="Capabilities engineered for speed. We structure every deployment around one metric: how fast can we automate your next critical decision?"
+          label="How It Fits Together"
+          title="How your data becomes a decision."
+          description="Every project touches these six stages, in this order. We can start anywhere, and take over as much of the chain as you need."
         />
 
         {/* Engine */}
@@ -176,7 +120,7 @@ export default function Intelligence() {
 
             {/* Active layer */}
 
-              <div className="relative h-[500px] overflow-hidden rounded-[28px] border border-foreground/[0.08] bg-muted/20">
+              <div className="relative min-h-[420px] overflow-hidden rounded-[28px] border border-foreground/[0.08] bg-muted/20 sm:min-h-[460px] lg:min-h-[500px]">
 
                 {/* Technical background */}
                 <div
@@ -192,7 +136,7 @@ export default function Intelligence() {
                 <div className="pointer-events-none absolute -right-20 -top-20 size-[300px] rounded-full border border-foreground/[0.05]" />
 
                 {/* Content */}
-                <div className="relative flex h-full flex-col justify-between p-7 md:p-10 lg:p-12">
+                <div className="relative flex min-h-[420px] flex-col p-7 sm:min-h-[460px] md:p-10 lg:min-h-[500px] lg:p-12">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeLayer.id}
@@ -212,7 +156,7 @@ export default function Intelligence() {
                       duration: 0.45,
                       ease: [0.22, 1, 0.36, 1],
                     }}
-                    className="flex h-full flex-col justify-between"
+                    className="flex flex-1 flex-col"
                   >
 
                     {/* Top */}
@@ -237,9 +181,9 @@ export default function Intelligence() {
                     </div>
 
                     {/* Main */}
-                    <div className="mt-14">
+                    <div className="mt-8 flex-1 sm:mt-10 lg:mt-14">
 
-                      <div className="mb-5 flex items-center gap-3">
+                      <div className="mb-4 flex items-center gap-3 sm:mb-5">
                         <span className="h-px w-8 bg-foreground/30" />
 
                         <span className="font-mono text-[10px] tracking-[0.2em] text-muted-foreground">
@@ -247,18 +191,18 @@ export default function Intelligence() {
                         </span>
                       </div>
 
-                      <h3 className="max-w-2xl font-display text-2xl leading-[0.95] tracking-[-0.045em] sm:text-5xl md:text-6xl">
+                      <h3 className="max-w-xl font-display text-2xl leading-[1.05] tracking-[-0.03em] sm:text-3xl md:text-4xl lg:text-5xl">
                         {activeLayer.subtitle}
                       </h3>
 
-                      <p className="mt-7 max-w-lg text-xs leading-6 text-muted-foreground">
+                      <p className="mt-4 max-w-lg text-xs leading-6 text-muted-foreground sm:mt-5 lg:mt-7">
                         {activeLayer.description}
                       </p>
 
                     </div>
 
                     {/* Bottom */}
-                    <div className="mt-14 flex items-end justify-between border-t border-foreground/[0.08] pt-5">
+                    <div className="mt-8 flex items-end justify-between border-t border-foreground/[0.08] pt-5 sm:mt-10 lg:mt-14">
 
                       <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground/50">
                         Intelligence layer

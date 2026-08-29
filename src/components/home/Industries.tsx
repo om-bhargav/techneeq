@@ -10,59 +10,10 @@ import {
 } from "framer-motion";
 import Section from "../global/section/Section";
 import { useDarkSection } from "@/hooks/useDarkSection";
+import { industries } from "@/data/home";
 
-const environments = [
-  {
-    id: "01",
-    name: "Healthcare & Life Sciences",
-    eyebrow: "PATIENTS · RESEARCH · CARE",
-    description:
-      "Connect clinical, operational and research data to improve decisions across the care journey.",
-    image: "/industries/1.png",
-  },
-  {
-    id: "02",
-    name: "Financial Services",
-    eyebrow: "RISK · CAPITAL · PERFORMANCE",
-    description:
-      "Bring financial data together to improve risk visibility, forecasting and decision-making.",
-    image: "/industries/2.png",
-  },
-  {
-    id: "03",
-    name: "Insurance",
-    eyebrow: "POLICIES · CLAIMS · LOSS",
-    description:
-      "Underwriting and claims intelligence, loss modeling, and automation of document-heavy workflows.",
-    image: "/industries/3.png",
-  },
-  {
-    id: "04",
-    name: "Manufacturing",
-    eyebrow: "OPERATIONS · SUPPLY · QUALITY",
-    description:
-      "Connect production, supply chain and operational data to create a clearer view of performance.",
-    image: "/industries/4.png",
-  },
-  {
-    id: "05",
-    name: "Retail & Consumer",
-    eyebrow: "CUSTOMER · DEMAND · COMMERCE",
-    description:
-      "Turn fragmented customer and commercial data into intelligence that improves every interaction.",
-    image: "/industries/5.png",
-  },
-  {
-    id: "06",
-    name: "Public Sector",
-    eyebrow: "CITIZENS · SERVICES · GOVERNANCE",
-    description:
-      "Create trusted data foundations for better public services, transparency and decision-making.",
-    image: "/industries/6.png",
-  },
-];
 
-export default function Environments() {
+export default function Industries() {
   const containerRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -72,7 +23,7 @@ export default function Environments() {
   });
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const newIndex = Math.round(latest * (environments.length - 1));
+    const newIndex = Math.round(latest * (industries.length - 1));
     if (newIndex !== activeIndex) {
       setActiveIndex(newIndex);
     }
@@ -80,14 +31,14 @@ export default function Environments() {
 
   useDarkSection(containerRef);
 
-  const activeEnvironment = environments[activeIndex];
+  const activeEnvironment = industries[activeIndex];
 
   const handleScrollTo = (index: number) => {
     if (!containerRef.current) return;
     const container = containerRef.current as HTMLDivElement;
     const { top, height } = container.getBoundingClientRect();
     const targetY =
-      window.scrollY + top + height * ((index + 0.25) / environments.length);
+      window.scrollY + top + height * ((index + 0.25) / industries.length);
     window.scrollTo({ top: targetY, behavior: "smooth" });
   };
 
@@ -95,15 +46,15 @@ export default function Environments() {
     <Section id="industries" className="relative">
       <Section.Header
         label="Industries"
-        title="One intelligence architecture."
-        highlight="Multiple business Industries."
-        description="The architecture rarely changes across sectors — the constraints do. Regulation, data latency tolerance and who is allowed to see what shape every engagement, so we start from your domain's rules rather than a reference diagram."
+        title="One approach."
+        highlight="Built to fit every industry."
+        description="The technology looks similar across every industry we work in. What changes is the regulation, the risk tolerance, and who's allowed to see what — so that's where we start, not a generic template."
       />
 
       <Section.Body
         ref={containerRef}
         // You can adjust the * 100 multiplier down (e.g. * 80) if the scroll length feels too long on large monitors
-        style={{ height: `${environments.length * 100}vh` }}
+        style={{ height: `${industries.length * 100}vh` }}
         className="relative w-full"
       >
         {/* FIX: Removed `min-h-screen`, changed top-0 to top-24, added padding. 
@@ -140,7 +91,7 @@ export default function Environments() {
 
               <div className="mt-10 md:mt-0">
                 <div className="border-t border-foreground/15">
-                  {environments.map((environment, index) => {
+                  {industries.map((environment, index) => {
                     const isActive = activeIndex === index;
                     return (
                       <button
@@ -175,12 +126,12 @@ export default function Environments() {
                 RIGHT — IMAGE STACK
             ========================= */}
             <div className="relative max-md:hidden h-[300px] w-full overflow-hidden rounded-none! md:h-[550px]">
-              {environments.map((env, index) => (
+              {industries.map((env, index) => (
                 <ScrollImage
                   key={env.id}
                   env={env}
                   index={index}
-                  total={environments.length}
+                  total={industries.length}
                   scrollYProgress={scrollYProgress}
                 />
               ))}

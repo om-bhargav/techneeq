@@ -1,8 +1,9 @@
-import {gsap,SplitText,ScrollTrigger} from "@/lib/gsap";
+import { gsap, SplitText } from "@/lib/gsap";
 import { useEffect, useRef, type RefObject } from "react";
-import {useGSAP} from "@gsap/react";
+import { useGSAP } from "@gsap/react";
 
 type SplitType = "chars" | "words" | "lines";
+
 interface SplitTextOptions {
   type?: SplitType;
   stagger?: number;
@@ -39,80 +40,71 @@ export function useGsapSplitTextReveal(
 
   useGSAP(
     () => {
-      if (!ref.current) return;
-
       const element = ref.current;
-      let split: SplitText | null = null;
 
-      const ctx = gsap.context(() => {
-        // =========================
-        // 1. SPLIT
-        // =========================
+      if (!element) return;
 
-        split = SplitText.create(element, {
-          type: type === "chars" ? "chars,words" : type,
-          mask: maskLines ? "lines" : undefined,
-        });
+      const split = SplitText.create(element, {
+        type: type === "chars" ? "chars,words" : type,
+        mask: maskLines ? "lines" : undefined,
+      });
 
-        ScrollTrigger.refresh();
+      const targets =
+        type === "chars"
+          ? split.chars
+          : type === "words"
+            ? split.words
+            : split.lines;
 
-        const targets =
-          type === "chars"
-            ? split.chars
-            : type === "words"
-              ? split.words
-              : split.lines;
+      if (!targets?.length) {
+        split.revert();
+        return;
+      }
 
-        if (!targets?.length) return;
+      gsap.set(targets, {
+        y,
+        opacity,
+        rotateX,
+        transformOrigin: "50% 100%",
+      });
 
-        // =========================
-        // 2. INITIAL STATE
-        // =========================
+      gsap.to(targets, {
+        y: 0,
+        opacity: 1,
+        rotateX: 0,
+        duration,
+        delay,
+        ease,
+        stagger: {
+          each: stagger,
+        },
+        scrollTrigger: {
+          trigger: element,
+          start,
+          toggleActions: once
+            ? "play none none none"
+            : "play none play none",
+        },
+      });
 
-        gsap.set(targets, {
-          y,
-          opacity,
-          rotateX,
-          transformOrigin: "50% 100%",
-        });
-
-
-        gsap.to(targets, {
-          y: 0,
-          opacity: 1,
-          rotateX: 0,
-
-          duration,
-          delay,
-          ease,
-
-          stagger: {
-            each: stagger,
-          },
-
-          scrollTrigger: {
-            trigger: element,
-            start,
-            toggleActions: once
-              ? "play none none none"
-              : "play none play none",
-          },
-        });
-      }, element);
+      // Let the DOM finish updating before refreshing measurements.
+      requestAnimationFrame(() => {
+        if (element.isConnected) {
+          ScrollTrigger.refresh();
+        }
+      });
 
       return () => {
-        ctx.revert();
-        split?.revert();
+        split.revert();
       };
     },
     {
       scope: ref,
-      dependencies: [...dependencies],
+      dependencies,
       revertOnUpdate: true,
     }
   );
 }
-
 const SPECIAL_CHARS = "!@#$%^&*()_+{}[]<>?/~";
 
 export function useScrambleText(text: string) {
@@ -186,3 +178,5 @@ export function useScrambleText(text: string) {
 
   return { containerRef, textRef, trailRef };
 }
+
+

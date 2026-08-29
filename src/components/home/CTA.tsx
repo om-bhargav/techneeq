@@ -11,9 +11,9 @@ export default function IntelligenceCTA() {
     <Section className="overflow-hidden">
       <Section.Header
         label="Start a conversation"
-        title="What should your business"
-        highlight="know right now?"
-        description="Let's build the intelligence behind the answer."
+        title="Got a data problem"
+        highlight="you're tired of working around?"
+        description="Tell us what's not working. We'll tell you honestly whether we're the right fit to fix it."
         className="relative"
       />
 
@@ -28,8 +28,8 @@ export default function IntelligenceCTA() {
             className="max-w-md"
           >
             <p className="text-sm leading-6 text-muted-foreground">
-              Tell us where you're heading. We'll help you build the
-              intelligence, systems, and data foundation to get there.
+              No lengthy proposals up front. A short call is enough for us to
+              tell you honestly whether this is worth pursuing together.
             </p>
           </motion.div>
 
@@ -65,7 +65,7 @@ export default function IntelligenceCTA() {
         <div className="mt-16 flex flex-col justify-between gap-3 border-t border-foreground/10 pt-6 text-[10px] uppercase tracking-[0.16em] text-foreground/30 sm:flex-row">
           <span>Data · Analytics · Intelligence</span>
 
-          <span>Connecticut · USA</span>
+          <span>Est. 2002 · Connecticut, USA</span>
         </div>
       </Section.Body>
     </Section>

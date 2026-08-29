@@ -12,9 +12,7 @@ export default function Solutions() {
   return (
     <main className="grid gap-8 md:gap-20">
       <ExpertiseTransition />
-
       <SolutionsProvided />
-     
       <TechStacks />
       <BusinessOutcome />
       <CTA /> 

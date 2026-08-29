@@ -7,41 +7,7 @@ import {
 } from "framer-motion";
 import PillButton from "../elements/PillButton";
 import { ArrowUpRight } from "lucide-react";
-
-const slides = [
-    {
-        id: 1,
-        title:
-            "Simplify, operationalize, and remove data knots in the organization",
-        description:
-            "We help clients remove data blind spots across their modern data application stack - cloud, Big Data, AI, and Machine Learning",
-        image: "https://picsum.photos/seed/data-cloud/1920/1080",
-    },
-    {
-        id: 2,
-        title:
-            "Lower costs and increase reliability of data pipelines and applications",
-        description:
-            'We help clients adopt DataOps and modernize their agile streaming data pipelines, aligned with use cases for "faster, better, cheaper" combinations of people, processes, and technologies.',
-        image: "https://picsum.photos/seed/data-pipeline/1920/1080",
-    },
-    {
-        id: 3,
-        title: "Custom data solutions to increase revenue and profit",
-        description:
-            "We help clients transform their raw data into informed actions for business value and growth",
-        image: "https://picsum.photos/seed/business-data/1920/1080",
-    },
-    {
-        id: 4,
-        title:
-            "Fuel your business growth with facts and prescriptive analytics. Deploy cloud analytics to accelerate insights",
-        description:
-            "Incorporated in 2002, we are a software development and data intelligence consulting company. We help businesses unlock the value of their data and turn it into a competitive asset.",
-        image: "https://picsum.photos/seed/analytics/1920/1080",
-    },
-];
-
+import { slides } from "@/data/home";
 const AUTOPLAY_DURATION = 7000;
 
 export default function HeroSlider() {
@@ -140,7 +106,7 @@ export default function HeroSlider() {
                             }}
                             className="mb-5 text-[10px] font-medium uppercase tracking-[0.22em] text-white/60"
                         >
-                            Featured Solution
+                            Data, Analytics &amp; AI Consulting Since 2002
                         </motion.div>
                     </AnimatePresence>
 
@@ -213,7 +179,7 @@ export default function HeroSlider() {
                         className="mt-8"
                         icon={ArrowUpRight}
                     >
-                        Explore solution
+                        See how we can help
                     </PillButton>
                 </div>
             </div>

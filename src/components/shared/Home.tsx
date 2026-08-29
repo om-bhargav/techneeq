@@ -5,7 +5,7 @@ import Hero from "@/components/home/Hero";
 const Intelligence = lazy(
   () => import("@/components/home/Intelligence")
 );
-
+ 
 const Services = lazy(
   () => import("@/components/home/Services")
 );

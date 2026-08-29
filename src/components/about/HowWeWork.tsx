@@ -1,66 +1,42 @@
 import Section from "../global/section/Section";
-
-const process = [
-  {
-    id: "01",
-    title: "Discover",
-    description:
-      "We start with your business problem, not our tech stack. Scoping is built around a measurable outcome.",
-  },
-  {
-    id: "02",
-    title: "Design",
-    description:
-      "Architecture and solution design are reviewed against security, scale and cost from day one.",
-  },
-  {
-    id: "03",
-    title: "Build",
-    description:
-      "Agile delivery with visible milestones. You see working software early, not just at the end.",
-  },
-  {
-    id: "04",
-    title: "Operate",
-    description:
-      "We stay on for production support, monitoring and iteration — not just handoff.",
-  },
-];
+import { aboutPage } from "@/data/about";
 
 export default function HowWeWork() {
+  const { howWeWork } = aboutPage;
+
   return (
     <Section>
       <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
-        {/* =========================
-            LEFT — STICKY SECTION HEADER
-        ========================= */}
+
+        {/* LEFT — STICKY SECTION HEADER */}
         <div className="lg:sticky lg:top-24 lg:h-fit">
           <Section.Header
-            label="How we work"
-            title="A differentiated approach, grounded in"
-            highlight="clarity, speed, and reliable execution."
-            description="A focused process that keeps every stage aligned with the outcome — from the first conversation to production."
+            label={howWeWork.label}
+            title={howWeWork.title}
+            highlight={howWeWork.highlight}
+            description={howWeWork.description}
             titleclassName="max-w-xl"
             paragarphClassName="max-w-lg"
           />
         </div>
 
-        {/* =========================
-            RIGHT — STACKING CARDS
-        ========================= */}
+        {/* RIGHT — STACKING CARDS */}
         <Section.Body className="mt-0 md:mt-0">
           <div className="relative">
-            {process.map((item, index) => (
+            {howWeWork.process.map((item, index) => (
               <article
                 key={item.id}
                 className="process-card group relative mb-6 h-50 overflow-hidden rounded-2xl bg-(--secondary-background) p-7 transition-colors duration-500 md:sticky md:min-h-[70vh] md:p-10 lg:p-12"
-                style={{
-                "--card-index": index,
-                zIndex: index + 1,
-                } as React.CSSProperties}
+                style={
+                  {
+                    "--card-index": index,
+                    zIndex: index + 1,
+                  } as React.CSSProperties
+                }
               >
                 {/* Card content */}
                 <div className="flex h-full min-h-[calc(200px-3.5rem)] flex-col md:min-h-[calc(70vh-5rem)]">
+
                   {/* Top */}
                   <div className="flex items-start justify-between gap-6">
                     <h3 className="font-display text-3xl font-normal tracking-[-0.04em] md:text-4xl lg:text-5xl">
@@ -85,6 +61,7 @@ export default function HowWeWork() {
                       {item.id}
                     </span>
                   </div>
+
                 </div>
               </article>
             ))}

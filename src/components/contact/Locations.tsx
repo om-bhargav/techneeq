@@ -1,28 +1,11 @@
 import { ArrowUpRight} from "lucide-react";
 import { motion } from "framer-motion";
-
+import { contactPage } from "@/data/contact";
 import Section from "../global/section/Section";
 
-const offices = [
-  {
-    id: "01",
-    country: "United States",
-    city: "Connecticut, USA",
-    description:
-      "North American operations and client partnerships.",
-    bbox: "-73.2,41.2,-72.5,42.0",
-  },
-  {
-    id: "02",
-    country: "India",
-    city: "India",
-    description:
-      "Engineering and delivery operations.",
-    bbox: "77.5,12.8,78.2,13.4",
-  },
-];
 
 export default function Locations() {
+  const {offices} = contactPage;
   return (
       <Section>
         <Section.Header
