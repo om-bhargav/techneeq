@@ -1,32 +1,10 @@
-import awsLogo from "@/assets/logos/aws.webp.asset.json";
-import azureLogo from "@/assets/logos/azure.webp.asset.json";
-import databricksLogo from "@/assets/logos/databricks.webp.asset.json";
-import datarobotLogo from "@/assets/logos/datarobot.webp.asset.json";
-import dockerLogo from "@/assets/logos/docker.webp.asset.json";
-import googleCloudLogo from "@/assets/logos/google-cloud.webp.asset.json";
-import kubernetesLogo from "@/assets/logos/kubernetes.webp.asset.json";
-import openaiLogo from "@/assets/logos/openai.webp.asset.json";
-import pythonLogo from "@/assets/logos/python.webp.asset.json";
-import sapLogo from "@/assets/logos/sap.webp.asset.json";
-
-type Partner = {
+import { PARTNERS } from "@/data/solutions-content";
+export type Partner = {
   name: string;
   alt: string;
   src: string;
 };
 
-const PARTNERS: Partner[] = [
-  { name: "AWS", alt: "Amazon Web Services", src: awsLogo.url },
-  { name: "Microsoft Azure", alt: "Microsoft Azure", src: azureLogo.url },
-  { name: "Google Cloud", alt: "Google Cloud", src: googleCloudLogo.url },
-  { name: "Databricks", alt: "Databricks", src: databricksLogo.url },
-  { name: "SAP", alt: "SAP", src: sapLogo.url },
-  { name: "Python", alt: "Python", src: pythonLogo.url },
-  { name: "Docker", alt: "Docker", src: dockerLogo.url },
-  { name: "Kubernetes", alt: "Kubernetes", src: kubernetesLogo.url },
-  { name: "DataRobot", alt: "DataRobot", src: datarobotLogo.url },
-  { name: "OpenAI", alt: "OpenAI", src: openaiLogo.url },
-];
 
 function LogoCard({ partner }: { partner: Partner }) {
   return (
@@ -49,7 +27,7 @@ export function ToolsPartnersStrip() {
   return (
     <section
       aria-label="Tools, partners and technology"
-      className="border-t border-border bg-background/50 px-6 py-12 md:py-14"
+      className="border-t border-border bg-background/50 max-md:max-w-screen px-6 py-12 md:py-14"
     >
       <div className="mx-auto w-full max-w-[1280px]">
         <div className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">

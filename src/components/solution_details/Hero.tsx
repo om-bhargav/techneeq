@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+
 import Section from "../global/section/Section";
 
 export interface HeroProps {
@@ -20,32 +21,44 @@ export default function Hero({
 }: HeroProps) {
   return (
     <Section>
-      <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+      <div
+        className="
+          grid
+          min-w-0
+          items-center
+          gap-10
+          lg:grid-cols-[0.9fr_1.1fr]
+          lg:gap-16
+          xl:gap-20
+        "
+      >
         {/* =========================
             CONTENT
         ========================= */}
-        <div className="flex flex-col max-md:justify-center">
+        <div className="min-w-0 flex flex-col">
           <Section.Header
             label={label}
             title={title}
             description={description}
             className="gap-0 max-md:justify-center"
-            paragarphClassName="mt-6"
+            paragarphClassName="mt-5 sm:mt-6"
             wantStrip={false}
           />
+
           <a
             href={buttonHref}
             className="
               group
-              mt-8
+              mt-7
               inline-flex
+              w-fit
+              max-w-full
               items-center
-              md:self-start
               justify-center
               rounded-full
               bg-foreground
-              px-6
-              py-3.5
+              px-5
+              py-3
               text-sm
               font-medium
               text-background
@@ -53,14 +66,20 @@ export default function Hero({
               duration-300
               hover:-translate-y-0.5
               hover:opacity-90
+              sm:mt-8
+              sm:px-6
+              sm:py-3.5
+              max-md:self-center
+              md:self-start
             "
           >
-            {buttonText}
+            <span className="truncate">{buttonText}</span>
 
             <ArrowUpRight
               className="
                 ml-2
                 size-4
+                shrink-0
                 transition-transform
                 duration-300
                 group-hover:translate-x-0.5
@@ -73,25 +92,30 @@ export default function Hero({
         {/* =========================
             IMAGE / VISUAL
         ========================= */}
-        <div className="relative">
-        <div
-          className="
-            relative
-            aspect-4/3
-            w-full
-            overflow-hidden
-            rounded-[24px]
-            bg-muted
-            md:aspect-5/4
-          "
-        >
+        <div className="min-w-0 w-full">
+          <div
+            className="
+              relative
+              w-full
+              overflow-hidden
+              rounded-2xl
+              bg-muted
+              h-[260px]
+              sm:h-[340px]
+              md:h-auto
+              md:aspect-[5/4]
+              lg:aspect-[5/4]
+              lg:rounded-[24px]
+            "
+          >
             <img
               src={imageSrc}
               alt=""
               className="
                 absolute
                 inset-0
-                size-full
+                h-full
+                w-full
                 object-cover
               "
             />
@@ -99,6 +123,7 @@ export default function Hero({
             {/* Subtle image overlay */}
             <div
               className="
+                pointer-events-none
                 absolute
                 inset-0
                 bg-gradient-to-t
@@ -107,7 +132,6 @@ export default function Hero({
                 to-white/5
               "
             />
-
           </div>
         </div>
       </div>

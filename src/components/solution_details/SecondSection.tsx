@@ -1,10 +1,11 @@
-import { useState, useRef } from "react";
-import { CheckCircle2 } from "lucide-react";
+import { useRef, useState } from "react";
+import { ArrowUpRight, Check } from "lucide-react";
 import Section from "../global/section/Section";
-import { SITE_NAME } from "@/config";
 
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { useDarkSection } from "@/hooks/useDarkSection";
+import { cn } from "@/lib/utils";
+
 interface UseCase {
   id: string;
   title: string;
@@ -13,73 +14,12 @@ interface UseCase {
   image: string;
 }
 
-const useCases: UseCase[] = [
-  {
-    id: "patient-support",
-    title: "Enhance patient support and engagement",
-    description:
-      "Empower clinicians to deliver faster, more personalized support with less admin overhead.",
-    features: [
-      "Generate tailored post-visit plans from records and care team notes",
-      "Answer common questions about policies and protocols",
-      "Lighten physician workload with AI-optimized support tools",
-    ],
-    image: "https://picsum.photos/seed/patient-support/1000/800",
-  },
-  {
-    id: "back-office",
-    title: "Automate back-office tasks",
-    description:
-      "Reduce repetitive administrative work and give healthcare teams more time to focus on patients.",
-    features: [
-      "Automate repetitive administrative workflows",
-      "Extract and organize information from documents",
-      "Reduce manual data entry and processing",
-    ],
-    image: "https://picsum.photos/seed/back-office/1000/800",
-  },
-  {
-    id: "bench-to-bedside",
-    title: "Accelerate progress from bench to bedside",
-    description:
-      "Connect research, clinical insights, and operational data to accelerate innovation across healthcare.",
-    features: [
-      "Surface insights from complex research data",
-      "Accelerate clinical research workflows",
-      "Connect research insights with patient outcomes",
-    ],
-    image: "https://picsum.photos/seed/bench-bedside/1000/800",
-  },
-];
-const capabilities = [
-  {
-    id: "01",
-    title: "Discover",
-    description:
-      "Surface context-aware answers securely grounded in your clinical and research data.",
-    image: "https://picsum.photos/seed/discover/1200/900",
-  },
-  {
-    id: "02",
-    title: "Create",
-    description:
-      "Quickly draft documents, generate summaries, and create custom tables and charts.",
-    image: "https://picsum.photos/seed/create/1200/900",
-  },
-  {
-    id: "03",
-    title: "Automate",
-    description:
-      "Accelerate work with AI agents that search, reason, and act across your data and tools.",
-    image: "https://picsum.photos/seed/automate/1200/900",
-  },
-];
-export default function SecondSection() {
-  const [activeId, setActiveId] = useState(useCases[0].id);
+export default function SecondSection({useCases,capabilities,secondSection,useCaseSectionHeaders}:{useCases: UseCase[],capabilities: any,secondSection: any;useCaseSectionHeaders: any}) {
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const parentRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+
   useDarkSection(parentRef);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -96,29 +36,26 @@ export default function SecondSection() {
   });
 
   const activeCapability = capabilities[activeIndex];
-  const activeUseCase =
-    useCases.find((item) => item.id === activeId) ?? useCases[0];
 
   return (
     <div ref={parentRef}>
       {/* =====================================================
-          FIRST SECTION
-          Will be added later
+          FIRST SECTION — AI CAPABILITIES
       ====================================================== */}
       <Section
         ref={containerRef}
         containerClassName="max-w-none"
       >
         {/* =========================
-            DESKTOP
+            DESKTOP / LARGE SCREENS
         ========================= */}
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           {/* HEADER */}
           <div className="py-5">
             <Section.Header
-              label="AI capabilities"
-              title="Transform patient care. Turbocharge research."
-              description="Explore how North powers use cases across healthcare and life sciences."
+              label={secondSection.label}
+              title={secondSection.title}
+              description={secondSection.description}
               titleclassName="max-w-3xl"
               wantStrip={false}
             />
@@ -135,7 +72,7 @@ export default function SecondSection() {
               ========================= */}
               <div className="relative border-y border-foreground/15">
                 <div className="grid grid-cols-3">
-                  {capabilities.map((capability, index) => (
+                  {capabilities.map((capability: any, index: number) => (
                     <div
                       key={capability.id}
                       className="relative"
@@ -144,17 +81,15 @@ export default function SecondSection() {
                         className={`
                           flex h-20 items-center gap-4
                           transition-colors duration-300
-                          ${
-                            index === 0
-                              ? "justify-start"
-                              : index === capabilities.length - 1
-                                ? "justify-end"
-                                : "justify-center"
+                          ${index === 0
+                            ? "justify-start"
+                            : index === capabilities.length - 1
+                              ? "justify-end"
+                              : "justify-center"
                           }
-                          ${
-                            activeIndex === index
-                              ? "text-foreground"
-                              : "text-foreground/40"
+                          ${activeIndex === index
+                            ? "text-foreground"
+                            : "text-foreground/40"
                           }
                         `}
                       >
@@ -282,21 +217,19 @@ export default function SecondSection() {
                         className="
                           max-w-xl
                           font-display
-                          text-4xl
+                          text-2xl
                           font-normal
                           leading-[0.95]
                           tracking-[-0.045em]
-                          md:text-5xl
-                          lg:text-6xl
+                          md:text-4xl
                         "
                       >
                         {activeCapability.title}
                       </h3>
 
                       <div className="mt-8 flex max-w-lg gap-4">
-                        <span className="mt-2 h-px w-10 shrink-0 bg-foreground/20" />
 
-                        <p className="text-sm leading-7 text-muted-foreground md:text-base">
+                        <p className="text-xs leading-7 text-muted-foreground md:text-sm">
                           {activeCapability.description}
                         </p>
                       </div>
@@ -309,25 +242,26 @@ export default function SecondSection() {
         </div>
 
         {/* =========================
-            MOBILE
+            MOBILE / TABLET
         ========================= */}
-        <div className="block md:hidden">
-          <Section.Header
-            label="AI capabilities"
-            title="Transform patient care. Turbocharge research."
-            description="Explore how North powers use cases across healthcare and life sciences."
-            wantStrip={false}
-          />
+        <div className="block lg:hidden">
+                      <Section.Header
+              label={secondSection.label}
+              title={secondSection.title}
+              description={secondSection.description}
+              titleclassName="max-w-3xl"
+              wantStrip={false}
+            />
 
-          <Section.Body className="mt-12">
-            <div className="space-y-8">
-              {capabilities.map((capability) => (
+          <Section.Body className="mt-10 md:mt-12">
+            <div className="grid gap-6 sm:gap-8 md:gap-10">
+              {capabilities.map((capability: any) => (
                 <article
                   key={capability.id}
                   className="overflow-hidden"
                 >
                   {/* IMAGE */}
-                  <div className="aspect-square overflow-hidden rounded-2xl bg-secondary-background">
+                  <div className="aspect-square overflow-hidden h-80 w-full rounded-2xl bg-secondary-background">
                     <img
                       src={capability.image}
                       alt={capability.title}
@@ -341,7 +275,7 @@ export default function SecondSection() {
                       {capability.id}
                     </span>
 
-                    <h3 className="font-display text-3xl font-normal leading-[0.95] tracking-[-0.04em]">
+                    <h3 className="font-display text-2xl font-normal leading-[0.95] tracking-[-0.04em] sm:text-3xl">
                       {capability.title}
                     </h3>
 
@@ -357,156 +291,532 @@ export default function SecondSection() {
       </Section>
 
       {/* =====================================================
-          SECOND SECTION
+          SECOND SECTION — HEALTHCARE USE CASES
       ====================================================== */}
-      <Section>
-        <Section.Body>
-          <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
-            {/* =================================================
-                LEFT IMAGE
-            ================================================== */}
-            <div className="relative overflow-hidden rounded-2xl">
-              <img
+      <UseCasesSection useCaseSectionHeaders={useCaseSectionHeaders} useCases={useCases}/>
+    </div>
+  );
+}
+
+/* ================================================================
+   USE CASES — modern accordion-style list + visual panel
+================================================================ */
+function UseCasesSection({useCases,useCaseSectionHeaders}:{useCases:UseCase[];useCaseSectionHeaders: any;}) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeUseCase = useCases[activeIndex];
+
+  return (
+    <Section className="relative">
+      <Section.Header
+        label={useCaseSectionHeaders.label}
+        title={useCaseSectionHeaders.title}
+        highlight={useCaseSectionHeaders.highlight}
+        description={useCaseSectionHeaders.description}
+        wantStrip={false}
+      />
+
+      <Section.Body>
+        <div
+          className="
+      grid
+      min-w-0
+      gap-8
+      lg:grid-cols-[1.1fr_0.9fr]
+      lg:items-start
+      lg:gap-14
+      xl:gap-20
+    "
+        >
+          {/* =========================
+        DESKTOP VISUAL PANEL
+    ========================= */}
+          <div
+            className="
+        order-1
+        hidden
+        min-w-0
+        overflow-hidden
+        rounded-2xl
+        border
+        border-foreground/[0.08]
+        bg-muted/20
+        lg:block
+        lg:rounded-[24px]
+      "
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
                 key={activeUseCase.id}
-                src={activeUseCase.image}
-                alt={activeUseCase.title}
-                className="
-                  aspect-[5/4]
-                  w-full
-                  object-cover
-                  transition-opacity
-                  duration-500
-                "
-              />
-            </div>
-
-            {/* =================================================
-                RIGHT ACCORDION
-            ================================================== */}
-            <div className="flex flex-col">
-              {useCases.map((item) => {
-                const isActive = item.id === activeId;
-
-                return (
-                  <div
-                    key={item.id}
-                    className="
-                      border-t
-                      border-foreground/30
-                    "
-                  >
-                    {/* Accordion Header */}
-                    <button
-                      type="button"
-                      onClick={() => setActiveId(item.id)}
-                      className="
-                        flex
-                        w-full
-                        items-center
-                        justify-between
-                        py-5
-                        text-left
-                      "
-                    >
-                      <span
-                        className="
-                          text-sm
-                          font-medium
-                          tracking-tight
-                          md:text-base
-                        "
-                      >
-                        {item.title}
-                      </span>
-                    </button>
-
-                    {/* Accordion Content */}
-                    <div
-                      className={`
-                        grid
-                        transition-[grid-template-rows,opacity]
-                        duration-500
-                        ease-out
-                        ${isActive
-                          ? "grid-rows-[1fr] opacity-100"
-                          : "grid-rows-[0fr] opacity-0"
-                        }
-                      `}
-                    >
-                      <div className="overflow-hidden">
-                        <div className="pb-6">
-                          <p
-                            className="
-                              max-w-lg
-                              text-xs
-                              leading-6
-                              text-muted-foreground
-                              md:text-sm
-                            "
-                          >
-                            {item.description}
-                          </p>
-
-                          <ul className="mt-5 space-y-2.5">
-                            {item.features.map((feature) => (
-                              <li
-                                key={feature}
-                                className="
-                                  flex
-                                  items-start
-                                  gap-2
-                                  text-xs
-                                  leading-5
-                                  text-foreground/80
-                                "
-                              >
-                                <CheckCircle2
-                                  className="
-                                    mt-0.5
-                                    size-3.5
-                                    shrink-0
-                                  "
-                                />
-
-                                <span>{feature}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-
-              {/* Bottom border */}
-              <div className="border-t border-foreground/30" />
-
-              {/* CTA */}
-              <div className="pt-6">
-                <button
-                  type="button"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -16 }}
+                transition={{
+                  duration: 0.45,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+              >
+                {/* IMAGE */}
+                <div
                   className="
+              relative
+              aspect-[16/11]
+              w-full
+              overflow-hidden
+              xl:aspect-[16/10]
+            "
+                >
+
+                  <motion.img
+                    key={activeUseCase.image}
+                    src={activeUseCase.image}
+                    alt={activeUseCase.title}
+                    initial={{ scale: 1.06 }}
+                    animate={{ scale: 1 }}
+                    transition={{
+                      duration: 0.8,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                    className="
+                absolute
+                inset-0
+                h-full
+                w-full
+                object-cover
+              "
+                  />
+
+                  {/* Gradient */}
+                  <div
+                    className="
+                absolute
+                inset-0
+                bg-gradient-to-t
+                from-background/60
+                via-transparent
+                to-transparent
+              "
+                  />
+
+                  {/* Label */}
+                  <div
+                    className="
+                absolute
+                bottom-4
+                left-4
+                z-20
+                flex
+                items-center
+                gap-3
+                sm:bottom-6
+                sm:left-6
+              "
+                  >
+                    <span
+                      className="
+                  flex
+                  size-8
+                  shrink-0
+                  items-center
+                  justify-center
+                  rounded-full
+                  border
+                  border-white/20
+                  bg-black/20
+                  font-mono
+                  text-[10px]
+                  text-white
+                  backdrop-blur-md
+                  sm:size-9
+                "
+                    >
+                      {String(activeIndex + 1).padStart(2, "0")}
+                    </span>
+
+                    <span
+                      className="
+                  font-mono
+                  text-[10px]
+                  uppercase
+                  tracking-[0.2em]
+                  text-white/70
+                "
+                    >
+                      Use case
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* =========================
+        USE CASE NAVIGATION
+    ========================= */}
+          <div
+            className="
+        order-2
+        min-w-0
+        border-t
+        border-foreground/10
+      "
+          >
+            {useCases.map((useCase, index) => {
+              const isActive = index === activeIndex;
+
+              return (
+                <div
+                  key={useCase.id}
+                  className="border-b border-foreground/10"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setActiveIndex(index)}
+                    className="
+                group
+                flex
+                w-full
+                min-w-0
+                items-start
+                gap-3
+                py-5
+                text-left
+                sm:gap-4
+                sm:py-6
+                lg:gap-5
+              "
+                  >
+                    {/* Number */}
+                    <span
+                      className={cn(
+                        `
+                    mt-1
+                    w-5
+                    shrink-0
+                    font-mono
+                    text-[10px]
+                    tracking-[0.15em]
+                    transition-colors
+                    duration-300
+                    sm:w-6
+                  `,
+                        isActive
+                          ? "text-foreground"
+                          : "text-foreground/30"
+                      )}
+                    >
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+
+                    {/* Title */}
+                    <div className="min-w-0 flex-1">
+                      <h3
+                        className={cn(
+                          `
+                      font-display
+                      text-base
+                      leading-snug
+                      tracking-[-0.03em]
+                      transition-colors
+                      duration-300
+                      sm:text-lg
+                      md:text-xl
+                      lg:text-2xl
+                    `,
+                          isActive
+                            ? "text-foreground"
+                            : "text-foreground/45"
+                        )}
+                      >
+                        {useCase.title}
+                      </h3>
+
+                      {/* Desktop description */}
+                      <AnimatePresence initial={false}>
+                        {isActive && (
+                          <motion.p
+                            initial={{
+                              height: 0,
+                              opacity: 0,
+                            }}
+                            animate={{
+                              height: "auto",
+                              opacity: 1,
+                            }}
+                            exit={{
+                              height: 0,
+                              opacity: 0,
+                            }}
+                            transition={{
+                              duration: 0.35,
+                              ease: [0.22, 1, 0.36, 1],
+                            }}
+                            className="
+                        hidden
+                        overflow-hidden
+                        text-xs
+                        leading-6
+                        text-muted-foreground
+                        sm:text-sm
+                        lg:block
+                      "
+                          >
+                            <span className="block pt-3">
+                              {useCase.description}
+                            </span>
+                          </motion.p>
+                        )}
+                      </AnimatePresence>
+                    </div>
+
+                    {/* Arrow */}
+                    <motion.span
+                      animate={{
+                        rotate: isActive ? 45 : 0,
+                      }}
+                      transition={{
+                        duration: 0.35,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                      className={cn(
+                        `
+                    flex
+                    size-8
+                    shrink-0
+                    items-center
+                    justify-center
                     rounded-full
                     border
-                    border-foreground
-                    px-5
-                    py-2.5
-                    text-xs
-                    font-medium
-                    transition-all
+                    transition-colors
                     duration-300
-                    hover:bg-foreground
-                    hover:text-background
+                    sm:size-9
+                  `,
+                        isActive
+                          ? "border-foreground/25 text-foreground"
+                          : "border-foreground/10 text-foreground/40"
+                      )}
+                    >
+                      <ArrowUpRight
+                        className="size-3.5 sm:size-4"
+                        strokeWidth={1.5}
+                      />
+                    </motion.span>
+                  </button>
+
+                  {/* =========================
+                MOBILE ACTIVE CONTENT
+            ========================= */}
+                  <AnimatePresence initial={false}>
+                    {isActive && (
+                      <motion.div
+                        initial={{
+                          height: 0,
+                          opacity: 0,
+                        }}
+                        animate={{
+                          height: "auto",
+                          opacity: 1,
+                        }}
+                        exit={{
+                          height: 0,
+                          opacity: 0,
+                        }}
+                        transition={{
+                          duration: 0.4,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="
+                    overflow-hidden
+                    lg:hidden
                   "
-                >
-                  Go {SITE_NAME}
-                </button>
-              </div>
-            </div>
+                      >
+                        {/* Mobile image */}
+                        <div
+                          className="
+                      relative
+                      mb-5
+                      aspect-[16/10]
+                      w-full
+                      overflow-hidden
+                      rounded-xl
+                      bg-muted
+                      sm:rounded-2xl
+                    "
+                        >
+                          {/* Grid */}
+                          <div
+                            className="
+                        pointer-events-none
+                        absolute
+                        inset-0
+                        z-10
+                        opacity-[0.08]
+                        [background-image:linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)]
+                        [background-size:28px_28px]
+                      "
+                          />
+
+                          <motion.img
+                            src={useCase.image}
+                            alt={useCase.title}
+                            initial={{ scale: 1.05 }}
+                            animate={{ scale: 1 }}
+                            transition={{
+                              duration: 0.7,
+                              ease: [0.22, 1, 0.36, 1],
+                            }}
+                            className="
+                        absolute
+                        inset-0
+                        h-full
+                        w-full
+                        object-cover
+                      "
+                          />
+
+                          <div
+                            className="
+                        absolute
+                        inset-0
+                        bg-gradient-to-t
+                        from-background/50
+                        via-transparent
+                        to-transparent
+                      "
+                          />
+
+                          <div
+                            className="
+                        absolute
+                        bottom-3
+                        left-3
+                        z-20
+                        flex
+                        items-center
+                        gap-2
+                      "
+                          >
+                            <span
+                              className="
+                          flex
+                          size-8
+                          items-center
+                          justify-center
+                          rounded-full
+                          border
+                          border-white/20
+                          bg-black/20
+                          font-mono
+                          text-[10px]
+                          text-white
+                          backdrop-blur-md
+                        "
+                            >
+                              {String(index + 1).padStart(2, "0")}
+                            </span>
+
+                            <span
+                              className="
+                          font-mono
+                          text-[9px]
+                          uppercase
+                          tracking-[0.18em]
+                          text-white/70
+                        "
+                            >
+                              Use case
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Mobile description */}
+                        <p
+                          className="
+                      pb-5
+                      text-xs
+                      leading-6
+                      text-muted-foreground
+                      sm:text-sm
+                    "
+                        >
+                          {useCase.description}
+                        </p>
+
+                        {/* Mobile features */}
+                        <div className="pb-6">
+                          <span
+                            className="
+                        font-mono
+                        text-[9px]
+                        uppercase
+                        tracking-[0.18em]
+                        text-muted-foreground/50
+                      "
+                          >
+                            What it enables
+                          </span>
+
+                          <div className="mt-4 space-y-3">
+                            {useCase.features.map((feature, featureIndex) => (
+                              <motion.div
+                                key={feature}
+                                initial={{
+                                  opacity: 0,
+                                  x: 10,
+                                }}
+                                animate={{
+                                  opacity: 1,
+                                  x: 0,
+                                }}
+                                transition={{
+                                  duration: 0.3,
+                                  delay: featureIndex * 0.06,
+                                }}
+                                className="flex gap-3"
+                              >
+                                <span
+                                  className="
+                              mt-0.5
+                              flex
+                              size-5
+                              shrink-0
+                              items-center
+                              justify-center
+                              rounded-full
+                              border
+                              border-foreground/15
+                            "
+                                >
+                                  <Check
+                                    className="size-2.5"
+                                    strokeWidth={2}
+                                  />
+                                </span>
+
+                                <p
+                                  className="
+                              min-w-0
+                              text-xs
+                              leading-6
+                              text-foreground/70
+                            "
+                                >
+                                  {feature}
+                                </p>
+                              </motion.div>
+                            ))}
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
           </div>
-        </Section.Body>
-      </Section>
-    </div>
+        </div>
+      </Section.Body>
+
+
+    </Section>
   );
 }

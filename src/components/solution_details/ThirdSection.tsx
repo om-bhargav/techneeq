@@ -1,30 +1,9 @@
 import { Check } from "lucide-react";
 import Section from "../global/section/Section";
 
-const points = [
-  {
-    title: "Privately deployable",
-    description:
-      "Deploy our products in your own VPC, on-prem environment, or through secure hosted infrastructure.",
-  },
-  {
-    title: "Regulatory-ready",
-    description:
-      "Ensure compliance with auditable outputs, usage monitoring, and built-in governance tools.",
-  },
-  {
-    title: "Fully customizable",
-    description:
-      "Tailor our models to your unique data, use cases, and infrastructure.",
-  },
-  {
-    title: "Expert implementation",
-    description:
-      "Work with forward-deployed engineers to ensure fast, secure implementation.",
-  },
-];
 
-export default function ThirdSection() {
+
+export default function ThirdSection({points}:{points: any}) {
   return (
     <Section
       className="py-16 md:py-24 lg:py-32"
@@ -69,7 +48,7 @@ export default function ThirdSection() {
           {/* CONTENT */}
           <div className="lg:pt-2">
             <div className="divide-y divide-foreground/15 border-y border-foreground/15">
-              {points.map((point) => (
+              {points.map((point: any) => (
                 <div
                   key={point.title}
                   className="

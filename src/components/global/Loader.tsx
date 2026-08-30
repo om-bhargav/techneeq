@@ -11,14 +11,14 @@ export default function Loader() {
   useEffect(() => {
     if (progress < 100) {
       // Chunked, delayed increments for a readable mechanical feel on the numbers
-      const delay = Math.random() * 200 + 50; 
+      const delay = Math.random() * 200 + 50;
       const timer = setTimeout(() => {
         setProgress((prev) => {
           const jump = Math.floor(Math.random() * 3) + 1;
           return prev + jump >= 100 ? 100 : prev + jump;
         });
       }, delay);
-      
+
       return () => clearTimeout(timer);
     } else if (progress === 100 && phase === "loading") {
       setPhase("t-out");
@@ -90,13 +90,18 @@ export default function Loader() {
               <motion.rect
                 x="0"
                 width="100"
-                animate={{ 
-                  y: 100 - progress, 
-                  height: progress 
+                // 1. Tell Framer Motion what the values should be on the exact moment of mount
+                initial={{
+                  y: 100 - (progress || 0),
+                  height: progress || 0
                 }}
-                transition={{ 
-                  duration: 0.4, 
-                  ease: "easeOut" 
+                animate={{
+                  y: 100 - (progress || 0),
+                  height: progress || 0
+                }}
+                transition={{
+                  duration: 0.4,
+                  ease: "easeOut"
                 }}
               />
             </clipPath>
@@ -109,7 +114,7 @@ export default function Loader() {
         className="absolute bottom-8 left-8 flex text-background font-mono text-6xl font-bold overflow-hidden h-[1.2em]"
         style={{
           // Fade numbers out immediately when 'T' starts zooming
-          opacity: phase === "loading" ? 1 : 0, 
+          opacity: phase === "loading" ? 1 : 0,
           transition: "opacity 0.3s",
         }}
       >
@@ -117,12 +122,12 @@ export default function Loader() {
           const isEven = i % 2 === 0;
           return (
             <div
-              key={i} 
+              key={i}
               className="relative w-[0.6em] h-full flex justify-center"
             >
               <AnimatePresence mode="popLayout">
                 <motion.h2
-                  key={digit} 
+                  key={digit}
                   initial={{ y: isEven ? "100%" : "-100%", opacity: 0 }}
                   animate={{ y: "0%", opacity: 1 }}
                   exit={{ y: isEven ? "-100%" : "100%", opacity: 0 }}

@@ -1,5 +1,5 @@
-import { gsap, SplitText,ScrollTrigger } from "@/lib/gsap";
-import { useEffect, useRef, type RefObject } from "react";
+import { gsap, SplitText } from "@/lib/gsap";
+import { useRef, type RefObject } from "react";
 import { useGSAP } from "@gsap/react";
 
 type SplitType = "chars" | "words" | "lines";
@@ -41,7 +41,6 @@ export function useGsapSplitTextReveal(
   useGSAP(
     () => {
       const element = ref.current;
-
       if (!element) return;
 
       const split = SplitText.create(element, {
@@ -53,20 +52,15 @@ export function useGsapSplitTextReveal(
         type === "chars"
           ? split.chars
           : type === "words"
-            ? split.words
-            : split.lines;
+          ? split.words
+          : split.lines;
 
       if (!targets?.length) {
         split.revert();
         return;
       }
 
-      gsap.set(targets, {
-        y,
-        opacity,
-        rotateX,
-        transformOrigin: "50% 100%",
-      });
+      gsap.set(targets, { y, opacity, rotateX, transformOrigin: "50% 100%" });
 
       gsap.to(targets, {
         y: 0,
@@ -75,25 +69,16 @@ export function useGsapSplitTextReveal(
         duration,
         delay,
         ease,
-        stagger: {
-          each: stagger,
-        },
+        stagger: { each: stagger },
         scrollTrigger: {
           trigger: element,
           start,
-          toggleActions: once
-            ? "play none none none"
-            : "play none play none",
+          toggleActions: once ? "play none none none" : "play none play none",
         },
       });
 
-      // Let the DOM finish updating before refreshing measurements.
-      requestAnimationFrame(() => {
-        if (element.isConnected) {
-          ScrollTrigger.refresh();
-        }
-      });
-
+      // CLEANUP: useGSAP handles killing the ScrollTrigger and Tween automatically.
+      // All we have to do is revert the SplitText DOM modifications.
       return () => {
         split.revert();
       };
@@ -105,6 +90,8 @@ export function useGsapSplitTextReveal(
     }
   );
 }
+
+
 const SPECIAL_CHARS = "!@#$%^&*()_+{}[]<>?/~";
 
 export function useScrambleText(text: string) {
@@ -112,71 +99,76 @@ export function useScrambleText(text: string) {
   const textRef = useRef<HTMLDivElement | null>(null);
   const trailRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    if (!textRef.current || !trailRef.current || !containerRef.current || !text) return;
+  // FIX: Swapped useEffect for useGSAP to guarantee context-aware cleanup
+  useGSAP(
+    () => {
+      if (!textRef.current || !trailRef.current || !containerRef.current || !text) return;
 
-    const split = new SplitText(textRef.current, { type: "chars,words,lines" });
-    const chars = split.chars;
+      const split = new SplitText(textRef.current, { type: "chars,words,lines" });
+      const chars = split.chars;
 
-    gsap.set(chars, { opacity: 0 });
+      gsap.set(chars, { opacity: 0 });
 
-    const anim = { index: 0 };
-    
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 85%", 
-        once: true,
-      }
-    });
+      const anim = { index: 0 };
 
-    tl.to(anim, {
-      index: chars.length,
-      duration: chars.length * 0.05, 
-      ease: "none",
-      onUpdate: () => {
-        if (!trailRef.current || !containerRef.current) return;
-        const charIndex = Math.min(Math.floor(anim.index), chars.length - 1);
-        
-        for (let i = 0; i < charIndex; i++) {
-          gsap.set(chars[i], { opacity: 1 });
-        }
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 85%",
+          once: true,
+        },
+      });
 
-        if (anim.index < chars.length) {
-          const currentChar = chars[charIndex] as HTMLElement;
-          
-          // FIX: Calculate exact coordinates based on the viewport, bypassing SplitText's nesting layout
-          const charRect = currentChar.getBoundingClientRect();
-          const containerRect = containerRef.current.getBoundingClientRect();
-          
-          gsap.set(trailRef.current, {
-            x: charRect.left - containerRect.left,
-            y: charRect.top - containerRect.top,
-            opacity: 1
-          });
+      tl.to(anim, {
+        index: chars.length,
+        duration: chars.length * 0.05,
+        ease: "none",
+        onUpdate: () => {
+          if (!trailRef.current || !containerRef.current) return;
+          const charIndex = Math.min(Math.floor(anim.index), chars.length - 1);
 
-          let scrambleTrail = "";
-          for (let i = 0; i < 1; i++) {
-            scrambleTrail += SPECIAL_CHARS[Math.floor(Math.random() * SPECIAL_CHARS.length)];
+          for (let i = 0; i < charIndex; i++) {
+            gsap.set(chars[i], { opacity: 1 });
           }
-          trailRef.current.innerText = scrambleTrail;
-        }
-      },
-      onComplete: () => {
-        gsap.set(chars, { opacity: 1 });
-        if (trailRef.current) {
-          gsap.set(trailRef.current, { opacity: 0 });
-        }
-      }
-    });
 
-    return () => {
-      tl.kill();
-      split.revert();
-    };
-  }, [text]);
+          if (anim.index < chars.length) {
+            const currentChar = chars[charIndex] as HTMLElement;
+            const charRect = currentChar.getBoundingClientRect();
+            const containerRect = containerRef.current.getBoundingClientRect();
+
+            gsap.set(trailRef.current, {
+              x: charRect.left - containerRect.left,
+              y: charRect.top - containerRect.top,
+              opacity: 1,
+            });
+
+            let scrambleTrail = "";
+            for (let i = 0; i < 1; i++) {
+              scrambleTrail +=
+                SPECIAL_CHARS[Math.floor(Math.random() * SPECIAL_CHARS.length)];
+            }
+            trailRef.current.innerText = scrambleTrail;
+          }
+        },
+        onComplete: () => {
+          gsap.set(chars, { opacity: 1 });
+          if (trailRef.current) {
+            gsap.set(trailRef.current, { opacity: 0 });
+          }
+        },
+      });
+
+      // CLEANUP: Because we are using useGSAP, the timeline and its ScrollTrigger 
+      // are automatically killed. We just revert the SplitText.
+      return () => {
+        split.revert();
+      };
+    },
+    { 
+      dependencies: [text], 
+      scope: containerRef 
+    }
+  );
 
   return { containerRef, textRef, trailRef };
 }
-
-

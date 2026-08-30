@@ -8,89 +8,13 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-
+import { solutions } from "@/data/solutions";
 import {
-  Bot,
-  Cloud,
-  Database,
-  Shield,
-  Sparkles,
-  Workflow,
   type LucideIcon,
 } from "lucide-react";
 
 import Section from "../global/section/Section";
-
-const solutions: {
-  id: string;
-  title: string;
-  description: string;
-  icon: LucideIcon;
-  className: string;
-  variant: string;
-  image: string;
-}[] = [
-    {
-      id: "01",
-      title: "Digital Experiences",
-      description:
-        "Immersive digital experiences engineered to make brands stand out.",
-      icon: Sparkles,
-      className: "md:col-span-2 md:row-span-2",
-      variant: "large",
-      image: "/solutions/1.png"
-    },
-    {
-      id: "02",
-      title: "AI & Intelligence",
-      description:
-        "Intelligent systems that turn complex data into meaningful decisions.",
-      icon: Bot,
-      className: "md:col-span-4",
-      variant: "wide",
-      image: "/solutions/2.png"
-    },
-    {
-      id: "03",
-      title: "Technology Engineering",
-      description:
-        "Scalable software and infrastructure built for what's next.",
-      icon: Cloud,
-      className: "md:col-span-2",
-      variant: "normal",
-      image: "/solutions/3.png"
-    },
-    {
-      id: "04",
-      title: "Data & Analytics",
-      description:
-        "Transform your data into actionable business intelligence.",
-      icon: Database,
-      className: "md:col-span-2",
-      variant: "normal",
-      image: "/solutions/4.png"
-    },
-    {
-      id: "05",
-      title: "Digital Transformation",
-      description:
-        "Modernize operations and build connected digital ecosystems.",
-      icon: Workflow,
-      className: "md:col-span-3",
-      variant: "bottom",
-      image: "/solutions/5.png"
-    },
-    {
-      id: "06",
-      title: "Security & Infrastructure",
-      description:
-        "Resilient technology systems designed for reliability and scale.",
-      icon: Shield,
-      className: "md:col-span-3",
-      variant: "bottom",
-      image: "/solutions/6.png"
-    },
-  ];
+ 
 
 export default function Solutions() {
   const sectionRef = useRef<HTMLDivElement>(null);

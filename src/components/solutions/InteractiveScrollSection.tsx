@@ -8,7 +8,7 @@ import { Sparkles } from "lucide-react";
 import { useDarkSection } from "@/hooks/useDarkSection";
 import FastMarquee from "react-fast-marquee";
 import SectionHeader from "../global/section/SectionHeader";
-// import GalaxySection from "../global/GalaxySection";
+import { LivingGrid } from "./LivingGrid";
 
 // This checks if your bundler wrapped the component in a module object.
 // If it did, it unwraps it. If it didn't, it just uses it normally.
@@ -40,10 +40,16 @@ export default function ExpertiseTransition() {
         >
             {/* Sticky Screen */}
             <div className="sticky top-0 flex h-screen w-full flex-col justify-between overflow-hidden bg-background text-foreground">
-                
+                <LivingGrid />
+
+                {/* =========================================
+        BLUR OVERLAY — sits between LivingGrid and content
+    ========================================= */}
+                <div className="pointer-events-none absolute inset-0 z-[1] backdrop-blur-[1px]" />
+
                 <motion.div
                     style={{ y: contentY }}
-                    className="flex flex-col items-center px-6 text-center"
+                    className="relative z-10 flex flex-col items-center px-6 text-center"
                 >
                     {/* === GROUP 1 (SCREEN 1) === */}
                     <div className="flex h-screen w-full flex-col items-center justify-center">
@@ -73,7 +79,7 @@ export default function ExpertiseTransition() {
 
                 {isMounted &&
                     <motion.div
-                        className="absolute bottom-0 left-0 flex bg-background w-full overflow-hidden border-t border-foreground/10 py-6"
+                        className="absolute bottom-0 left-0 z-10 flex bg-background w-full overflow-hidden border-t border-foreground/10 py-6"
                     >
                         <Marquee
                             speed={50}
@@ -91,9 +97,8 @@ export default function ExpertiseTransition() {
                 }
 
                 {/* =========================================
-                    3. HORIZONTAL EXPANDING LINES OVERLAY
-                ========================================= */}
-                {/* flex-col stacks them vertically, so full-width rows grow downwards */}
+        3. HORIZONTAL EXPANDING LINES OVERLAY
+    ========================================= */}
                 <div className="pointer-events-none absolute inset-0 z-50">
                     {Array.from({ length: 5 }).map((_, index) => (
                         <ExpandingLine
