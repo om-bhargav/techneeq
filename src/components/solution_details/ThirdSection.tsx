@@ -1,9 +1,7 @@
 import { Check } from "lucide-react";
 import Section from "../global/section/Section";
 
-
-
-export default function ThirdSection({points}:{points: any}) {
+export default function ThirdSection({points,image}:{points: any,image: any}) {
   return (
     <Section
       className="py-16 md:py-24 lg:py-32"
@@ -13,9 +11,9 @@ export default function ThirdSection({points}:{points: any}) {
         {/* =====================================================
             IMAGE
         ====================================================== */}
-        <div className="overflow-hidden rounded-2xl">
+        <div className="overflow-hidden rounded-2xl shadow-md">
           <img
-            src="https://picsum.photos/seed/secure-production/1600/800"
+            src={image}
             alt="Secure production environment"
             className="
               aspect-[16/8]

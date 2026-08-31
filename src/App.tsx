@@ -8,6 +8,7 @@ import Expertise from "./components/shared/Expertise";
 import PageLayout from "./components/global/PageLayout";
 import Solutions from "./components/shared/Solutions";
 import SolutionDetails from "./components/shared/SolutionPage";
+import NotFound from "./components/shared/NotFound";
 function App() {
   return (
     <BrowserRouter>
@@ -32,16 +33,11 @@ function App() {
         </Route>
 
         {/* 404 */}
-        <Route
-          path="*"
-          element={
-            <div className="flex min-h-screen items-center justify-center">
-              <h1 className="font-display text-4xl">
-                404
-              </h1>
-            </div>
-          }
-        />
+
+        <Route element={<PageLayout />}>
+          <Route path="*" element={<NotFound />} />
+        </Route>
+
       </Routes>
     </BrowserRouter>
   );

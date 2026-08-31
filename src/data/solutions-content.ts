@@ -1,31 +1,31 @@
-import awsLogo from "@/assets/logos/aws.webp.asset.json";
-import azureLogo from "@/assets/logos/azure.webp.asset.json";
-import databricksLogo from "@/assets/logos/databricks.webp.asset.json";
-import datarobotLogo from "@/assets/logos/datarobot.webp.asset.json";
-import dockerLogo from "@/assets/logos/docker.webp.asset.json";
-import googleCloudLogo from "@/assets/logos/google-cloud.webp.asset.json";
-import kubernetesLogo from "@/assets/logos/kubernetes.webp.asset.json";
-import openaiLogo from "@/assets/logos/openai.webp.asset.json";
-import pythonLogo from "@/assets/logos/python.webp.asset.json";
-import sapLogo from "@/assets/logos/sap.webp.asset.json";
+import awsLogo from "@/assets/logos/aws.webp";
+import azureLogo from "@/assets/logos/azure.webp";
+import databricksLogo from "@/assets/logos/databricks.webp";
+import datarobotLogo from "@/assets/logos/datarobot.webp";
+import dockerLogo from "@/assets/logos/docker.webp";
+import googleCloudLogo from "@/assets/logos/gcp.webp";
+import kubernetesLogo from "@/assets/logos/kubernetes.webp";
+import openaiLogo from "@/assets/logos/openai.webp";
+import pythonLogo from "@/assets/logos/python.webp";
+import sapLogo from "@/assets/logos/sap.webp";
 import type { Partner } from "@/components/solution_details/ToolPartnerStrip";
 
 export const PARTNERS: Partner[] = [
-  { name: "AWS", alt: "Amazon Web Services", src: awsLogo.url },
-  { name: "Microsoft Azure", alt: "Microsoft Azure", src: azureLogo.url },
-  { name: "Google Cloud", alt: "Google Cloud", src: googleCloudLogo.url },
-  { name: "Databricks", alt: "Databricks", src: databricksLogo.url },
-  { name: "SAP", alt: "SAP", src: sapLogo.url },
-  { name: "Python", alt: "Python", src: pythonLogo.url },
-  { name: "Docker", alt: "Docker", src: dockerLogo.url },
-  { name: "Kubernetes", alt: "Kubernetes", src: kubernetesLogo.url },
-  { name: "DataRobot", alt: "DataRobot", src: datarobotLogo.url },
-  { name: "OpenAI", alt: "OpenAI", src: openaiLogo.url },
+  { name: "AWS", alt: "Amazon Web Services", src: awsLogo },
+  { name: "Microsoft Azure", alt: "Microsoft Azure", src: azureLogo },
+  { name: "Google Cloud", alt: "Google Cloud", src: googleCloudLogo },
+  { name: "Databricks", alt: "Databricks", src: databricksLogo },
+  { name: "SAP", alt: "SAP", src: sapLogo },
+  { name: "Python", alt: "Python", src: pythonLogo },
+  { name: "Docker", alt: "Docker", src: dockerLogo },
+  { name: "Kubernetes", alt: "Kubernetes", src: kubernetesLogo },
+  { name: "DataRobot", alt: "DataRobot", src: datarobotLogo },
+  { name: "OpenAI", alt: "OpenAI", src: openaiLogo },
 ];
 
 export interface Solution {
   slug: string;
-
+  image: string;
   hero: {
     label: string;
     title: string;
@@ -68,6 +68,7 @@ export interface Solution {
 export const solutions: Record<string, Solution> = {
   "healthcare-life-sciences": {
     slug: "healthcare-life-sciences",
+    image: "/solutions-contents/18.png",
     hero: {
       label: "Healthcare and Life Sciences",
       title: "Transform care and discovery with enterprise AI",
@@ -75,7 +76,7 @@ export const solutions: Record<string, Solution> = {
         "Streamline operations, surface insights from clinical data, and accelerate research with AI solutions built for the complexities of healthcare and life sciences.",
       buttonText: "Request a demo",
       buttonHref: "/contact",
-      imageSrc: "https://picsum.photos/seed/healthcare-ai/1000/1000",
+      imageSrc: "/solutions-contents/19.png",
     },
     useCaseSectionHeaders: {
       label: "AI capabilities",
@@ -100,7 +101,7 @@ export const solutions: Record<string, Solution> = {
           "Answer common questions about policies and protocols",
           "Lighten physician workload with AI-optimized support tools",
         ],
-        image: "https://picsum.photos/seed/patient-support/1000/800",
+        image: "/solutions-contents/20.png",
       },
       {
         id: "back-office",
@@ -112,7 +113,7 @@ export const solutions: Record<string, Solution> = {
           "Extract and organize information from documents",
           "Reduce manual data entry and processing",
         ],
-        image: "https://picsum.photos/seed/back-office/1000/800",
+        image: "/solutions-contents/21.png",
       },
       {
         id: "bench-to-bedside",
@@ -124,7 +125,7 @@ export const solutions: Record<string, Solution> = {
           "Accelerate clinical research workflows",
           "Connect research insights with patient outcomes",
         ],
-        image: "https://picsum.photos/seed/bench-bedside/1000/800",
+        image: "/solutions-contents/13.png",
       },
     ],
 
@@ -178,6 +179,7 @@ export const solutions: Record<string, Solution> = {
 
   "system-integration": {
     slug: "system-integration",
+    image: "/solutions-contents/16.png",
     useCaseSectionHeaders: {
       label: "Integration capabilities",
       title: "Connect systems. Simplify operations.",
@@ -191,7 +193,7 @@ export const solutions: Record<string, Solution> = {
         "Stop stitching things together with spreadsheets and manual exports. Techneeq connects your ERPs, CRMs, legacy platforms, and custom applications into one reliable, real-time technology environment.",
       buttonText: "Talk to an integration expert",
       buttonHref: "/contact",
-      imageSrc: "https://picsum.photos/seed/system-integration-hero/1000/1000",
+      imageSrc: "/solutions-contents/15.png",
     },
     secondSection: {
       label: "Integration capabilities",
@@ -210,7 +212,7 @@ export const solutions: Record<string, Solution> = {
           "Connect ERPs, CRMs, and custom applications through secure APIs",
           "Standardize how data moves across your entire stack",
         ],
-        image: "https://picsum.photos/seed/unify-tech-stack/1000/800",
+        image: "/solutions-contents/28.png",
       },
       {
         id: "automate-operations",
@@ -222,7 +224,7 @@ export const solutions: Record<string, Solution> = {
           "Trigger downstream workflows the moment source data changes",
           "Cut manual processing time across finance, ops, and support teams",
         ],
-        image: "https://picsum.photos/seed/automate-operations/1000/800",
+        image: "/solutions-contents/29.png",
       },
       {
         id: "single-source-of-truth",
@@ -234,7 +236,7 @@ export const solutions: Record<string, Solution> = {
           "Keep downstream reports, dashboards, and apps in sync automatically",
           "Reduce data errors caused by manual duplication",
         ],
-        image: "https://picsum.photos/seed/single-source-of-truth/1000/800",
+        image: "/solutions-contents/30.png",
       },
     ],
 
@@ -286,7 +288,8 @@ export const solutions: Record<string, Solution> = {
     ],
   },
 
-  education: {
+  "education": {
+    image: "/solutions-contents/23.png",
     useCaseSectionHeaders: {
       label: "AI capabilities",
       title: "Personalize learning. Empower educators.",
@@ -307,7 +310,7 @@ export const solutions: Record<string, Solution> = {
         "From student-facing apps to the systems your staff rely on daily, Techneeq builds and connects the technology that helps schools, universities, and edtech teams operate more efficiently.",
       buttonText: "Talk to our team",
       buttonHref: "/contact",
-      imageSrc: "https://picsum.photos/seed/education-hero/1000/1000",
+      imageSrc: "/solutions-contents/22.png",
     },
 
     useCases: [
@@ -321,7 +324,7 @@ export const solutions: Record<string, Solution> = {
           "Build tools that answer common student questions instantly",
           "Personalize learning resources and communications at scale",
         ],
-        image: "https://picsum.photos/seed/student-experience/1000/800",
+        image: "/solutions-contents/24.png",
       },
       {
         id: "institutional-automation",
@@ -333,7 +336,7 @@ export const solutions: Record<string, Solution> = {
           "Extract and organize data from forms, applications, and records",
           "Cut manual data entry across departments",
         ],
-        image: "https://picsum.photos/seed/institutional-automation/1000/800",
+        image: "/solutions-contents/25.png",
       },
       {
         id: "institutional-data",
@@ -345,7 +348,7 @@ export const solutions: Record<string, Solution> = {
           "Track engagement, performance, and retention trends",
           "Support leadership decisions with reliable, up-to-date reporting",
         ],
-        image: "https://picsum.photos/seed/institutional-data/1000/800",
+        image: "/solutions-contents/26.png",
       },
     ],
 
@@ -399,6 +402,7 @@ export const solutions: Record<string, Solution> = {
 
   "financial-services": {
     slug: "financial-services",
+    image: "/solutions-contents/8.png",
     useCaseSectionHeaders: {
       label: "AI capabilities",
       title: "Accelerate decisions. Transform finance.",
@@ -412,7 +416,7 @@ export const solutions: Record<string, Solution> = {
         "Techneeq builds secure, reliable software and integrations that help financial teams move faster, cut manual work, and keep sensitive data protected at every step.",
       buttonText: "Talk to our team",
       buttonHref: "/contact",
-      imageSrc: "https://picsum.photos/seed/financial-services-hero/1000/1000",
+      imageSrc: "/solutions-contents/7.png",
     },
     secondSection: {
       label: "AI capabilities",
@@ -432,7 +436,7 @@ export const solutions: Record<string, Solution> = {
           "Automate routine client communications and updates",
         ],
         image:
-          "https://picsum.photos/seed/financial-client-experience/1000/800",
+          "/solutions-contents/9.png",
       },
       {
         id: "financial-ops-automation",
@@ -444,7 +448,7 @@ export const solutions: Record<string, Solution> = {
           "Extract and classify data from statements, invoices, and forms",
           "Cut manual processing time across back-office operations",
         ],
-        image: "https://picsum.photos/seed/financial-ops-automation/1000/800",
+        image: "/solutions-contents/10.png",
       },
       {
         id: "secure-integration",
@@ -457,7 +461,7 @@ export const solutions: Record<string, Solution> = {
           "Keep sensitive financial data protected end-to-end",
         ],
         image:
-          "https://picsum.photos/seed/financial-secure-integration/1000/800",
+          "/solutions-contents/11.png",
       },
     ],
 

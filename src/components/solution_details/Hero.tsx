@@ -69,7 +69,6 @@ export default function Hero({
               sm:mt-8
               sm:px-6
               sm:py-3.5
-              max-md:self-center
               md:self-start
             "
           >
@@ -106,6 +105,7 @@ export default function Hero({
               md:aspect-[5/4]
               lg:aspect-[5/4]
               lg:rounded-[24px]
+              shadow-md
             "
           >
             <img

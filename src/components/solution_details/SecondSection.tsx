@@ -14,11 +14,10 @@ interface UseCase {
   image: string;
 }
 
-export default function SecondSection({useCases,capabilities,secondSection,useCaseSectionHeaders}:{useCases: UseCase[],capabilities: any,secondSection: any;useCaseSectionHeaders: any}) {
-  const containerRef = useRef<HTMLDivElement>(null);
+export default function SecondSection({useCases,capabilities,useCaseSectionHeaders}:{useCases: UseCase[],capabilities: any,secondSection: any;useCaseSectionHeaders: any}) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const parentRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [, setActiveIndex] = useState(0);
 
   useDarkSection(parentRef);
   const { scrollYProgress } = useScroll({
@@ -35,260 +34,9 @@ export default function SecondSection({useCases,capabilities,secondSection,useCa
     setActiveIndex(index);
   });
 
-  const activeCapability = capabilities[activeIndex];
 
   return (
     <div ref={parentRef}>
-      {/* =====================================================
-          FIRST SECTION — AI CAPABILITIES
-      ====================================================== */}
-      <Section
-        ref={containerRef}
-        containerClassName="max-w-none"
-      >
-        {/* =========================
-            DESKTOP / LARGE SCREENS
-        ========================= */}
-        <div className="hidden lg:block">
-          {/* HEADER */}
-          <div className="py-5">
-            <Section.Header
-              label={secondSection.label}
-              title={secondSection.title}
-              description={secondSection.description}
-              titleclassName="max-w-3xl"
-              wantStrip={false}
-            />
-          </div>
-
-          {/* SCROLL AREA */}
-          <div
-            ref={sectionRef}
-            className="relative h-[300vh]"
-          >
-            <div className="sticky top-0 flex min-h-screen flex-col justify-center pb-20">
-              {/* =========================
-                  CAPABILITY NAV
-              ========================= */}
-              <div className="relative border-y border-foreground/15">
-                <div className="grid grid-cols-3">
-                  {capabilities.map((capability: any, index: number) => (
-                    <div
-                      key={capability.id}
-                      className="relative"
-                    >
-                      <div
-                        className={`
-                          flex h-20 items-center gap-4
-                          transition-colors duration-300
-                          ${index === 0
-                            ? "justify-start"
-                            : index === capabilities.length - 1
-                              ? "justify-end"
-                              : "justify-center"
-                          }
-                          ${activeIndex === index
-                            ? "text-foreground"
-                            : "text-foreground/40"
-                          }
-                        `}
-                      >
-                        <span className="text-xs">
-                          {capability.id}
-                        </span>
-
-                        <span className="text-sm lg:text-base">
-                          {capability.title}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* BASE LINE */}
-                <div className="absolute bottom-0 left-0 h-px w-full bg-foreground/15" />
-
-                {/* PROGRESS */}
-                <motion.div
-                  className="absolute bottom-0 left-0 h-px bg-cyan-400"
-                  animate={{
-                    width: `${(activeIndex / (capabilities.length - 1)) * 100}%`,
-                  }}
-                  transition={{
-                    duration: 0.45,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                />
-
-                {/* DOT */}
-                <motion.div
-                  className="
-                    absolute
-                    -bottom-1
-                    z-10
-                    h-2
-                    w-2
-                    -translate-x-1/2
-                    rounded-full
-                    bg-cyan-400
-                  "
-                  animate={{
-                    // Calculates position based on the highest possible index
-                    left: `${(activeIndex / (capabilities.length - 1)) * 100}%`,
-                  }}
-                  transition={{
-                    duration: 0.45,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                />
-              </div>
-
-              {/* =========================
-                  ACTIVE CONTENT
-              ========================= */}
-              <div className="grid min-h-[55vh] grid-cols-2 gap-16 pt-8 lg:gap-24">
-                {/* =========================
-                    IMAGE
-                ========================= */}
-                <div className="relative overflow-hidden rounded-2xl bg-secondary-background">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={activeCapability.id}
-                      className="absolute inset-0 flex items-center justify-center"
-                      initial={{
-                        opacity: 0,
-                        scale: 1.06,
-                      }}
-                      animate={{
-                        opacity: 1,
-                        scale: 1,
-                      }}
-                      exit={{
-                        opacity: 0,
-                        scale: 0.98,
-                      }}
-                      transition={{
-                        duration: 0.6,
-                        ease: [0.22, 1, 0.36, 1],
-                      }}
-                    >
-                      <img
-                        src={activeCapability.image}
-                        alt={activeCapability.title}
-                        className="
-                          h-full
-                          w-full
-                          object-cover
-                        "
-                      />
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
-
-                {/* =========================
-                    TEXT
-                ========================= */}
-                <div className="flex items-center">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={activeCapability.id}
-                      initial={{
-                        opacity: 0,
-                        y: 30,
-                      }}
-                      animate={{
-                        opacity: 1,
-                        y: 0,
-                      }}
-                      exit={{
-                        opacity: 0,
-                        y: -20,
-                      }}
-                      transition={{
-                        duration: 0.45,
-                        ease: [0.22, 1, 0.36, 1],
-                      }}
-                    >
-                      <span className="mb-8 block text-xs tracking-[0.2em] text-foreground/35">
-                        {activeCapability.id}
-                      </span>
-
-                      <h3
-                        className="
-                          max-w-xl
-                          font-display
-                          text-2xl
-                          font-normal
-                          leading-[0.95]
-                          tracking-[-0.045em]
-                          md:text-4xl
-                        "
-                      >
-                        {activeCapability.title}
-                      </h3>
-
-                      <div className="mt-8 flex max-w-lg gap-4">
-
-                        <p className="text-xs leading-7 text-muted-foreground md:text-sm">
-                          {activeCapability.description}
-                        </p>
-                      </div>
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* =========================
-            MOBILE / TABLET
-        ========================= */}
-        <div className="block lg:hidden">
-                      <Section.Header
-              label={secondSection.label}
-              title={secondSection.title}
-              description={secondSection.description}
-              titleclassName="max-w-3xl"
-              wantStrip={false}
-            />
-
-          <Section.Body className="mt-10 md:mt-12">
-            <div className="grid gap-6 sm:gap-8 md:gap-10">
-              {capabilities.map((capability: any) => (
-                <article
-                  key={capability.id}
-                  className="overflow-hidden"
-                >
-                  {/* IMAGE */}
-                  <div className="aspect-square overflow-hidden h-80 w-full rounded-2xl bg-secondary-background">
-                    <img
-                      src={capability.image}
-                      alt={capability.title}
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-
-                  {/* CONTENT */}
-                  <div className="py-6">
-                    <span className="mb-5 block text-xs tracking-[0.2em] text-foreground/35">
-                      {capability.id}
-                    </span>
-
-                    <h3 className="font-display text-2xl font-normal leading-[0.95] tracking-[-0.04em] sm:text-3xl">
-                      {capability.title}
-                    </h3>
-
-                    <p className="mt-5 max-w-sm text-sm leading-6 text-muted-foreground">
-                      {capability.description}
-                    </p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </Section.Body>
-        </div>
-      </Section>
 
       {/* =====================================================
           SECOND SECTION — HEALTHCARE USE CASES
@@ -363,6 +111,7 @@ function UseCasesSection({useCases,useCaseSectionHeaders}:{useCases:UseCase[];us
               w-full
               overflow-hidden
               xl:aspect-[16/10]
+              shadow-md
             "
                 >
 
@@ -652,6 +401,7 @@ function UseCasesSection({useCases,useCaseSectionHeaders}:{useCases:UseCase[];us
                         opacity-[0.08]
                         [background-image:linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)]
                         [background-size:28px_28px]
+                        shadow-md
                       "
                           />
 

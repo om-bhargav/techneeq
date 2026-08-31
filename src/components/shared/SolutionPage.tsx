@@ -22,9 +22,10 @@ export default function SolutionDetails() {
     hero,
     useCases,
     capabilities,
-    points,
+    points, 
     secondSection,
-    useCaseSectionHeaders
+    useCaseSectionHeaders,
+    image
   } = solution;
 
   return (
@@ -39,8 +40,9 @@ export default function SolutionDetails() {
         useCaseSectionHeaders={useCaseSectionHeaders}
         capabilities={capabilities}
       />
-
+ 
       <ThirdSection
+        image={image}
         points={points}
       />
 

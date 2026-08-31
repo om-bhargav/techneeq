@@ -10,12 +10,12 @@ function LogoCard({ partner }: { partner: Partner }) {
   return (
     <div
       title={partner.alt}
-      className="group flex h-20 w-44 shrink-0 items-center justify-center rounded-2xl border border-border/60 bg-foreground/[0.04] px-6 shadow-[inset_0_1px_0_0_color-mix(in_oklab,var(--foreground)_10%,transparent)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-foreground/[0.07]"
+      className="group flex h-20 w-44 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-border/60 bg-foreground/4 px-6 shadow-[inset_0_1px_0_0_color-mix(in_oklab,var(--foreground)_10%,transparent)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-foreground/[0.07]"
     >
       <img
         src={partner.src}
         alt={partner.alt}
-        className="h-7 w-auto max-w-full object-contain opacity-60 transition-opacity dark:invert duration-300 group-hover:opacity-100"
+        className="max-h-10 shadow-none! rounded-none! max-w-full w-auto object-contain opacity-60 transition-opacity duration-300 dark:invert group-hover:opacity-100"
         loading="lazy"
         decoding="async"
       />
@@ -29,7 +29,7 @@ export function ToolsPartnersStrip() {
       aria-label="Tools, partners and technology"
       className="border-t border-border bg-background/50 max-md:max-w-screen px-6 py-12 md:py-14"
     >
-      <div className="mx-auto w-full max-w-[1280px]">
+      <div className="mx-auto w-full max-w-7xl">
         <div className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
           <h2 className="tech-label shrink-0">Tools, Partner &amp; Technology</h2>
 

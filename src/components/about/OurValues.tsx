@@ -47,7 +47,7 @@ export default function Values() {
   return (
     <Section
       ref={containerRef}
-      containerClassName="max-w-none"
+      containerClassName=""
     >
       {/* =====================================================
           DESKTOP
