@@ -39,7 +39,7 @@ export default function BusinessOutcome() {
           />
 
           {/* Mobile Timeline */}
-          <div ref={mobileTimelineRef} className="relative md:hidden">
+          <div ref={mobileTimelineRef} className="relative mt-5 md:hidden">
             {/* Background bar */}
             <div className="absolute bottom-0 left-2 top-0 w-px bg-foreground/10" />
 
@@ -102,7 +102,7 @@ export default function BusinessOutcome() {
           </div>
 
           {/* Desktop Timeline */}
-          <div className="relative mt-20 hidden md:block md:mt-32">
+          <div className="relative hidden md:block md:mt-16">
             
             {/* Progress line (Pinned to the top instead of top-1/2) */}
             <div className="absolute left-0 right-0 top-3 h-1 -translate-y-1/2 bg-foreground/10">

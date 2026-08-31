@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { X } from "lucide-react";
+import { ChevronDown, ChevronUp, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { SITE_NAME } from "@/config";
 import { LetsTalkButton } from "../navbar/LetsTalkButton";
+import { contactPage } from "@/data/contact";
 const menuItems = [
   {
     number: "01",
@@ -15,6 +16,24 @@ const menuItems = [
     number: "02",
     label: "Industries",
     href: "/#industries",
+    sublinks: [
+      {
+        label: "Education",
+        slug: "education",
+      },
+      {
+        label: "Financial Services",
+        slug: "financial-services",
+      },
+      {
+        label: "System Integration",
+        slug: "system-integration",
+      },
+      {
+        label: "Healthcare & Life Sciences",
+        slug: "healthcare-life-sciences",
+      },
+    ],
   },
   {
     number: "03",
@@ -28,43 +47,58 @@ const menuItems = [
   },
 ];
 
-
 const ease = [0.22, 1, 0.36, 1] as const;
+type SubLink = {
+  label: string;
+  slug: string;
+};
 
 function MenuItem({
   number,
   label,
   href,
   index,
-  onClose
+  onClose,
+  sublinks,
 }: {
   number: string;
   label: string;
   href: string;
   index: number;
   onClose: () => void;
+  sublinks?: SubLink[];
 }) {
   const [hovered, setHovered] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    // 1. Always close the menu when a link is clicked
+  const hasSublinks = !!sublinks?.length;
+
+  const handleClick = (
+    e: React.MouseEvent<HTMLAnchorElement>
+  ) => {
+    // Parent with sublinks should only toggle
+    if (hasSublinks) {
+      e.preventDefault();
+      setExpanded((prev) => !prev);
+      return;
+    }
+
+    // Always close the menu when a normal link is clicked
     if (onClose) onClose();
 
-    // 2. Check if the link contains a hash
+    // Handle hash links
     if (href.includes("#")) {
       const hash = href.split("#")[1];
       const element = document.getElementById(hash);
 
-      // 3. If the element exists on the CURRENT page, handle smooth scroll
       if (element) {
         e.preventDefault();
         element.scrollIntoView({ behavior: "smooth" });
         window.history.pushState(null, "", href);
       }
-      // If element is null (e.g., navigating from /about), we do nothing else here. 
-      // React Router takes over and routes you to the home page.
     }
   };
+
   return (
     <motion.div
       initial={{ opacity: 0, x: 40 }}
@@ -75,9 +109,10 @@ function MenuItem({
         ease,
       }}
     >
+      {/* Parent item */}
       <Link
         to={href}
-        onClick={handleClick} // <-- Added the click handler here
+        onClick={handleClick}
         className="group flex items-start"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
@@ -94,8 +129,8 @@ function MenuItem({
           {number}
         </motion.span>
 
-        {/* Text */}
-        <span className="relative inline-block py-2 pr-4">
+        {/* Text + Chevron */}
+        <span className="relative inline-flex items-center py-2 pr-4">
           {/* Normal text */}
           <motion.span
             className="relative block whitespace-nowrap font-display text-5xl leading-none tracking-[-0.06em] sm:text-6xl"
@@ -127,7 +162,9 @@ function MenuItem({
           {/* Hover / italic text */}
           <motion.span
             className="
-              pointer-events-none absolute left-0 top-2 whitespace-nowrap font-sans text-5xl italic leading-none tracking-[-0.06em] sm:text-6xl
+              pointer-events-none absolute left-0 top-2
+              whitespace-nowrap font-sans text-5xl italic
+              leading-none tracking-[-0.06em] sm:text-6xl
             "
             initial={{ x: -18, opacity: 0 }}
             animate={{
@@ -157,23 +194,81 @@ function MenuItem({
             ))}
           </motion.span>
 
+          {/* Chevron for parent with sublinks */}
+          {hasSublinks && (
+            <motion.span
+              className="ml-4 flex items-center"
+              animate={{
+                x: hovered ? 5 : 0,
+              }}
+              transition={{ duration: 0.4, ease }}
+            >
+              {expanded ? (
+                <ChevronUp className="h-7 w-7" strokeWidth={1.5} />
+              ) : (
+                <ChevronDown className="h-7 w-7" strokeWidth={1.5} />
+              )}
+            </motion.span>
+          )}
+
           {/* Underline */}
           <motion.span
             className="absolute bottom-0 left-0 h-px bg-foreground"
-            initial={{ scaleX: 0, transformOrigin: "left" }}
-            animate={{ scaleX: hovered ? 1 : 0 }}
-            transition={{ duration: 0.5, ease }}
+            initial={{
+              scaleX: 0,
+              transformOrigin: "left",
+            }}
+            animate={{
+              scaleX: hovered ? 1 : 0,
+            }}
+            transition={{
+              duration: 0.5,
+              ease,
+            }}
           />
         </span>
       </Link>
+
+      {/* Sublinks */}
+      {hasSublinks && (
+        <motion.div
+          initial={false}
+          animate={{
+            height: expanded ? "auto" : 0,
+            opacity: expanded ? 1 : 0,
+          }}
+          className="ml-12 overflow-hidden"
+        >
+          <div className="flex flex-col gap-2 pb-4 pt-2">
+            {sublinks.map((sublink) => (
+              <Link
+                key={sublink.slug}
+                to={`/industries/${sublink.slug}`}
+                onClick={onClose}
+                className="
+                  group/sub flex items-center gap-3
+                  text-lg text-muted-foreground
+                  transition-colors hover:text-foreground
+                "
+              >
+                <span className="h-px w-4 bg-muted-foreground transition-all group-hover/sub:w-7 group-hover/sub:bg-foreground" />
+
+                <span>{sublink.label}</span>
+              </Link>
+            ))}
+          </div>
+        </motion.div>
+      )}
     </motion.div>
   );
 }
+
 function MenuPanel({
   onClose,
 }: {
   onClose: () => void;
 }) {
+  const { EMAIL, PHONE, INSTAGRAM, LINKEDIN } = contactPage;
   return (
     <>
       {/* Background overlay */}
@@ -244,8 +339,7 @@ function MenuPanel({
         </div>
 
         {/* Navigation */}
-
-        <nav className="flex flex-1 flex-col justify-between max-md:py-10 md:justify-center px-6 md:px-10">
+        <nav className="flex min-h-0 flex-1 flex-col overflow-y-auto px-6 max-md:py-10 md:px-10 md:justify-center">
           <div className="flex flex-col">
             {menuItems.map((item, index) => (
               <MenuItem
@@ -255,8 +349,9 @@ function MenuPanel({
                 onClose={onClose}
               />
             ))}
+
+            <LetsTalkButton className="justify-center md:hidden mt-5" />
           </div>
-            <LetsTalkButton className="md:hidden justify-center"/>
         </nav>
 
         {/* Footer */}
@@ -278,30 +373,30 @@ function MenuPanel({
         >
           <div className="flex flex-col gap-2">
             <a
-              href="mailto:hello@techneeq.com"
+              href={`mailto:${EMAIL}`}
               className="text-muted-foreground transition-colors hover:text-foreground"
             >
-              ↗ hello@techneeq.com
+              ↗ {EMAIL}
             </a>
 
             <a
-              href="tel:+910000000000"
+              href={`tel:${PHONE}`}
               className="text-muted-foreground transition-colors hover:text-foreground"
             >
-              ↗ +91 00000 00000
+              ↗ {PHONE}
             </a>
           </div>
 
           <div className="flex flex-col items-end gap-2">
             <a
-              href="#"
+              href={INSTAGRAM}
               className="text-muted-foreground transition-colors hover:text-foreground"
             >
               ↗ Instagram
             </a>
 
             <a
-              href="#"
+              href={LINKEDIN}
               className="text-muted-foreground transition-colors hover:text-foreground"
             >
               ↗ LinkedIn
@@ -362,7 +457,7 @@ export default function Navbar() {
           </Link>
 
           <div className="flex items-center gap-3">
-            <LetsTalkButton className="max-md:hidden"/>
+            <LetsTalkButton className="max-md:hidden" />
             {/* Menu */}
             <MenuButton
               open={menuOpen}

@@ -1,24 +1,32 @@
 import { Mail,MapPin,Clock3,Phone } from "lucide-react";
+const EMAIL = "info@techneeq.com"
+const ADDRESS = "1155 East Putnam Avenue (Suite 2A), Greenwich, CT 06830"
+const PHONE = "203-990-0199"
 export const contactPage = {
+  EMAIL: EMAIL,
+  ADDRESS: ADDRESS,
+  PHONE: PHONE,
+  INSTAGRAM: "#",
+  LINKEDIN: "#",
   contactDetails: [
     {
       icon: MapPin,
       label: "Headquarters",
-      value: "1155 East Putnam Avenue (Suite 2A), Greenwich, CT 06830",
+      value: ADDRESS,
       description:
         "Serving enterprise clients across the United States, the United Kingdom, and the European Union.",
     },
     {
       icon: Mail,
       label: "Email",
-      value: "info@techneeq.com",
-      href: "mailto:info@techneeq.com",
+      value: EMAIL,
+      href: `mailto:${EMAIL}`,
     },
     {
       icon: Phone,
       label: "Phone",
-      value: "203-990-0199",
-      href: "tel:+12039900199",
+      value: PHONE,
+      href: `tel:+${PHONE}`,
     },
     {
       icon: Clock3,

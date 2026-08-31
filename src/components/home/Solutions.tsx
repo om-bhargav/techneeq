@@ -2,7 +2,6 @@ import { ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
 import SectionHeader from "../global/section/SectionHeader";
 import Section from "../global/section/Section";
-import { Link } from "react-router-dom";
 import { solutions } from "@/data/home";
 
 export default function Solutions() {
@@ -191,8 +190,8 @@ export default function Solutions() {
 
                   {/* Arrow */}
 
-                <Link
-                  to={`/solutions/${solution.slug}`}
+                <span
+                  // to={`/solutions/${solution.slug}`}
                   className="
                     absolute
                     right-6
@@ -214,7 +213,7 @@ export default function Solutions() {
                   "
                 >
                   <ArrowUpRight className="size-4" />
-                </Link>
+                </span>
 
                 </div>
               </motion.article>

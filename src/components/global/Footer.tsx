@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-
+import {contactPage} from "@/data/contact";
 import PillButton from "@/components/elements/PillButton";
 import { SITE_NAME } from "@/config";
 
@@ -21,6 +21,7 @@ const footerLinks = {
 };
 
 export default function Footer() {
+  const {EMAIL,PHONE} = contactPage;
   return (
     <footer className="bg-foreground px-6 pb-6 pt-20 text-background md:px-10 md:pb-10 md:pt-28 lg:px-14 lg:pt-36">
       <div className="mx-auto max-w-7xl">
@@ -158,7 +159,7 @@ export default function Footer() {
 
             <div className="mt-5 flex flex-col items-start gap-3">
               <a
-                href="mailto:hello@techneeq.com"
+                href={`mailto:${EMAIL}`}
                 className="
                   text-sm
                   text-background/70
@@ -167,11 +168,11 @@ export default function Footer() {
                   hover:text-background
                 "
               >
-                hello@techneeq.com
+                {EMAIL}
               </a>
 
               <a
-                href="tel:+910000000000"
+                href={`tel:${PHONE}`}
                 className="
                   text-sm
                   text-background/70
@@ -180,7 +181,7 @@ export default function Footer() {
                   hover:text-background
                 "
               >
-                +91 00000 00000
+                {PHONE}
               </a>
             </div>
           </div>

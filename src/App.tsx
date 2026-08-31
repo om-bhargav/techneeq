@@ -19,10 +19,11 @@ function App() {
 
             <Route path="/expertise" element={<Expertise />} />
 
-              <Route path="/solutions">
-                <Route index element={<Solutions />} />
-                <Route path=":slug" element={<SolutionDetails />} />
-              </Route>
+            <Route path="/solutions" element={<Solutions />} />
+            <Route path="/industries">
+              <Route index />
+              <Route path=":slug" element={<SolutionDetails />} />
+            </Route>
 
             <Route path="/about" element={<About />} />
 

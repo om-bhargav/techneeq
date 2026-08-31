@@ -12,6 +12,7 @@ export default function SmoothScroll({
     const lenisInstance = new Lenis({
       lerp: 0.075,
       smoothWheel: true,
+      allowNestedScroll: true
       // We keep touch properties completely removed here.
       // Letting mobile devices handle touch scrolling natively is critical
       // when your page is also busy running Framer Motion calculations.
