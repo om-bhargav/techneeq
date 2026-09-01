@@ -441,7 +441,7 @@ export default function Navbar() {
         <div
           className={cn(
             "mx-auto flex h-[88px] max-w-7xl items-center justify-between",
-            "px-4 3xl:px-0"
+            "px-6 md:px-0"
           )}
         >
           {/* Logo */}

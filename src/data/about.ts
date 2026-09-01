@@ -7,7 +7,7 @@ export const aboutPage = {
       "Techneeq is an enterprise data engineering, AI consulting, and custom software firm helping organizations across the United States, the UK, and the European Union replace guesswork with engineering.",
 
     image: {
-      src: "/about.png",
+      src: "/about/1.png",
       alt: "Techneeq team",
     },
 
@@ -93,26 +93,26 @@ export const aboutPage = {
         id: "01",
         title: "Precision over hype",
         description: "We say no to AI projects that won't actually move a business metric.",
-        image: "https://picsum.photos/seed/precision/1000/1000",
+        image: "/about/2.png",
       },
       {
         id: "02",
         title: "Transparency",
         description: "Clear scope, clear timelines, no surprise change orders.",
-        image: "https://picsum.photos/seed/transparency/1000/1000",
+        image: "/about/3.png",
       },
       {
         id: "03",
         title: "Craftsmanship",
         description: "Production-grade code and enterprise architecture, every time.",
-        image: "https://picsum.photos/seed/craftsmanship/1000/1000",
+        image: "/about/4.png",
       },
       {
         id: "04",
         title: "Long-term thinking",
         description:
           "We build systems engineered to be maintained, not just demoed.",
-        image: "https://picsum.photos/seed/longterm/1000/1000",
+        image: "/about/5.png",
       },
     ],
   },

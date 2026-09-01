@@ -23,28 +23,35 @@ export const slides = [
     title: "23 years engineering the data & AI systems enterprises run on.",
     description:
       "Since 2002, Techneeq has delivered enterprise data engineering, analytics, and AI consulting to finance, healthcare, insurance, and manufacturing organizations across the United States, the United Kingdom, and the European Union.",
-    image: "https://picsum.photos/seed/data-cloud/1920/1080",
+    image: "/hero/1.png",
   },
   {
     id: 2,
     title: "Enterprise data engineering, built for decisions — not dashboards.",
     description:
       "We design and build the data infrastructure, integration pipelines, and analytics platforms that give leadership teams a single, trusted source of truth.",
-    image: "https://picsum.photos/seed/data-pipeline/1920/1080",
+    image: "/hero/2.png",
   },
   {
     id: 3,
     title: "Data pipelines engineered to hold under enterprise load.",
     description:
       "End-to-end data engineering and DataOps — system integration, cloud migration, and automation — built to eliminate downtime and reporting errors at scale.",
-    image: "https://picsum.photos/seed/business-data/1920/1080",
+    image: "/hero/3.png",
   },
   {
     id: 4,
     title: "AI and custom software, engineered around your P&L.",
     description:
       "From predictive analytics to production-grade machine learning, every AI consulting engagement is designed around a measurable business return — not a proof of concept that never ships.",
-    image: "https://picsum.photos/seed/analytics/1920/1080",
+    image: "/hero/4.png",
+  },
+  {
+    id: 5,
+    title: "AI and custom software, engineered around your P&L.",
+    description:
+      "From predictive analytics to production-grade machine learning, every AI consulting engagement is designed around a measurable business return — not a proof of concept that never ships.",
+    image: "/hero/5.png",
   },
 ];
 
@@ -162,7 +169,6 @@ export const services = [
   },
 ];
 
-
 export const solutions = [
   {
     id: "01",
@@ -277,8 +283,6 @@ export const industries = [
   },
 ];
 
-
-
 export const transformations = [
   {
     id: "01",
@@ -328,7 +332,6 @@ export const stages = [
     description: "The thing that changes",
   },
 ];
-
 
 export const expertise = [
   {

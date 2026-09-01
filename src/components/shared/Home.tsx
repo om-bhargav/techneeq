@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 
 import Hero from "@/components/home/Hero";
+import { ToolsPartnersStrip } from "../solution_details/ToolPartnerStrip";
 
 const Intelligence = lazy(
   () => import("@/components/home/Intelligence")
@@ -40,7 +41,10 @@ const CTA = lazy(
 function Home() {
   return (
     <div className="grid max-md:gap-10 md:gap-20">
+      <div className="grid">
       <Hero />
+      <ToolsPartnersStrip/>
+      </div>
       <Suspense fallback={null}>
         <Intelligence />
         <Services />
