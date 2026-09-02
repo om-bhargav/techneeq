@@ -3,29 +3,45 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+import { preloadAssets } from "@/lib/assets";
+
 export default function Loader() {
   const [progress, setProgress] = useState(0);
+  const [assetsReady, setAssetsReady] = useState(false);
   const [phase, setPhase] = useState("loading"); // 'loading' -> 't-out' -> 'wiping'
 
-  // Handle the loading progression and sequence the animations
+  // Drive the counter off real asset loading rather than a timer.
   useEffect(() => {
-    if (progress < 100) {
-      // Chunked, delayed increments for a readable mechanical feel on the numbers
-      const delay = Math.random() * 200 + 50;
-      const timer = setTimeout(() => {
-        setProgress((prev) => {
-          const jump = Math.floor(Math.random() * 3) + 1;
-          return prev + jump >= 100 ? 100 : prev + jump;
-        });
-      }, delay);
+    let cancelled = false;
 
-      return () => clearTimeout(timer);
-    } else if (progress === 100 && phase === "loading") {
-      setPhase("t-out");
-      // Wait for the 'T' zoom & fade to finish before triggering the page wipe
-      setTimeout(() => setPhase("wiping"), 900);
-    }
-  }, [progress, phase]);
+    preloadAssets((percent) => {
+      if (!cancelled) setProgress(percent);
+    }).then(() => {
+      if (cancelled) return;
+      setProgress(100);
+      setAssetsReady(true);
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // Hold on 100% for a beat, then run the reveal sequence.
+  useEffect(() => {
+    if (!assetsReady || phase !== "loading") return;
+
+    const hold = setTimeout(() => setPhase("t-out"), 500);
+    return () => clearTimeout(hold);
+  }, [assetsReady, phase]);
+
+  useEffect(() => {
+    if (phase !== "t-out") return;
+
+    // Wait for the 'T' zoom & fade to finish before triggering the page wipe
+    const wipe = setTimeout(() => setPhase("wiping"), 900);
+    return () => clearTimeout(wipe);
+  }, [phase]);
 
   const digits = String(progress).padStart(3, "0").split("");
 

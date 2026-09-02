@@ -9,6 +9,8 @@ import PageLayout from "./components/global/PageLayout";
 import Solutions from "./components/shared/Solutions";
 import SolutionDetails from "./components/shared/SolutionPage";
 import NotFound from "./components/shared/NotFound";
+import Home2 from "./components/shared/Home2";
+import Home3 from "./components/shared/Home3";
 function App() {
   return (
     <BrowserRouter>
@@ -17,6 +19,8 @@ function App() {
         <Route element={<PageTransition />}>
           <Route element={<PageLayout />}>
             <Route path="/" element={<Home />} />
+            <Route path="/home-2" element={<Home2 />} />
+            <Route path="/home-3" element={<Home3 />} />
 
             <Route path="/expertise" element={<Expertise />} />
 
