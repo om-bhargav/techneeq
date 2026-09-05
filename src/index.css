@@ -7,35 +7,42 @@
 
 /* =========================================================
    TECHNEEQ DESIGN SYSTEM
-   Cloud Dancer × Transformative Teal
+   Azure Mist × Transformative Teal
    Vite + React + Tailwind CSS v4 + shadcn/ui
    ========================================================= */
 
 :root {
   /* ---------------------------------------------------------
-     BRAND COLORS
+     CORE PALETTE (source colors)
      --------------------------------------------------------- */
 
-  /* Cloud Dancer family */
-  --cloud: #F0EEE9;
-  --cloud-soft: #F7F6F2;
-  --cloud-deep: #E6E3DC;
+  --stormy-teal: #006D6F;
+  --teal: #008080;
+  --light-sea-green: #20B2AA;
+  --aquamarine: #7FFFD4;
+  --azure-mist: #F0FFFF;
 
-  /* Transformative Teal family */
-  --teal-950: #0B292A;
-  --teal-900: #103738;
-  --teal-800: #164444;
-  --teal-700: #1C4D4D;
-  --teal-600: #287373;
-  --teal-500: #3F8986;
-  --teal-400: #5FA6A0;
-  --teal-300: #8BBDB8;
-  --teal-200: #B8D5D1;
-  --teal-100: #D8E8E5;
+  /* Azure Mist family (surfaces) */
+  --cloud: var(--azure-mist);
+  --cloud-soft: #F8FFFF;
+  --cloud-deep: #DCF2F2;
 
-  /* Typography */
-  --ink: #111918;
-  --ink-soft: #596563;
+  /* Teal ramp — anchored on the core palette
+     700 = stormy-teal · 600 = teal · 400 = light-sea-green · 200 = aquamarine */
+  --teal-950: #012526;
+  --teal-900: #01393A;
+  --teal-800: #014E4F;
+  --teal-700: var(--stormy-teal);
+  --teal-600: var(--teal);
+  --teal-500: #109A93;
+  --teal-400: var(--light-sea-green);
+  --teal-300: #4FD3BF;
+  --teal-200: var(--aquamarine);
+  --teal-100: #C4FFEA;
+
+  /* Typography — teal-tinted near-black instead of neutral black */
+  --ink: #042625;
+  --ink-soft: #47706E;
 
   /* ---------------------------------------------------------
      GENERAL UI
@@ -45,30 +52,30 @@
   --text-h: var(--ink);
   --bg: var(--cloud);
 
-  --border: #D9D7CF;
-  --input: #D9D7CF;
+  --border: #C6E6E5;
+  --input: #C6E6E5;
 
   --code-bg: var(--cloud-deep);
 
   --accent: var(--teal-700);
-  --accent-bg: rgba(28, 77, 77, 0.08);
-  --accent-border: rgba(28, 77, 77, 0.24);
+  --accent-bg: rgba(0, 109, 111, 0.08);
+  --accent-border: rgba(0, 109, 111, 0.24);
 
-  --social-bg: rgba(230, 227, 220, 0.55);
+  --social-bg: rgba(220, 242, 242, 0.55);
 
   /* ---------------------------------------------------------
      SHADOWS
      --------------------------------------------------------- */
 
   --shadow:
-    rgba(17, 25, 24, 0.08) 0 10px 15px -3px,
-    rgba(17, 25, 24, 0.04) 0 4px 6px -2px;
+    rgba(1, 37, 38, 0.10) 0 10px 15px -3px,
+    rgba(1, 37, 38, 0.05) 0 4px 6px -2px;
 
   /* ---------------------------------------------------------
      SHADCN UI
      --------------------------------------------------------- */
 
-  --secondary-background: oklch(98.212% 0.00011 271.152);
+  --secondary-background: var(--cloud-soft);
   --background: var(--cloud);
   --foreground: var(--ink);
 
@@ -88,7 +95,7 @@
 
   /* Muted */
   --muted: var(--cloud-deep);
-  --muted-foreground: #69716E;
+  --muted-foreground: #4A716F;
 
   /* Accent */
   --accent: var(--teal-100);
@@ -172,6 +179,12 @@
   /* ---------------------------------------------------------
      Techneeq Brand Colors
      --------------------------------------------------------- */
+
+  --color-stormy-teal: var(--stormy-teal);
+  --color-teal: var(--teal);
+  --color-light-sea-green: var(--light-sea-green);
+  --color-aquamarine: var(--aquamarine);
+  --color-azure-mist: var(--azure-mist);
 
   --color-cloud: var(--cloud);
   --color-cloud-soft: var(--cloud-soft);
@@ -260,7 +273,7 @@
 .dark {
   --background: var(--teal-950);
   --foreground: var(--cloud);
-  --secondary-background: oklch(0.145 0 0);
+  --secondary-background: var(--teal-950);
   --card: var(--teal-900);
   --card-foreground: var(--cloud);
 
@@ -274,13 +287,13 @@
   --secondary-foreground: var(--cloud);
 
   --muted: var(--teal-800);
-  --muted-foreground: #A5B5B2;
+  --muted-foreground: #9CCFCA;
 
   --accent: var(--teal-800);
   --accent-foreground: var(--teal-200);
 
-  --border: rgba(240, 238, 233, 0.12);
-  --input: rgba(240, 238, 233, 0.16);
+  --border: rgba(240, 255, 255, 0.14);
+  --input: rgba(240, 255, 255, 0.18);
 
   --ring: var(--teal-400);
 
@@ -293,7 +306,7 @@
   --sidebar-accent: var(--teal-800);
   --sidebar-accent-foreground: var(--teal-200);
 
-  --sidebar-border: rgba(240, 238, 233, 0.12);
+  --sidebar-border: rgba(240, 255, 255, 0.14);
   --sidebar-ring: var(--teal-400);
 }
 
@@ -348,7 +361,7 @@
   background:
     radial-gradient(
       circle at 20% 20%,
-      rgba(95, 166, 160, 0.18),
+      rgba(32, 178, 170, 0.22),
       transparent 35%
     ),
     linear-gradient(
@@ -367,12 +380,12 @@
   background:
     radial-gradient(
       circle at 75% 25%,
-      rgba(95, 166, 160, 0.20),
+      rgba(127, 255, 212, 0.16),
       transparent 35%
     ),
     radial-gradient(
       circle at 20% 80%,
-      rgba(28, 77, 77, 0.45),
+      rgba(0, 128, 128, 0.50),
       transparent 40%
     ),
     var(--teal-950);
@@ -386,8 +399,8 @@
 .techneeq-glow {
 
   box-shadow:
-    0 0 80px rgba(95, 166, 160, 0.16),
-    0 0 160px rgba(40, 115, 115, 0.08);
+    0 0 80px rgba(32, 178, 170, 0.22),
+    0 0 160px rgba(0, 128, 128, 0.12);
 }
 
 

@@ -250,7 +250,7 @@ export function LetsTalkButton({className}:Props) {
               max-md:h-full!
               md:rounded-lg
               bg-background
-              text-black
+              text-foreground
               shadow-[0_20px_70px_rgba(0,0,0,0.18)]
               sm:right-0
               sm:top-0
@@ -276,14 +276,14 @@ export function LetsTalkButton({className}:Props) {
                 justify-center
                 rounded-full
                 border
-                border-black/15
+                border-foreground/15
                 bg-background
-                text-black/50
+                text-foreground/50
                 transition-all
                 duration-300
-                hover:border-black
-                hover:bg-black
-                hover:text-white
+                hover:border-foreground
+                hover:bg-foreground
+                hover:text-background
               "
             >
               <X
@@ -310,7 +310,7 @@ export function LetsTalkButton({className}:Props) {
                     text-[28px]
                     leading-[1.05]
                     tracking-[-0.04em]
-                    text-black
+                    text-foreground
                     sm:text-[32px]
                   "
                 >
@@ -323,7 +323,7 @@ export function LetsTalkButton({className}:Props) {
                     max-w-[330px]
                     text-sm
                     leading-[1.2]
-                    text-black/60
+                    text-foreground/60
                   "
                 >
                   Tell us about your project, we usually
@@ -435,13 +435,13 @@ export function LetsTalkButton({className}:Props) {
                     py-10
                   "
                 >
-                  <span className="h-px flex-1 bg-black/10" />
+                  <span className="h-px flex-1 bg-foreground/10" />
 
-                  <span className="text-sm text-black/40">
+                  <span className="text-sm text-foreground/40">
                     OR
                   </span>
 
-                  <span className="h-px flex-1 bg-black/10" />
+                  <span className="h-px flex-1 bg-foreground/10" />
                 </div>
 
                 {/* Book call */}
@@ -457,16 +457,16 @@ export function LetsTalkButton({className}:Props) {
                     gap-3
                     rounded-md
                     border
-                    border-black/70
-                    bg-black/[0.03]
+                    border-foreground/70
+                    bg-foreground/[0.03]
                     px-4
                     py-3
                     text-xs
                     uppercase
                     tracking-[0.08em]
                     transition-colors
-                    hover:bg-black
-                    hover:text-white
+                    hover:bg-foreground
+                    hover:text-background
                   "
                 >
                   <CalendarDays
@@ -485,14 +485,14 @@ export function LetsTalkButton({className}:Props) {
                     pt-3
                     text-center
                     text-sm
-                    text-black/50
+                    text-foreground/50
                   "
                 >
                   Prefer email?{" "}
                   <a
                     href="mailto:hello@techneeq.com"
                     className="
-                      text-black
+                      text-foreground
                       transition-opacity
                       hover:opacity-60
                     "
@@ -566,14 +566,14 @@ function FormInput({
           bg-transparent
           px-4
           text-sm
-          text-black
+          text-foreground
           outline-none
-          placeholder:text-black/40
-          focus:border-black
+          placeholder:text-foreground/40
+          focus:border-foreground
           ${
             error
               ? "border-red-500"
-              : "border-black/15"
+              : "border-foreground/15"
           }
         `}
       />
@@ -639,13 +639,13 @@ function FormSelect({
           pr-10
           text-sm
           outline-none
-          focus:border-black
+          focus:border-foreground
           ${
             error
-              ? "border-red-500 text-black/50"
+              ? "border-red-500 text-foreground/50"
               : value
-                ? "border-black/15 text-black"
-                : "border-black/15 text-black/50"
+                ? "border-foreground/15 text-foreground"
+                : "border-foreground/15 text-foreground/50"
           }
         `}
       >
@@ -671,7 +671,7 @@ function FormSelect({
           top-1/2
           size-3.5
           -translate-y-1/2
-          text-black/70
+          text-foreground/70
         "
       />
     </div>
@@ -735,14 +735,14 @@ function FormTextarea({
           py-3
           text-sm
           leading-[1.25]
-          text-black
+          text-foreground
           outline-none
-          placeholder:text-black/40
-          focus:border-black
+          placeholder:text-foreground/40
+          focus:border-foreground
           ${
             error
               ? "border-red-500"
-              : "border-black/15"
+              : "border-foreground/15"
           }
         `}
       />

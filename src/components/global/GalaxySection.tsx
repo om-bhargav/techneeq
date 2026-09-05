@@ -4,10 +4,10 @@ import NetworkBackground from "./NetworkBackground";
 
 export default function GalaxySection() {
   return (
-    <section className="relative h-screen bg-black">
+    <section className="relative h-screen bg-[#012526]">
       <NetworkBackground
         className="fixed inset-0 z-[-1] h-screen w-screen outline-none"
-        colors={["#ac1122", "#96789f", "#535353"]}
+        colors={["#20B2AA", "#7FFFD4", "#006D6F"]}
       />
 
       <div className="relative z-10">

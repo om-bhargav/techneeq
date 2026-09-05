@@ -16,7 +16,7 @@ export default function AIInfrastructureSection() {
                 <div className="absolute inset-0 bg-foreground/50" />
             </div>
 
-            <div className="flex h-screen max-w-7xl w-full items-end justify-between px-6 py-12 md:px-0 mx-auto">
+            <div className="flex h-screen max-w-7xl w-full items-end justify-between px-6 py-12 md:px-4 mx-auto">
                 <div className="grid w-full items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
                     {/* Left content */}
                     <motion.div

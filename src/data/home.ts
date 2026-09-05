@@ -20,37 +20,37 @@ import {
 export const slides = [
   {
     id: 1,
-    title: "23 years engineering the data & AI systems enterprises run on.",
+    title: "From passive reporting to active intelligence.",
     description:
-      "Since 2002, Techneeq has delivered enterprise data engineering, analytics, and AI consulting to finance, healthcare, insurance, and manufacturing organizations across the United States, the United Kingdom, and the European Union.",
+      "Techneeq turns fragmented enterprise pipelines into live, autonomous decision engines. We replace static monthly BI with streaming data infrastructure, automated pipelines, and predictive AI in production.",
     image: "/hero/1.png",
   },
   {
     id: 2,
-    title: "Enterprise data engineering, built for decisions — not dashboards.",
+    title: "90% of enterprise dashboards are digital paperweights.",
     description:
-      "We design and build the data infrastructure, integration pipelines, and analytics platforms that give leadership teams a single, trusted source of truth.",
+      "Most reporting describes what already happened. We engineer data platforms that surface the pattern while there is still time to do something about it.",
     image: "/hero/2.png",
   },
   {
     id: 3,
     title: "Data pipelines engineered to hold under enterprise load.",
     description:
-      "End-to-end data engineering and DataOps — system integration, cloud migration, and automation — built to eliminate downtime and reporting errors at scale.",
+      "Reliable Lakehouses, automated ETL/ELT pipelines, and semantic layers that cut infrastructure spend and eliminate the pipeline failures that end up in your board deck.",
     image: "/hero/3.png",
   },
   {
     id: 4,
-    title: "AI and custom software, engineered around your P&L.",
+    title: "Enterprise GenAI and production ML, past the prototype.",
     description:
-      "From predictive analytics to production-grade machine learning, every AI consulting engagement is designed around a measurable business return — not a proof of concept that never ships.",
+      "Domain-fine-tuned LLMs, RAG search pipelines, and predictive models shipped with full telemetry and governance — not a sandbox demo that never leaves the notebook.",
     image: "/hero/4.png",
   },
   {
     id: 5,
-    title: "AI and custom software, engineered around your P&L.",
+    title: "Data isn't valuable until it changes what you do.",
     description:
-      "From predictive analytics to production-grade machine learning, every AI consulting engagement is designed around a measurable business return — not a proof of concept that never ships.",
+      "Every engagement is scoped around a decision someone has to make and the action that follows it, with a measurable business return attached before we write a line of code.",
     image: "/hero/5.png",
   },
 ];
@@ -58,56 +58,56 @@ export const slides = [
 export const intelligenceLayers = [
   {
     id: "01",
-    title: "Real-Time Data Ingestion",
+    title: "Live Operational Intelligence",
     keyword: "INGEST",
-    subtitle: "Live enterprise data, not last week's export",
+    subtitle: "Live interconnected data, not last week's export",
     description:
-      "Real-time data integration that connects your systems and replaces static reporting with dashboards that are always current.",
+      "Eliminate stale BI. We embed real-time event streaming and automated alert triggers directly into your operations, enabling teams to act on anomalies as they happen.",
     icon: Activity,
   },
   {
     id: "02",
-    title: "Enterprise Systems Integration",
+    title: "Legacy Modernization & Core Integration",
     keyword: "INTEGRATE",
-    subtitle: "One connected data platform, not twelve disconnected tools",
+    subtitle: "Fragmented systems become one ecosystem",
     description:
-      "We integrate the platforms your teams already run, so information moves automatically instead of through spreadsheets and email.",
+      "De-risk your digital infrastructure. We decouple legacy on-prem systems and migrate operational workflows to unified, cloud-native digital rails.",
     icon: Boxes,
   },
   {
     id: "03",
-    title: "Data Engineering & DataOps",
+    title: "Modern Data Platforms & DataOps",
     keyword: "PIPELINE",
     subtitle: "Cloud data pipelines engineered to hold under load",
     description:
-      "Enterprise-grade data engineering and DataOps — pipelines we build and monitor, so problems get caught before they reach a report.",
+      "Architect reliable Lakehouses, automated ETL/ELT pipelines, and semantic layers that cut infrastructure spend and eliminate pipeline failures.",
     icon: Database,
   },
   {
     id: "04",
-    title: "Business Intelligence & Analytics",
+    title: "Embedded & Augmented Decision Analytics",
     keyword: "ANALYZE",
-    subtitle: "Numbers your leadership team actually trusts",
+    subtitle: "Dynamic visualization your leadership team trusts",
     description:
-      "Self-service dashboards and business intelligence built into the tools your team already uses every day.",
+      "Beyond charts: we build contextual, embedded analytics and automated scorecards directly inside your internal software and client-facing portals.",
     icon: BarChart3,
   },
   {
     id: "05",
-    title: "AI & Machine Learning Consulting",
+    title: "Enterprise GenAI & Production ML",
     keyword: "REASON",
-    subtitle: "Predictive models you can explain to your board",
+    subtitle: "Neural intelligence, past the sandbox prototype",
     description:
-      "Predictive analytics, forecasting models, and AI assistants engineered and monitored to hit a specific business metric — not just a demo.",
+      "Move beyond sandbox prototypes. We engineer domain-fine-tuned LLMs, RAG search pipelines, and predictive models with full telemetry and governance.",
     icon: BrainCircuit,
   },
   {
     id: "06",
-    title: "Custom Software Development",
+    title: "Bespoke Enterprise Cloud Applications",
     keyword: "DELIVER",
-    subtitle: "Enterprise software built around your business, not the reverse",
+    subtitle: "Modular architecture built around your business",
     description:
-      "Custom applications engineered on Microsoft .NET, Azure, React, and low-code platforms, built to solve the specific problem you have.",
+      "Mission-critical web applications built for speed, uptime, and high data density using React, .NET, and scalable Azure cloud architectures.",
     icon: Code2,
   },
 ];
@@ -116,54 +116,54 @@ export const services = [
   {
     id: "01",
     category: "Managed Data Operations",
-    title: "Enterprise Data Pipelines, Monitored Around the Clock",
+    title: "DataOps Pipelines Monitored Around the Clock",
     description:
-      "Ongoing data pipeline management and DataOps support, so data quality issues get caught before they reach your board meeting.",
+      "Continuous pipeline monitoring, CI/CD DataOps, and automated governance guardrails, so data quality issues get caught long before they reach your board meeting.",
     icon: Database,
     image: "/services/1.png",
   },
   {
     id: "02",
     category: "AI Pilot to Production",
-    title: "Take AI From Pilot to Production-Grade Deployment",
+    title: "Move Models Out of the Sandbox and Into Production",
     description:
-      "MLOps, monitoring, and governance that move machine learning models out of the notebook and into systems the enterprise can rely on.",
+      "MLOps, telemetry, and governance that take fine-tuned LLMs and predictive models from prototype to systems the enterprise can actually depend on.",
     icon: BrainCircuit,
     image: "/services/2.png",
   },
   {
     id: "03",
     category: "Cloud Migration",
-    title: "Cloud Migration Without the Downtime or the Surprises",
+    title: "Production Cutover Without the Downtime",
     description:
-      "We plan and execute cloud data migrations that keep the business running while we modernize the infrastructure underneath it.",
+      "We decouple legacy on-prem systems and migrate operational workflows onto cloud-native rails while the business keeps running underneath.",
     icon: CloudCog,
     image: "/services/3.png",
   },
   {
     id: "04",
     category: "Embedded Team",
-    title: "Senior Data & AI Talent, Without the Hiring Cycle",
+    title: "Senior Data & AI Engineers, Without the Hiring Cycle",
     description:
-      "Embedded data engineers, scientists, and analysts who plug into your existing team and start delivering in weeks, not quarters.",
+      "Forward-deployed data engineers, scientists, and analysts who plug into your existing team and start shipping inside the first sprint, not the second quarter.",
     icon: Code2,
     image: "/services/4.png",
   },
   {
     id: "05",
     category: "Assessment & Roadmap",
-    title: "A Clear Data Strategy Before You Spend a Dollar",
+    title: "Architecture Audit & Pipeline Scoping in Two Weeks",
     description:
-      "A structured audit of your current data, systems, and processes, followed by a prioritized modernization roadmap — with or without us.",
+      "We map the existing silos, define latency targets, and hand back a prioritized architecture roadmap that removes the bottlenecks — with or without us.",
     icon: Layers3,
     image: "/services/5.png",
   },
   {
     id: "06",
     category: "Security & Compliance Review",
-    title: "Know Exactly Where Your Risk Is Before Someone Else Finds It",
+    title: "Know Where Your Risk Is Before an Auditor Does",
     description:
-      "A data security and compliance review benchmarked against the standards your industry and regulators actually enforce.",
+      "A data security and governance review benchmarked against SOC 2, HIPAA, and GDPR, with the remediation path mapped out in priority order.",
     icon: ShieldCheck,
     image: "/services/6.png",
   },
@@ -173,9 +173,9 @@ export const solutions = [
   {
     id: "01",
     slug: "digital-experiences",
-    title: "Digital Experience Engineering",
+    title: "Bespoke Enterprise Applications",
     description:
-      "Enterprise websites, portals, and applications engineered to make it easy for your customers and employees to get things done.",
+      "Mission-critical portals and web applications built for speed, uptime, and high data density on React, .NET, and Azure.",
     icon: Sparkles,
     className: "md:col-span-2 md:row-span-2",
     variant: "large",
@@ -183,9 +183,9 @@ export const solutions = [
   {
     id: "02",
     slug: "ai-intelligence",
-    title: "AI & Machine Learning Consulting",
+    title: "Enterprise GenAI & Production ML",
     description:
-      "Applied AI consulting — forecasting, automation, and machine learning — engineered for a measurable business result, not a demo.",
+      "Domain-fine-tuned LLMs, RAG search pipelines, and predictive models engineered with telemetry and governance built in.",
     icon: Bot,
     className: "md:col-span-4",
     variant: "wide",
@@ -193,9 +193,9 @@ export const solutions = [
   {
     id: "03",
     slug: "technology-engineering",
-    title: "Custom Software Engineering",
+    title: "Legacy Modernization",
     description:
-      "Enterprise software engineered to handle your business's real complexity, not a generic template.",
+      "Decouple on-prem systems and move operational workflows onto unified, cloud-native digital rails.",
     icon: Cloud,
     className: "md:col-span-2",
     variant: "normal",
@@ -203,9 +203,9 @@ export const solutions = [
   {
     id: "04",
     slug: "data-analytics",
-    title: "Data Engineering & Analytics",
+    title: "Modern Data Platforms & DataOps",
     description:
-      "Clean, connected enterprise data and the business intelligence dashboards that turn it into decisions.",
+      "Reliable Lakehouses, automated ETL/ELT pipelines, and semantic layers every team reads the same way.",
     icon: Database,
     className: "md:col-span-2",
     variant: "normal",
@@ -213,9 +213,9 @@ export const solutions = [
   {
     id: "05",
     slug: "digital-transformation",
-    title: "Digital Transformation Consulting",
+    title: "Live Operational Intelligence",
     description:
-      "Replace manual, error-prone processes with connected systems your team can actually rely on.",
+      "Real-time event streaming and automated alert triggers embedded directly into daily operations.",
     icon: Workflow,
     className: "md:col-span-3",
     variant: "bottom",
@@ -223,9 +223,9 @@ export const solutions = [
   {
     id: "06",
     slug: "security-infrastructure",
-    title: "Cloud Security & Infrastructure",
+    title: "Cloud Security & Governance",
     description:
-      "Cloud infrastructure and data security safeguards engineered to keep the business running, and the auditors satisfied.",
+      "SOC 2 compliance guardrails, access control, and telemetry engineered into the platform from day one.",
     icon: Shield,
     className: "md:col-span-3",
     variant: "bottom",
@@ -238,7 +238,7 @@ export const industries = [
     name: "Healthcare & Life Sciences",
     eyebrow: "PATIENTS · RESEARCH · CARE",
     description:
-      "Healthcare data analytics that connects clinical, operational, and research data to improve decisions across the care journey.",
+      "HIPAA-compliant streaming telemetry and predictive patient resource allocation. Clinical and operational reporting that keeps pace with the floor.",
     image: "/industries/1.png",
   },
   {
@@ -246,7 +246,7 @@ export const industries = [
     name: "Financial Services",
     eyebrow: "RISK · CAPITAL · PERFORMANCE",
     description:
-      "Financial services data consulting that brings risk, capital, and performance data together for sharper forecasting and decision-making.",
+      "Risk, capital, and performance data unified into one live view, with auditable lineage running from source system to board report.",
     image: "/industries/2.png",
   },
   {
@@ -254,23 +254,23 @@ export const industries = [
     name: "Insurance",
     eyebrow: "POLICIES · CLAIMS · LOSS",
     description:
-      "Underwriting and claims analytics, loss modeling, and intelligent automation of document-heavy insurance workflows.",
+      "Underwriting and claims analytics, loss modeling, and intelligent automation for the document-heavy workflows that slow policy operations down.",
     image: "/industries/3.png",
   },
   {
     id: "04",
-    name: "Manufacturing",
+    name: "Manufacturing & Supply Chain",
     eyebrow: "OPERATIONS · SUPPLY · QUALITY",
     description:
-      "Manufacturing data engineering that connects production, supply chain, and operational data into one clear view of performance.",
+      "Production, supply chain, and quality telemetry streamed into one operational picture, so bottlenecks surface before they cost you a shift.",
     image: "/industries/4.png",
   },
   {
     id: "05",
-    name: "Retail & Consumer",
+    name: "Retail & Consumer Goods",
     eyebrow: "CUSTOMER · DEMAND · COMMERCE",
     description:
-      "Retail and consumer analytics that turn fragmented customer and commercial data into intelligence behind every interaction.",
+      "Demand forecasting and customer intelligence built on live commercial data instead of last month's export.",
     image: "/industries/5.png",
   },
   {
@@ -278,7 +278,7 @@ export const industries = [
     name: "Public Sector",
     eyebrow: "CITIZENS · SERVICES · GOVERNANCE",
     description:
-      "Public sector data modernization that builds trusted data foundations for transparent, accountable services.",
+      "Trusted, governed data foundations that make public services measurable, transparent, and accountable to the people using them.",
     image: "/industries/6.png",
   },
 ];
@@ -286,27 +286,27 @@ export const industries = [
 export const transformations = [
   {
     id: "01",
-    title: "Assess",
+    title: "Connect",
     description:
-      "We audit your business, your data, and the decision you're trying to speed up. No lengthy discovery decks.",
+      "Systems stop being islands. Records from every platform land in one place, continuously.",
   },
   {
     id: "02",
-    title: "Architect",
+    title: "Contextualize",
     description:
-      "We design the data architecture that solves the actual problem — not the trendiest one.",
+      "Raw records become modeled facts your teams read the same way, with the same definitions.",
   },
   {
     id: "03",
-    title: "Build",
+    title: "Intelligent",
     description:
-      "Our engineers build and test in the open, with regular check-ins, so nothing surprises you at delivery.",
+      "Analytics and models sit on top of live data, so patterns surface before they become history.",
   },
   {
     id: "04",
-    title: "Operate",
+    title: "Actionable",
     description:
-      "We stay on to monitor, tune, and support the system after go-live, so it keeps performing long after launch.",
+      "Intelligence reaches the person making the call, at the moment the call has to be made.",
   },
 ];
 
@@ -338,42 +338,42 @@ export const expertise = [
     id: "01",
     title: "Big Data, BI & Analytics",
     description:
-      "Enterprise data warehouses and business intelligence reporting that give your team one trusted set of numbers to work from.",
+      "Enterprise Lakehouses, semantic layers, and BI reporting that give every team one trusted set of numbers to work from.",
     icon: BarChart3,
   },
   {
     id: "02",
     title: "Enterprise Application Integration",
     description:
-      "Connecting and extending the enterprise systems that already run your finance, operations, and service teams.",
+      "Decoupling and connecting the ERP, CRM, and core platforms that already run your finance, operations, and service teams.",
     icon: Database,
   },
   {
     id: "03",
     title: "Digital Conversion",
     description:
-      "Turning manual, paper-based processes into digital workflows you can actually measure and audit.",
+      "Turning manual, paper-based processes into digital workflows with measurable throughput and a clean audit trail.",
     icon: FileDigit,
   },
   {
     id: "04",
     title: "Azure Cloud Infrastructure",
     description:
-      "Cloud infrastructure consulting on Microsoft Azure, engineered to control cost and pass a security audit.",
+      "Cloud-native architecture on Microsoft Azure, engineered to control infrastructure spend and clear a security review.",
     icon: Cloud,
   },
   {
     id: "05",
     title: "Data Strategy & Project Management",
     description:
-      "Realistic data strategy roadmaps and delivery oversight, so projects finish on the timeline you were promised.",
+      "Architecture audits, defined latency targets, and delivery oversight that keep programs on the timeline you were promised.",
     icon: Route,
   },
   {
     id: "06",
     title: "Machine Learning & Conversational AI",
     description:
-      "Predictive models and conversational AI assistants engineered to run in production — not stay in a slide deck.",
+      "RAG search pipelines, predictive models, and conversational assistants engineered to run in production with full telemetry.",
     icon: Bot,
   },
 ];
@@ -382,36 +382,36 @@ export const faqs = [
   {
     question: "What kind of problems do you actually solve?",
     answer:
-      "Mostly: data that doesn't line up between systems, reports nobody fully trusts, manual processes eating up staff time, and AI initiatives that never get past a pilot. If any of that sounds familiar, that's our lane.",
+      "Fragmented pipelines, dashboards nobody fully trusts, manual handoffs eating staff time, and AI pilots that never reach production. If your reporting describes last month instead of this morning, that's our lane.",
   },
   {
     question: "Do we need to rip out our existing systems to work with you?",
     answer:
-      "No. We work with what you already have — most of our data engineering projects connect, clean up, and extend existing systems rather than replace them. A full rebuild is the exception, not the default.",
+      "No. Most engagements decouple and modernize what you already run — we connect legacy on-prem platforms to cloud-native rails rather than forcing a costly rebuild. A full replacement is the exception, not the default.",
   },
   {
     question: "How do you handle data security and compliance?",
     answer:
-      "We design around your industry's requirements from day one — including HIPAA, SOC 2, GDPR, UK Data Protection Act, and financial services regulations — rather than treating security and compliance as a step added at the end.",
+      "Governance guardrails are part of the architecture, not a step bolted on at the end. We design against SOC 2, HIPAA, GDPR, the UK Data Protection Act, and the financial services regulations your auditors actually enforce.",
   },
   {
     question: "Do you work with companies outside the United States?",
     answer:
-      "Yes. Alongside our US client base, we deliver data engineering and AI consulting for organizations across the United Kingdom and the European Union, with data residency and GDPR compliance built into the architecture from day one.",
+      "Yes. Alongside our US client base, we deliver data engineering and AI consulting across the United Kingdom and the European Union, with data residency and GDPR compliance designed into the architecture from day one.",
   },
   {
     question: "What does a typical engagement look like?",
     answer:
-      "We start with a short assessment to confirm scope, then move into build in defined phases with regular check-ins, so you always know what's shipping and when. Smaller projects run in weeks; enterprise platform work runs in months.",
+      "Weeks 1–2 are an architecture audit and pipeline scoping. Weeks 3–6 are a PoC and streaming pipeline sprint validated on live data. From week 7 we move to production cutover with CI/CD DataOps and automated governance.",
   },
   {
     question: "Do we need our own data team already?",
     answer:
-      "No. We can run the engagement end-to-end, work alongside your existing team, or train your team to take it over — whichever makes sense for where you are.",
+      "No. We can run the engagement end-to-end, embed forward-deployed engineers alongside your team, or train your people to take ownership after cutover — whichever fits where you are.",
   },
   {
     question: "What happens after the project goes live?",
     answer:
-      "We stay on for monitoring, fixes, and iteration if you want us to. Nothing goes live and gets abandoned.",
+      "We stay on for telemetry, monitoring, and iteration if you want us to. Nothing ships into production and then gets abandoned.",
   },
 ];

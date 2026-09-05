@@ -30,7 +30,7 @@ const BLOB_SHAPE = [
 
 const TAU = Math.PI * 2;
 const DEFLECT = (12 * Math.PI) / 180;
-const BG = "#17171C";
+const BG = "#012526";
 const MAX_PUSH = 5.52;
 
 function BlobBounceBackground() {
@@ -436,7 +436,7 @@ function BlobBounceBackground() {
     <div className="absolute inset-0">
       <div
         ref={wrapRef}
-        className="pointer-events-none absolute inset-0 overflow-hidden bg-[#17171C]"
+        className="pointer-events-none absolute inset-0 overflow-hidden bg-[#012526]"
         aria-hidden
       >
         <canvas ref={dotsRef} className="absolute left-0 top-0" />
@@ -479,7 +479,7 @@ export default function NotFound() {
         <span className="inline-block [&_*]:!cursor-pointer">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 font-sans text-[16px] leading-none text-[#17171C] transition-colors duration-300 hover:text-black lg:text-[18px]"
+            className="inline-flex items-center justify-center rounded-full bg-[#F0FFFF] px-8 py-4 font-sans text-[16px] leading-none text-[#012526] transition-colors duration-300 hover:text-[#006D6F] lg:text-[18px]"
           >
             Go back home
           </Link>

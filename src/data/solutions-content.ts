@@ -71,59 +71,59 @@ export const solutions: Record<string, Solution> = {
     image: "/solutions-contents/18.png",
     hero: {
       label: "Healthcare and Life Sciences",
-      title: "Transform care and discovery with enterprise AI",
+      title: "Clinical and operational reporting that keeps pace with the floor",
       description:
-        "Streamline operations, surface insights from clinical data, and accelerate research with AI solutions built for the complexities of healthcare and life sciences.",
-      buttonText: "Request a demo",
+        "HIPAA-compliant streaming telemetry and predictive patient resource allocation. Techneeq connects clinical, operational, and research data into live intelligence your care teams can act on the same shift.",
+      buttonText: "Schedule Architecture Review",
       buttonHref: "/contact",
       imageSrc: "/solutions-contents/19.png",
     },
     useCaseSectionHeaders: {
-      label: "AI capabilities",
+      label: "Where we go deep",
       title: "Transform patient care. Turbocharge research.",
       description:
-        "Explore how North powers use cases across healthcare and life sciences.",
+        "Explore how Techneeq powers live intelligence across healthcare and life sciences.",
     },
     secondSection: {
-      label: "AI capabilities",
-      title: "Transform patient care. Turbocharge research.",
+      label: "Capabilities engineered for speed",
+      title: "One intelligence architecture. Every care environment.",
       description:
-        "Explore how North powers use cases across healthcare and life sciences.",
+        "Explore how Techneeq powers live intelligence across healthcare and life sciences.",
     },
     useCases: [
       {
         id: "patient-support",
         title: "Enhance patient support and engagement",
         description:
-          "Empower clinicians to deliver faster, more personalized support with less admin overhead.",
+          "Empower clinicians to deliver faster, more personalized support with less administrative overhead.",
         features: [
           "Generate tailored post-visit plans from records and care team notes",
-          "Answer common questions about policies and protocols",
+          "Answer common questions about policies and protocols instantly",
           "Lighten physician workload with AI-optimized support tools",
         ],
         image: "/solutions-contents/20.png",
       },
       {
         id: "back-office",
-        title: "Automate back-office tasks",
+        title: "Automate claims and back-office workloads",
         description:
-          "Reduce repetitive administrative work and give healthcare teams more time to focus on patients.",
+          "Reduce repetitive administrative work and give healthcare teams more time to spend with patients.",
         features: [
-          "Automate repetitive administrative workflows",
-          "Extract and organize information from documents",
-          "Reduce manual data entry and processing",
+          "Automate claims analytics and repetitive administrative workflows",
+          "Extract and classify information from document-heavy records",
+          "Cut manual data entry and reconciliation across departments",
         ],
         image: "/solutions-contents/21.png",
       },
       {
         id: "bench-to-bedside",
-        title: "Accelerate progress from bench to bedside",
+        title: "Forecast capacity from bench to bedside",
         description:
-          "Connect research, clinical insights, and operational data to accelerate innovation across healthcare.",
+          "Connect research, clinical, and operational data so patterns surface before they become history.",
         features: [
-          "Surface insights from complex research data",
-          "Accelerate clinical research workflows",
-          "Connect research insights with patient outcomes",
+          "Predict patient volume and allocate resources ahead of demand",
+          "Surface insights from complex clinical and research datasets",
+          "Connect research signals with real patient outcomes",
         ],
         image: "/solutions-contents/13.png",
       },
@@ -132,23 +132,23 @@ export const solutions: Record<string, Solution> = {
     capabilities: [
       {
         id: "01",
-        title: "Discover",
+        title: "Ingest",
         description:
-          "Surface context-aware answers securely grounded in your clinical and research data.",
+          "Stream clinical and operational events continuously, so reporting reflects the floor right now instead of last month.",
         image: "https://picsum.photos/seed/discover/1200/900",
       },
       {
         id: "02",
-        title: "Create",
+        title: "Analyze",
         description:
-          "Quickly draft documents, generate summaries, and create custom tables and charts.",
+          "Embed contextual analytics and automated scorecards directly inside the clinical software your teams already use.",
         image: "https://picsum.photos/seed/create/1200/900",
       },
       {
         id: "03",
-        title: "Automate",
+        title: "Reason",
         description:
-          "Accelerate work with AI agents that search, reason, and act across your data and tools.",
+          "Run predictive models and RAG search pipelines over your own data, with full telemetry and governance attached.",
         image: "https://picsum.photos/seed/automate/1200/900",
       },
     ],
@@ -157,22 +157,22 @@ export const solutions: Record<string, Solution> = {
       {
         title: "Privately deployable",
         description:
-          "Deploy our products in your own VPC, on-prem environment, or through secure hosted infrastructure.",
+          "Deploy inside your own VPC, on-prem environment, or through secure hosted infrastructure.",
       },
       {
-        title: "Regulatory-ready",
+        title: "PHI-safe by design",
         description:
-          "Ensure compliance with auditable outputs, usage monitoring, and built-in governance tools.",
+          "HIPAA-aligned delivery with auditable outputs, usage monitoring, and governance guardrails built in.",
       },
       {
         title: "Fully customizable",
         description:
-          "Tailor our models to your unique data, use cases, and infrastructure.",
+          "Models and pipelines tailored to your clinical data, use cases, and existing infrastructure.",
       },
       {
-        title: "Expert implementation",
+        title: "Forward-deployed engineers",
         description:
-          "Work with forward-deployed engineers to ensure fast, secure implementation.",
+          "Work directly with our engineers to move from architecture audit to production cutover fast.",
       },
     ],
   },
@@ -182,21 +182,21 @@ export const solutions: Record<string, Solution> = {
     image: "/solutions-contents/16.png",
     useCaseSectionHeaders: {
       label: "Integration capabilities",
-      title: "Connect systems. Simplify operations.",
+      title: "Systems stop being islands.",
       description:
-        "Explore how intelligent integration connects systems, data, and workflows across your organization.",
+        "Explore how Techneeq decouples legacy platforms and moves operational workflows onto unified digital rails.",
     },
     hero: {
       label: "System Integration",
-      title: "Make every system in your business talk to each other",
+      title: "Fragmented systems become one connected ecosystem",
       description:
-        "Stop stitching things together with spreadsheets and manual exports. Techneeq connects your ERPs, CRMs, legacy platforms, and custom applications into one reliable, real-time technology environment.",
-      buttonText: "Talk to an integration expert",
+        "De-risk your digital infrastructure. Techneeq decouples legacy on-prem systems and migrates operational workflows to unified, cloud-native digital rails — so records from every platform land in one place, continuously.",
+      buttonText: "Schedule Architecture Review",
       buttonHref: "/contact",
       imageSrc: "/solutions-contents/15.png",
     },
     secondSection: {
-      label: "Integration capabilities",
+      label: "Capabilities engineered for speed",
       title: "Connect everything. Simplify anything.",
       description:
         "Explore how intelligent integration connects systems, data, and workflows across your organization.",
@@ -206,10 +206,10 @@ export const solutions: Record<string, Solution> = {
         id: "unify-tech-stack",
         title: "Unify a fragmented tech stack",
         description:
-          "Bring ERPs, CRMs, custom software, and third-party tools into one connected environment, without ripping out what already works.",
+          "Bring ERPs, CRMs, custom software, and third-party tools onto one set of digital rails, without ripping out what already works.",
         features: [
-          "Integrate legacy systems with modern cloud platforms",
-          "Connect ERPs, CRMs, and custom applications through secure APIs",
+          "Decouple legacy on-prem systems and connect them to cloud-native platforms",
+          "Integrate ERPs, CRMs, and custom applications through secure, documented APIs",
           "Standardize how data moves across your entire stack",
         ],
         image: "/solutions-contents/28.png",
@@ -218,11 +218,11 @@ export const solutions: Record<string, Solution> = {
         id: "automate-operations",
         title: "Automate the handoffs that slow teams down",
         description:
-          "Replace manual exports, re-entry, and email chains with workflows that move data automatically between the systems your teams already use.",
+          "Replace manual exports, re-entry, and email chains with orchestrated workflows that move data the moment it changes.",
         features: [
           "Automate data movement between core business systems",
           "Trigger downstream workflows the moment source data changes",
-          "Cut manual processing time across finance, ops, and support teams",
+          "Cut manual processing time across finance, operations, and support",
         ],
         image: "/solutions-contents/29.png",
       },
@@ -230,11 +230,11 @@ export const solutions: Record<string, Solution> = {
         id: "single-source-of-truth",
         title: "Build a single source of truth",
         description:
-          "Give every team the same trusted, up-to-date data, so no one is reconciling three versions of the same report.",
+          "Raw records become modeled facts every team reads the same way, with the same definitions — so nobody reconciles three versions of one report.",
         features: [
-          "Centralize data from disconnected sources into one reliable layer",
+          "Centralize disconnected sources into one governed data layer",
           "Keep downstream reports, dashboards, and apps in sync automatically",
-          "Reduce data errors caused by manual duplication",
+          "Eliminate the data errors that come from manual duplication",
         ],
         image: "/solutions-contents/30.png",
       },
@@ -259,7 +259,7 @@ export const solutions: Record<string, Solution> = {
         id: "03",
         title: "Scale",
         description:
-          "Build integration architecture designed to keep working as you add new tools, new data sources, and new business requirements.",
+          "Architecture designed to keep holding as you add new tools, new data sources, and new business requirements.",
         image: "https://picsum.photos/seed/integration-scale/1200/900",
       },
     ],
@@ -268,22 +268,22 @@ export const solutions: Record<string, Solution> = {
       {
         title: "API-first architecture",
         description:
-          "Every integration is built on documented, reusable APIs, so your systems stay flexible as your stack evolves.",
+          "Every integration is built on documented, reusable APIs, so your stack stays flexible as it evolves.",
       },
       {
         title: "Legacy-friendly",
         description:
-          "We connect modern platforms to the legacy systems you already depend on, without forcing a costly rebuild.",
+          "We migrate operational workflows off legacy platforms without forcing a costly full rebuild.",
       },
       {
-        title: "Secure by design",
+        title: "Governed by default",
         description:
-          "Authentication, access control, and monitoring are built into every integration from day one.",
+          "Authentication, access control, audit lineage, and telemetry are built into every integration from day one.",
       },
       {
-        title: "Hands-on implementation",
+        title: "Production cutover, not a pilot",
         description:
-          "Our engineers work directly with your team to design, build, and support integrations that hold up in production.",
+          "Our engineers work directly with your team through go-live, with CI/CD DataOps in place before handover.",
       },
     ],
   },
@@ -291,24 +291,24 @@ export const solutions: Record<string, Solution> = {
   "education": {
     image: "/solutions-contents/23.png",
     useCaseSectionHeaders: {
-      label: "AI capabilities",
+      label: "Where we go deep",
       title: "Personalize learning. Empower educators.",
       description:
-        "Explore how AI helps educational institutions create better learning experiences and outcomes.",
+        "Explore how connected data helps institutions improve outcomes and cut administrative drag.",
     },
     slug: "education",
     secondSection: {
-      label: "AI capabilities",
-      title: "Accelerate decisions. Automate financial intelligence.",
+      label: "Capabilities engineered for speed",
+      title: "Connect institutional data. Automate the paperwork.",
       description:
-        "Explore how enterprise AI transforms financial operations, analysis, and client experiences.",
+        "Explore how Techneeq turns fragmented campus systems into intelligence leadership can act on.",
     },
     hero: {
       label: "Education",
-      title: "Software built around how your institution actually runs",
+      title: "Institutional data that answers questions during the term, not after it",
       description:
-        "From student-facing apps to the systems your staff rely on daily, Techneeq builds and connects the technology that helps schools, universities, and edtech teams operate more efficiently.",
-      buttonText: "Talk to our team",
+        "From student-facing portals to the systems your staff rely on daily, Techneeq connects LMS, SIS, and departmental data into one live view — and automates the manual work sitting between them.",
+      buttonText: "Schedule Architecture Review",
       buttonHref: "/contact",
       imageSrc: "/solutions-contents/22.png",
     },
@@ -321,7 +321,7 @@ export const solutions: Record<string, Solution> = {
           "Give students a faster, simpler way to get information, register, and stay engaged, without waiting on an overloaded front office.",
         features: [
           "Design self-service portals for records, registration, and support",
-          "Build tools that answer common student questions instantly",
+          "Answer common student questions instantly with grounded AI assistants",
           "Personalize learning resources and communications at scale",
         ],
         image: "/solutions-contents/24.png",
@@ -333,8 +333,8 @@ export const solutions: Record<string, Solution> = {
           "Reduce the manual admissions, enrollment, and records work that pulls staff away from students.",
         features: [
           "Automate repetitive enrollment and admissions workflows",
-          "Extract and organize data from forms, applications, and records",
-          "Cut manual data entry across departments",
+          "Extract and classify data from forms, applications, and records",
+          "Cut manual data entry across every department",
         ],
         image: "/solutions-contents/25.png",
       },
@@ -342,11 +342,11 @@ export const solutions: Record<string, Solution> = {
         id: "institutional-data",
         title: "Turn institutional data into decisions",
         description:
-          "Connect data from LMS platforms, student information systems, and departments to see what's actually driving outcomes.",
+          "Connect LMS platforms, student information systems, and departmental data so retention signals surface while you can still act on them.",
         features: [
-          "Bring LMS, SIS, and departmental data into one connected view",
-          "Track engagement, performance, and retention trends",
-          "Support leadership decisions with reliable, up-to-date reporting",
+          "Bring LMS, SIS, and departmental data into one governed view",
+          "Track engagement, performance, and retention trends continuously",
+          "Support leadership decisions with reliable, always-current reporting",
         ],
         image: "/solutions-contents/26.png",
       },
@@ -364,14 +364,14 @@ export const solutions: Record<string, Solution> = {
         id: "02",
         title: "Automate",
         description:
-          "Take repetitive administrative work off staff plates with workflows that run quietly in the background.",
+          "Take repetitive administrative work off staff plates with orchestrated workflows that run quietly in the background.",
         image: "https://picsum.photos/seed/education-automate2/1200/900",
       },
       {
         id: "03",
         title: "Understand",
         description:
-          "Turn scattered institutional data into dashboards and reports your leadership team can actually use.",
+          "Turn scattered institutional data into embedded dashboards and scorecards your leadership team will actually use.",
         image: "https://picsum.photos/seed/education-understand2/1200/900",
       },
     ],
@@ -385,17 +385,17 @@ export const solutions: Record<string, Solution> = {
       {
         title: "Secure and compliant",
         description:
-          "Student data is handled with the security and privacy standards educational institutions require.",
+          "Student data is handled with the privacy, access control, and audit standards institutions require.",
       },
       {
         title: "Works with what you have",
         description:
-          "We integrate with the LMS, SIS, and systems you're already running instead of replacing them outright.",
+          "We integrate the LMS, SIS, and platforms you already run instead of replacing them outright.",
       },
       {
         title: "Hands-on partnership",
         description:
-          "Our engineers work directly with your team, from planning through launch and beyond.",
+          "Our engineers work directly with your team, from architecture audit through launch and beyond.",
       },
     ],
   },
@@ -404,22 +404,22 @@ export const solutions: Record<string, Solution> = {
     slug: "financial-services",
     image: "/solutions-contents/8.png",
     useCaseSectionHeaders: {
-      label: "AI capabilities",
+      label: "Where we go deep",
       title: "Accelerate decisions. Transform finance.",
       description:
-        "Explore how enterprise AI streamlines financial operations, analysis, and client experiences.",
+        "Explore how live risk, capital, and performance data changes what your teams do next.",
     },
     hero: {
       label: "Financial Services",
-      title: "Technology your financial operations can actually rely on",
+      title: "Risk, capital, and performance data in one live view",
       description:
-        "Techneeq builds secure, reliable software and integrations that help financial teams move faster, cut manual work, and keep sensitive data protected at every step.",
-      buttonText: "Talk to our team",
+        "Techneeq replaces static monthly reporting with streaming pipelines and production models — so risk and performance signals reach the person making the call, with auditable lineage from source system to board report.",
+      buttonText: "Schedule Architecture Review",
       buttonHref: "/contact",
       imageSrc: "/solutions-contents/7.png",
     },
     secondSection: {
-      label: "AI capabilities",
+      label: "Capabilities engineered for speed",
       title: "Accelerate decisions. Automate financial intelligence.",
       description:
         "Explore how enterprise AI transforms financial operations, analysis, and client experiences.",
@@ -429,10 +429,10 @@ export const solutions: Record<string, Solution> = {
         id: "client-experience",
         title: "Deliver a faster, more personal client experience",
         description:
-          "Give client-facing teams instant access to the information they need to respond quickly and accurately.",
+          "Give client-facing teams instant access to trusted, current information instead of yesterday's extract.",
         features: [
           "Build self-service portals for accounts, statements, and requests",
-          "Give relationship teams instant access to trusted client data",
+          "Give relationship teams instant access to governed client data",
           "Automate routine client communications and updates",
         ],
         image:
@@ -442,7 +442,7 @@ export const solutions: Record<string, Solution> = {
         id: "financial-ops-automation",
         title: "Automate financial operations",
         description:
-          "Reduce the manual work behind reconciliations, reporting, and document processing so teams can focus on higher-value work.",
+          "Remove the manual work behind reconciliations, reporting, and document processing so teams can focus on judgment calls.",
         features: [
           "Automate repetitive reconciliation and reporting workflows",
           "Extract and classify data from statements, invoices, and forms",
@@ -454,10 +454,10 @@ export const solutions: Record<string, Solution> = {
         id: "secure-integration",
         title: "Connect financial systems securely",
         description:
-          "Bring core banking, payment, and reporting systems together without compromising on security or compliance.",
+          "Bring core banking, payment, and reporting systems onto unified digital rails without compromising security or compliance.",
         features: [
           "Integrate core banking, payment, and reporting platforms",
-          "Maintain clear audit trails across every connected system",
+          "Maintain auditable lineage across every connected system",
           "Keep sensitive financial data protected end-to-end",
         ],
         image:
@@ -496,19 +496,19 @@ export const solutions: Record<string, Solution> = {
           "Every system we build or connect is designed around access control, encryption, and audit visibility from day one.",
       },
       {
-        title: "Compliance-aware",
+        title: "SOC 2 compliance guardrails",
         description:
-          "We build with the regulatory and governance requirements of financial services in mind, not as an afterthought.",
+          "Governance and regulatory requirements are architected in, not bolted on before an audit.",
       },
       {
         title: "Built to scale",
         description:
-          "Architecture designed to handle growing transaction volumes and evolving reporting requirements.",
+          "Architecture designed to hold as transaction volumes grow and reporting requirements change.",
       },
       {
-        title: "Hands-on implementation",
+        title: "Proven in weeks, not quarters",
         description:
-          "Our engineers work alongside your team to deliver systems that hold up in production, not just in a demo.",
+          "Scoping in week one, working pipelines in front of your analysts in the next — then a clean production handover.",
       },
     ],
   },

@@ -1,10 +1,10 @@
 export const aboutPage = {
   ourStory: {
     label: "About Techneeq",
-    title: "We Engineer the Systems",
-    highlight: "Enterprise Leaders Run On",
+    title: "Data Science, Engineered",
+    highlight: "For Momentum",
     description:
-      "Techneeq is an enterprise data engineering, AI consulting, and custom software firm helping organizations across the United States, the UK, and the European Union replace guesswork with engineering.",
+      "Techneeq is an enterprise data engineering, AI, and custom software firm helping organizations across the United States, the UK, and the European Union move from passive reporting to active intelligence.",
 
     image: {
       src: "/about/1.png",
@@ -12,20 +12,20 @@ export const aboutPage = {
     },
 
     paragraphs: [
-      "Techneeq was founded on a simple observation: most enterprises already have the data they need to move faster — what they're missing is the data engineering to put it to work. Too often, valuable data sits across disconnected systems, teams rely on manual processes, and important decisions are made without the right analytics behind them.",
+      "Techneeq was founded on a blunt observation: 90% of enterprise dashboards are digital paperweights. Most organizations already have the data they need to move faster — what they are missing is the engineering that turns fragmented pipelines into decisions someone can act on the same day.",
 
-      "We set out to close that gap by bringing data engineering, artificial intelligence, and custom software development together under one team. Instead of treating technology as a collection of isolated tools, we approach every engagement as a systems problem — understanding the business objective first, designing the right data architecture, and building production-grade solutions engineered to hold up in the real world.",
+      "We set out to close that gap by bringing streaming data infrastructure, production machine learning, and custom software development together under one team. Instead of treating technology as a collection of isolated tools, we approach every engagement as an architecture problem — mapping the silos first, defining latency targets, then building pipelines and models engineered to hold under real production load.",
 
-      "As Techneeq has grown into a trusted enterprise data and AI consulting partner, that principle has remained at the center of how we work. We partner closely with organizations across finance, healthcare, insurance, and manufacturing to turn complex challenges into practical systems — from cloud data platforms and machine learning pipelines to bespoke enterprise software built around the way their teams actually operate.",
+      "That principle still sits at the center of how we work. We partner closely with organizations across financial services, healthcare, insurance, manufacturing, retail, and the public sector to replace static monthly BI with live decision engines — from Lakehouses and automated ETL/ELT pipelines to domain-fine-tuned LLMs and bespoke enterprise applications built around the way their teams actually operate.",
     ],
   },
 
   team: {
     label: "Our Team",
     title: "The people behind",
-    highlight: "the systems.",
+    highlight: "the architecture.",
     description:
-      "A multidisciplinary team of engineers, data scientists, and strategists building technology that helps ambitious organizations move forward.",
+      "A multidisciplinary team of data engineers, scientists, and architects building the intelligence systems ambitious organizations run on.",
 
     members: [
       {
@@ -51,36 +51,36 @@ export const aboutPage = {
     ],
   },
   howWeWork: {
-    label: "How we work",
-    title: "An enterprise delivery approach, grounded in",
-    highlight: "clarity, speed, and reliable execution.",
+    label: "How we deploy",
+    title: "An engagement playbook built for",
+    highlight: "speed, clarity, and production cutover.",
     description:
-      "A disciplined data and AI consulting process that keeps every stage aligned with the outcome — from the first conversation to production.",
+      "A disciplined delivery process that moves from architecture audit to live pipelines in weeks — with governance and telemetry in place before go-live.",
 
     process: [
       {
         id: "01",
-        title: "Discover",
+        title: "Audit",
         description:
-          "We start with your business problem, not our tech stack. Scoping is built around a measurable outcome.",
+          "Weeks 1-2. We map existing silos, define latency targets, and eliminate architectural bottlenecks before anything gets built.",
       },
       {
         id: "02",
-        title: "Design",
+        title: "Prove",
         description:
-          "Data architecture and solution design are reviewed against security, scale, and cost from day one.",
+          "Weeks 3-6. A PoC and streaming pipeline sprint: real-time transformation logic, validated against live data streams.",
       },
       {
         id: "03",
-        title: "Build",
+        title: "Cutover",
         description:
-          "Agile delivery with visible milestones. You see working software early, not just at the end.",
+          "Week 7+. Full production deployment with CI/CD DataOps, SOC 2 compliance guardrails, and telemetry from day one.",
       },
       {
         id: "04",
         title: "Operate",
         description:
-          "We stay on for production support, monitoring, and iteration — not just handoff.",
+          "We stay on for monitoring, tuning, and iteration after go-live — the handover should be the least painful part of the project.",
       },
     ],
   },
@@ -91,27 +91,29 @@ export const aboutPage = {
     items: [
       {
         id: "01",
-        title: "Precision over hype",
-        description: "We say no to AI projects that won't actually move a business metric.",
+        title: "Outcomes over hype",
+        description:
+          "We say no to AI projects that will not move a business metric.",
         image: "/about/2.png",
       },
       {
         id: "02",
         title: "Transparency",
-        description: "Clear scope, clear timelines, no surprise change orders.",
+        description: "Clear scope, defined timelines, no surprise change orders.",
         image: "/about/3.png",
       },
       {
         id: "03",
-        title: "Craftsmanship",
-        description: "Production-grade code and enterprise architecture, every time.",
+        title: "Production-grade craft",
+        description:
+          "Pipelines and models built with telemetry and governance, not demo code.",
         image: "/about/4.png",
       },
       {
         id: "04",
         title: "Long-term thinking",
         description:
-          "We build systems engineered to be maintained, not just demoed.",
+          "We build architecture engineered to be maintained and extended, not just launched.",
         image: "/about/5.png",
       },
     ],

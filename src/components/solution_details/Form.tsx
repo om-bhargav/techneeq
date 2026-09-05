@@ -9,7 +9,7 @@ import { ArrowUpRight } from "lucide-react";
 export default function ContactSection() {
   return (
     <Section
-      className="py-16 md:py-24 lg:py-28 bg-white"
+      className="py-16 md:py-24 lg:py-28 bg-card"
       containerClassName="max-w-7xl"
     >
       <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">

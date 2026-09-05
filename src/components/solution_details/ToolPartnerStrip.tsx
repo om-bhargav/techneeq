@@ -27,9 +27,9 @@ export function ToolsPartnersStrip() {
   return (
     <section
       aria-label="Tools, partners and technology"
-      className="border-t border-border bg-background/50 max-md:max-w-screen px-6 py-12 md:py-14"
+      className="border-t border-border bg-background/50 max-md:max-w-screen py-12 md:py-14"
     >
-      <div className="mx-auto w-full max-w-7xl">
+      <div className="mx-auto w-full max-w-7xl px-4">
         <div className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
           <h2 className="tech-label shrink-0">Tools, Partner &amp; Technology</h2>
 
