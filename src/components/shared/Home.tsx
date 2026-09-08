@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
 
-import Hero from "@/components/home/Hero";
+import Hero from "@/components/home/Hero3";
 import { ToolsPartnersStrip } from "../solution_details/ToolPartnerStrip";
 
 const Intelligence = lazy(
