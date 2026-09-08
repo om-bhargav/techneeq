@@ -5,8 +5,6 @@ import { ArrowUpRight } from "lucide-react";
 
 import PillButton from "../elements/PillButton";
 import { hero } from "@/data/home";
-import { scrollToSection } from "@/lib/scroll";
-import { Button } from "../ui/button";
 
 export default function Hero() {
     return (
