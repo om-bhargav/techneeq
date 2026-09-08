@@ -3,6 +3,7 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
+import { Link } from "react-router-dom";
 
 import Section from "@/components/global/section/Section";
 import SectionHeader from "../global/section/SectionHeader";
@@ -30,10 +31,10 @@ export default function Services() {
       --------------------------------------------- */}
 
       <SectionHeader
-        label="How We Engage"
-        title="Work with us"
-        highlight="the way that fits your team."
-        description="Every business is at a different stage. Pick the engagement model that matches where you are." className="mb-6"
+        label="Work with us"
+        title="Six ways to start,"
+        highlight="one delivery standard."
+        description="Every business is at a different stage. Pick the engagement model that matches where you are — the team, the cadence and the handover standard are the same whichever one you choose." className="mb-6"
       />
 
       {/* ---------------------------------------------
@@ -145,10 +146,13 @@ export default function Services() {
                         {activeService.description}
                       </p>
 
-                      <button className="group mt-8 inline-flex items-center gap-3 rounded-full bg-foreground px-6 py-3 text-sm text-background transition hover:opacity-85">
-                        Talk to us about this
+                      <Link
+                        to="/contact"
+                        className="group mt-8 inline-flex items-center gap-3 rounded-full bg-foreground px-6 py-3 text-[11px] font-medium uppercase tracking-[0.15em] text-background transition hover:opacity-85"
+                      >
+                        Schedule an Architecture Review
                         <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                      </button>
+                      </Link>
                     </div>
                   </div>
 

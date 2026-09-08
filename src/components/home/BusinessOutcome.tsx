@@ -22,14 +22,14 @@ export default function BusinessOutcome() {
   return (
     <Section
       ref={sectionRef}
-      className="relative bg-background md:h-[400vh]"
+      className="relative bg-background md:h-[240vh]"
       containerClassName="h-full max-w-none"
     >
       {/* 
         FIX 1: Removed md:h-screen and md:overflow-hidden 
         Added md:pb-24 so it has breathing room at the bottom while sticking 
       */}
-      <div className="md:sticky md:top-16 md:flex md:items-start md:pb-24">
+      <div className="md:sticky md:top-24 md:flex md:items-start md:pb-12">
         <div className="mx-auto w-full max-w-7xl">
           <Section.Header
             label="Business outcome"
@@ -51,53 +51,14 @@ export default function BusinessOutcome() {
 
             {/* Stages */}
             <div>
-              {stages.map((stage, index) => {
-                const start = index / stages.length;
-
-                const dotScale = useTransform(
-                  mobileProgress,
-                  [
-                    Math.max(0, start - 0.05),
-                    start,
-                    Math.min(1, start + 0.08),
-                  ],
-                  [1, 1, 1.5]
-                );
-
-                const dotOpacity = useTransform(
-                  mobileProgress,
-                  [Math.max(0, start - 0.05), start],
-                  [0.35, 1]
-                );
-
-                return (
-                  <div key={stage.id} className="relative min-h-[180px] py-8 pl-10">
-                    {/* Dot */}
-                    <motion.div
-                      style={{
-                        scale: dotScale,
-                        opacity: dotOpacity,
-                      }}
-                      className="absolute left-2 top-10 z-20 flex size-3 -translate-x-1/2 items-center justify-center rounded-full bg-foreground"
-                    >
-                      <div className="size-1 rounded-full bg-background" />
-                    </motion.div>
-
-                    {/* Content */}
-                    <div>
-                      <span className="font-mono text-[10px] tracking-[0.15em] text-muted-foreground">
-                        {stage.id}
-                      </span>
-                      <h3 className="mt-3 font-display text-3xl leading-none tracking-[-0.045em]">
-                        {stage.title}
-                      </h3>
-                      <p className="mt-3 max-w-[280px] text-xs leading-5 text-muted-foreground">
-                        {stage.description}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
+              {stages.map((stage, index) => (
+                <MobileStage
+                  key={stage.id}
+                  stage={stage}
+                  index={index}
+                  progress={mobileProgress}
+                />
+              ))}
             </div>
           </div>
 
@@ -127,6 +88,58 @@ export default function BusinessOutcome() {
         </div>
       </div>
     </Section>
+  );
+}
+
+function MobileStage({
+  stage,
+  index,
+  progress,
+}: {
+  stage: (typeof stages)[number];
+  index: number;
+  progress: ReturnType<typeof useScroll>["scrollYProgress"];
+}) {
+  const start = index / stages.length;
+
+  const dotScale = useTransform(
+    progress,
+    [Math.max(0, start - 0.05), start, Math.min(1, start + 0.08)],
+    [1, 1, 1.5]
+  );
+
+  const dotOpacity = useTransform(
+    progress,
+    [Math.max(0, start - 0.05), start],
+    [0.35, 1]
+  );
+
+  return (
+    <div className="relative min-h-[180px] py-8 pl-10">
+      {/* Dot */}
+      <motion.div
+        style={{
+          scale: dotScale,
+          opacity: dotOpacity,
+        }}
+        className="absolute left-2 top-10 z-20 flex size-3 -translate-x-1/2 items-center justify-center rounded-full bg-foreground"
+      >
+        <div className="size-1 rounded-full bg-background" />
+      </motion.div>
+
+      {/* Content */}
+      <div>
+        <span className="font-mono text-[10px] tracking-[0.15em] text-muted-foreground">
+          {stage.id}
+        </span>
+        <h3 className="mt-3 font-display text-3xl leading-none tracking-[-0.045em]">
+          {stage.title}
+        </h3>
+        <p className="mt-3 max-w-[280px] text-xs leading-5 text-muted-foreground">
+          {stage.description}
+        </p>
+      </div>
+    </div>
   );
 }
 

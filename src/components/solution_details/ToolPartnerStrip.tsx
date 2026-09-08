@@ -27,13 +27,13 @@ export function ToolsPartnersStrip() {
   return (
     <section
       aria-label="Tools, partners and technology"
-      className="border-t border-border bg-background/50 max-md:max-w-screen py-12 md:py-14"
+      className="w-full max-w-full overflow-hidden border-t border-border bg-background/50 py-12 md:py-14"
     >
       <div className="mx-auto w-full max-w-7xl px-4">
-        <div className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
+        <div className="flex w-full min-w-0 flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
           <h2 className="tech-label shrink-0">Tools, Partner &amp; Technology</h2>
 
-          <div className="relative w-full overflow-hidden md:w-auto md:flex-1">
+          <div className="relative w-full min-w-0 overflow-hidden md:w-auto md:flex-1">
             <span
               aria-hidden
               className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-background to-transparent md:w-16"

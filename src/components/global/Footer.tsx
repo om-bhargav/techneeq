@@ -82,7 +82,7 @@ export default function Footer() {
                 hover:border-transparent
               "
             >
-              Start a conversation
+              Start A Project
             </PillButton>
           </div>
         </div>

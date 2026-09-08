@@ -1,4 +1,6 @@
 import { useRef, useState } from "react";
+import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import {
   motion,
   useScroll,
@@ -46,16 +48,17 @@ export default function Industries() {
     <Section id="industries" className="relative">
       <Section.Header
         label="Industries"
-        title="One approach."
-        highlight="Built to fit every industry."
-        description="The technology looks similar across every industry we work in. What changes is the regulation, the risk tolerance, and who's allowed to see what — so that's where we start, not a generic template."
+        title="Where this"
+        highlight="gets applied."
+        description="Six environments we work in regularly. Pick the one you operate in to see what changes about the constraints — and where a dedicated page exists, what the engagements look like."
       />
 
       <Section.Body
         ref={containerRef}
-        // You can adjust the * 100 multiplier down (e.g. * 80) if the scroll length feels too long on large monitors
-        style={{ height: `${industries.length * 100}vh` }}
-        className="relative w-full"
+        // Scroll length is set in CSS (.industry-stack) so it can be shorter on
+        // mobile, where the image column is hidden and there is less to reveal.
+        style={{ "--industry-count": industries.length } as React.CSSProperties}
+        className="industry-stack relative w-full"
       >
         {/* FIX: Removed `min-h-screen`, changed top-0 to top-24, added padding. 
             Now it hugs the content's natural height instead of forcing empty space! */}
@@ -85,6 +88,29 @@ export default function Industries() {
                     <p className="text-lg text-foreground/70">
                       {activeEnvironment.description}
                     </p>
+
+                    {/* Only industries with a dedicated page get a link — the
+                        rest stay unlinked rather than pointing at a 404. */}
+                    {activeEnvironment.slug && (
+                      <Link
+                        to={`/industries/${activeEnvironment.slug}`}
+                        className="
+                          group mt-8 inline-flex items-center gap-3
+                          border-b border-foreground/20 pb-1
+                          text-[11px] font-medium uppercase tracking-[0.15em]
+                          text-foreground/70 transition-colors duration-300
+                          hover:text-foreground
+                        "
+                      >
+                        Explore Industries
+                        <ArrowUpRight
+                          className="
+                            size-4 transition-transform duration-300
+                            group-hover:-translate-y-0.5 group-hover:translate-x-0.5
+                          "
+                        />
+                      </Link>
+                    )}
                   </motion.div>
                 </AnimatePresence>
               </div>
@@ -111,6 +137,12 @@ export default function Industries() {
                         <span className="flex-1 text-sm">
                           {environment.name}
                         </span>
+
+                        {environment.slug && (
+                          <span className="mr-4 font-mono text-[9px] uppercase tracking-[0.18em] text-foreground/30">
+                            Page
+                          </span>
+                        )}
                         <span
                           className={`h-px bg-foreground transition-all duration-500 ${isActive ? "w-8" : "w-0 group-hover:w-8"
                             }`}
@@ -149,6 +181,7 @@ export default function Industries() {
 // ----------------------------------------------------
 export interface Environment {
   id: string;
+  slug?: string;
   name: string;
   eyebrow: string;
   description: string;

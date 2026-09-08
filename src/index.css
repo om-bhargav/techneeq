@@ -480,3 +480,36 @@ img{
     transform: translateX(-50%);
   }
 }
+
+/* =========================================================
+   TECHNICAL LABEL
+   Used by the tools/partners strip and the solution pages.
+   ========================================================= */
+
+.tech-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--foreground) 45%, transparent);
+}
+
+
+/* =========================================================
+   INDUSTRY SCROLL STACK
+   Scroll length per industry. Shorter on mobile, where the
+   image column is hidden and there is less to reveal.
+   ========================================================= */
+
+.industry-stack {
+  height: calc(var(--industry-count, 6) * 46vh);
+}
+
+@media (min-width: 768px) {
+
+  .industry-stack {
+    height: calc(var(--industry-count, 6) * 80vh);
+  }
+}

@@ -235,6 +235,7 @@ export const solutions = [
 export const industries = [
   {
     id: "01",
+    slug: "healthcare-life-sciences",
     name: "Healthcare & Life Sciences",
     eyebrow: "PATIENTS · RESEARCH · CARE",
     description:
@@ -243,6 +244,7 @@ export const industries = [
   },
   {
     id: "02",
+    slug: "financial-services",
     name: "Financial Services",
     eyebrow: "RISK · CAPITAL · PERFORMANCE",
     description:
@@ -380,24 +382,24 @@ export const expertise = [
 
 export const faqs = [
   {
-    question: "What kind of problems do you actually solve?",
+    question: "What actually happens in an architecture review?",
     answer:
-      "Fragmented pipelines, dashboards nobody fully trusts, manual handoffs eating staff time, and AI pilots that never reach production. If your reporting describes last month instead of this morning, that's our lane.",
+      "A working session, not a pitch. We walk your current data estate — source systems, pipelines, reporting layer — and identify where the latency and the manual handoffs actually sit. You leave with a prioritized view of the bottlenecks and what it would take to remove them, whether or not you engage us to do it.",
   },
   {
-    question: "Do we need to rip out our existing systems to work with you?",
+    question: "Do we need to replace our existing systems to work with you?",
     answer:
       "No. Most engagements decouple and modernize what you already run — we connect legacy on-prem platforms to cloud-native rails rather than forcing a costly rebuild. A full replacement is the exception, not the default.",
+  },
+  {
+    question: "Our AI pilots never make it to production. What changes here?",
+    answer:
+      "We treat production as the starting requirement, not the last milestone. Models ship with MLOps, telemetry, and governance attached, on top of pipelines engineered to hold under real load — which is usually where sandbox prototypes fail, not in the modeling.",
   },
   {
     question: "How do you handle data security and compliance?",
     answer:
       "Governance guardrails are part of the architecture, not a step bolted on at the end. We design against SOC 2, HIPAA, GDPR, the UK Data Protection Act, and the financial services regulations your auditors actually enforce.",
-  },
-  {
-    question: "Do you work with companies outside the United States?",
-    answer:
-      "Yes. Alongside our US client base, we deliver data engineering and AI consulting across the United Kingdom and the European Union, with data residency and GDPR compliance designed into the architecture from day one.",
   },
   {
     question: "What does a typical engagement look like?",
@@ -407,11 +409,244 @@ export const faqs = [
   {
     question: "Do we need our own data team already?",
     answer:
-      "No. We can run the engagement end-to-end, embed forward-deployed engineers alongside your team, or train your people to take ownership after cutover — whichever fits where you are.",
+      "No. We can run the engagement end-to-end, embed forward-deployed engineers alongside your team, or train your people to take ownership after cutover. We also stay on for telemetry, monitoring, and iteration after go-live if you want us to — nothing ships into production and then gets abandoned.",
   },
   {
-    question: "What happens after the project goes live?",
+    question: "Do you work with companies outside the United States?",
     answer:
-      "We stay on for telemetry, monitoring, and iteration if you want us to. Nothing ships into production and then gets abandoned.",
+      "Yes. Alongside our US client base, we deliver data engineering and AI consulting across the United Kingdom and the European Union, with data residency and GDPR compliance designed into the architecture from day one.",
+  },
+];
+
+/* =========================================================
+   HERO — From passive to active intelligence
+   ========================================================= */
+
+export const hero = {
+  eyebrow: "Active Intelligence & Enterprise Data Platforms",
+  title: "From passive",
+  highlight: "to active intelligence.",
+  description:
+    "Techneeq connects the data and systems an enterprise already runs, and turns them into intelligence people can act on — so decisions get made on what is happening now, not on a report describing last month.",
+  primaryCta: {
+    label: "Book A Call",
+    href: "/contact",
+  },
+  secondaryCta: {
+    label: "Explore Capabilities",
+    href: "#capabilities",
+  },
+};
+
+/* =========================================================
+   PROBLEM — why it matters
+   ========================================================= */
+
+export const problem = {
+  label: "The modern data dilemma",
+  title: "Most enterprise reporting",
+  highlight: "describes a decision you already missed.",
+  description:
+    "The data is usually already there. What is missing is the engineering between the source system and the person who has to act — so teams get a dashboard that refreshes on Monday for a call they had to make on Friday.",
+  contrasts: [
+    {
+      id: "01",
+      from: "Reporting that arrives after the fact",
+      to: "Intelligence that arrives in the decision window",
+    },
+    {
+      id: "02",
+      from: "Systems that each hold part of the answer",
+      to: "One connected picture every team reads the same way",
+    },
+    {
+      id: "03",
+      from: "AI pilots that stall in the sandbox",
+      to: "Models in production, with governance attached",
+    },
+  ],
+};
+
+/* =========================================================
+   ARCHITECTURE — the signature section
+   ========================================================= */
+
+export const architecture = {
+  label: "The architecture",
+  title: "One intelligence architecture.",
+  highlight: "Multiple business environments.",
+  description:
+    "The same four movements sit under every engagement we run. What changes between a hospital and a trading desk is the regulation, the latency tolerance, and who is allowed to see what — not the shape of the architecture.",
+  stages: [
+    {
+      id: "01",
+      keyword: "CONNECT",
+      title: "Connect",
+      description:
+        "Systems stop being islands. Records from every platform — ERP, CRM, on-prem, cloud — land in one place, continuously.",
+    },
+    {
+      id: "02",
+      keyword: "CONTEXTUALIZE",
+      title: "Contextualize",
+      description:
+        "Raw records become modeled facts your teams read the same way, with the same definitions and the same lineage behind them.",
+    },
+    {
+      id: "03",
+      keyword: "INTELLIGENT",
+      title: "Intelligent",
+      description:
+        "Analytics and models sit on top of live data, so patterns surface while there is still time to do something about them.",
+    },
+    {
+      id: "04",
+      keyword: "ACTIONABLE",
+      title: "Actionable",
+      description:
+        "Intelligence reaches the person making the call, inside the system they already work in, at the moment the call has to be made.",
+    },
+  ],
+};
+
+/* =========================================================
+   CAPABILITIES — four strategic groups
+   ========================================================= */
+
+export const capabilityGroups = [
+  {
+    id: "01",
+    title: "Data Engineering",
+    description:
+      "Build reliable data foundations, pipelines, platforms and integrations.",
+    icon: Database,
+    points: [
+      "Lakehouses, warehouses and semantic layers",
+      "Automated ETL/ELT pipelines and CI/CD DataOps",
+      "Legacy modernization and application integration",
+      "Azure cloud infrastructure and cost control",
+    ],
+  },
+  {
+    id: "02",
+    title: "AI & Machine Learning",
+    description:
+      "Apply machine learning and AI where it can create meaningful operational or business value.",
+    icon: BrainCircuit,
+    points: [
+      "Domain-fine-tuned LLMs and RAG search pipelines",
+      "Predictive models running in production",
+      "Conversational AI and internal assistants",
+      "MLOps, telemetry and model governance",
+    ],
+  },
+  {
+    id: "03",
+    title: "Decision Intelligence",
+    description:
+      "Turn data and intelligence into decision-support systems and actionable business insight.",
+    icon: BarChart3,
+    points: [
+      "Real-time event streaming and automated alerting",
+      "Embedded analytics inside the tools teams already use",
+      "Automated scorecards leadership can trust",
+      "Architecture audits, latency targets and data strategy",
+    ],
+  },
+  {
+    id: "04",
+    title: "Enterprise Applications",
+    description:
+      "Build the applications and systems required to operationalize intelligence across the organization.",
+    icon: Code2,
+    points: [
+      "Bespoke portals on React, .NET and Azure",
+      "Digital conversion of manual, paper-based processes",
+      "Workflow automation across ERP, CRM and core platforms",
+      "Security, access control and governance guardrails",
+    ],
+  },
+];
+
+/* =========================================================
+   PROOF / OUTCOMES
+
+   NOTE: no client-verified outcomes exist in this project yet.
+   The entries below describe the change each engagement type is
+   SCOPED to deliver. They deliberately carry no client names, no
+   metrics and no percentages. Replace them with published case
+   studies — including real figures — only once a client has
+   approved them for release, and drop `proofDisclosure` at the
+   same time.
+   ========================================================= */
+
+export const proofDisclosure =
+  "Named case studies and client-verified figures are published here as they are approved for release. The engagements below describe what each program is scoped to change — they are not published client results.";
+
+export const proofPatterns = [
+  {
+    id: "01",
+    pattern: "Reporting latency",
+    challenge:
+      "Reporting runs on overnight batch loads, so every operational call is made against a picture that is already a day old.",
+    approach:
+      "Streaming integration and a modeled semantic layer replace the nightly load, with automated alert triggers embedded into the systems teams already work in.",
+    outcome:
+      "Teams act on live positions inside the decision window instead of reconciling yesterday's close.",
+  },
+  {
+    id: "02",
+    pattern: "Fragmented systems",
+    challenge:
+      "Plant, ERP, finance and quality systems each hold part of the answer, and every team reports a different number for the same question.",
+    approach:
+      "Legacy platforms are decoupled and connected to cloud-native rails, landing in one governed warehouse with shared definitions and traceable lineage.",
+    outcome:
+      "One set of numbers the business agrees on, with conflicting spreadsheets retired rather than reconciled.",
+  },
+  {
+    id: "03",
+    pattern: "AI stuck in pilot",
+    challenge:
+      "Models perform in a notebook but never clear the bar for production — no monitoring, no governance, no pipeline that holds under load.",
+    approach:
+      "Models are rebuilt onto production pipelines with MLOps, telemetry and governance attached, and scoped against a decision the business actually has to make.",
+    outcome:
+      "Intelligence running in production and owned by the business, instead of a prototype nobody can sign off.",
+  },
+];
+
+/* =========================================================
+   WHY TECHNEEQ — differentiation
+   ========================================================= */
+
+export const differentiators = [
+  {
+    id: "01",
+    title: "Data, AI and applications under one team",
+    description:
+      "Streaming data infrastructure, production machine learning and custom software development sit in the same team. The integration between them is not a handoff between three vendors.",
+    icon: Layers3,
+  },
+  {
+    id: "02",
+    title: "We start with the architecture, not the tool",
+    description:
+      "Every engagement opens by mapping the existing silos and defining latency targets. Platform decisions follow from that — which is why we can start anywhere in the chain and take over as much of it as you need.",
+    icon: Workflow,
+  },
+  {
+    id: "03",
+    title: "Scoped around a decision, not a deliverable",
+    description:
+      "The first question is which decision you need to make faster. If a piece of work will not move a business metric, we say so before it gets built.",
+    icon: Route,
+  },
+  {
+    id: "04",
+    title: "Built to reach production — and stay there",
+    description:
+      "Governance, telemetry and CI/CD DataOps are designed in before go-live, and we stay on for monitoring and iteration afterwards. The handover should be the least painful part of the project.",
+    icon: ShieldCheck,
   },
 ];

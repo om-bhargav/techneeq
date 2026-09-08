@@ -12,9 +12,9 @@ export default function ContactSection() {
           {/* Contact information */}
           <div className="lg:sticky lg:top-24">
             <Section.Header
-              label="Start a conversation"
-              title="Have a project in mind?"
-              highlight="Let's talk."
+              label="Architecture review"
+              title="Tell us where"
+              highlight="the bottleneck is."
             />
 
             <div className="mt-12 space-y-8">

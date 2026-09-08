@@ -3,56 +3,63 @@ import { lazy, Suspense } from "react";
 import Hero from "@/components/home/Hero3";
 import { ToolsPartnersStrip } from "../solution_details/ToolPartnerStrip";
 
-const Intelligence = lazy(
-  () => import("@/components/home/Intelligence")
-);
- 
-const Services = lazy(
-  () => import("@/components/home/Services")
-);
+/*
+ * Homepage narrative. Each section answers a different question — where two
+ * sections answered the same one, they were merged rather than kept.
+ *
+ *   Hero            What does Techneeq do?
+ *   Problem         Why does it matter?
+ *   Architecture    How does Techneeq approach it?      (the only place this is explained)
+ *   BusinessOutcome What is the point of it?            (data → insight → decision → action)
+ *   Capabilities    What can Techneeq deliver?          (absorbs the old Intelligence,
+ *                                                        Solutions and Expertise sections)
+ *   Industries      Where does it apply?
+ *   Proof           What evidence exists?
+ *   WhyTechneeq     Why choose Techneeq?
+ *   Services        How can we engage?                  (Work With Us — deliberately late)
+ *   Faq             What might stop me engaging?
+ *   CTA             What should I do next?
+ *
+ * The Intelligence / Solutions / Transformation / Expertise components are still
+ * live on the /home-2 and /home-3 hero variants.
+ */
 
-const Solutions = lazy(
-  () => import("@/components/home/Solutions")
-);
+const Problem = lazy(() => import("@/components/home/Problem"));
 
-const Environments = lazy(
-  () => import("@/components/home/Industries")
-);
-const Transformation = lazy(
-  () => import("@/components/home/Transformation")
-);
+const Architecture = lazy(() => import("@/components/home/Architecture"));
 
 const BusinessOutcome = lazy(
   () => import("@/components/home/BusinessOutcome")
 );
 
-const Expertise = lazy(
-  () => import("@/components/home/Expertise")
-);
+const Capabilities = lazy(() => import("@/components/home/Capabilities"));
 
-const Faq = lazy(
-  () => import("@/components/home/Faq")
-);
+const Industries = lazy(() => import("@/components/home/Industries"));
+const WhyTechneeq = lazy(() => import("@/components/home/WhyTechneeq"));
 
-const CTA = lazy(
-  () => import("@/components/home/CTA")
-);
+const WorkWithUs = lazy(() => import("@/components/home/Services"));
+
+const Faq = lazy(() => import("@/components/home/Faq"));
+
+const CTA = lazy(() => import("@/components/home/CTA"));
 
 function Home() {
   return (
     <div className="grid max-md:gap-10 md:gap-20">
       <div className="grid">
-      <Hero />
-      <ToolsPartnersStrip/>
+        <Hero />
+        <ToolsPartnersStrip />
       </div>
+
       <Suspense fallback={null}>
-        <Intelligence />
-        <Services />
-        <Solutions />
-        <Environments />
-        <Transformation />
+        <Problem />
+        <Architecture />
         <BusinessOutcome />
-        <Expertise />
+        <Capabilities />
+        <Industries />
+        {/* <Proof /> */}
+        <WhyTechneeq />
+        <WorkWithUs />
         <Faq />
         <CTA />
       </Suspense>

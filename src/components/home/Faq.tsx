@@ -110,9 +110,9 @@ export default function FAQSection() {
     <Section>
       <Section.Header
         label="FAQ"
-        title="Questions,"
-        highlight="answered."
-        description="A few things you might want to know before we start building something together."
+        title="Before you"
+        highlight="book the review."
+        description="The questions enterprise buyers actually ask us — integration, compliance, what an engagement costs you in time, and what happens once it is live."
       />
 
       <Section.Body>
@@ -125,8 +125,9 @@ export default function FAQSection() {
               </span>
 
               <p className="mt-5 max-w-xs text-sm leading-6 text-muted-foreground">
-                Have a question that isn't answered here? Let's talk it
-                through — no sales deck required.
+                Anything not covered here is fair game in the architecture
+                review. Bring the awkward question — that is what the session
+                is for.
               </p>
 
             </div>

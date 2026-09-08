@@ -126,7 +126,7 @@ export function LetsTalkButton({className}:Props) {
         return;
       }
 
-      // Click on Let's Talk button → do nothing
+      // Click on the CTA button → do nothing
       if (buttonRef.current?.contains(target)) {
         return;
       }
@@ -151,7 +151,7 @@ export function LetsTalkButton({className}:Props) {
   return (
     <>
       {/* -------------------------------- */}
-      {/* LET'S TALK BUTTON                 */}
+      {/* ARCHITECTURE REVIEW BUTTON       */}
       {/* -------------------------------- */}
 
       <button
@@ -198,7 +198,7 @@ export function LetsTalkButton({className}:Props) {
             tracking-[0.12em]
           "
         >
-          Let's talk
+          Start A Project
         </span>
 
         <ArrowUpRight
@@ -314,7 +314,7 @@ export function LetsTalkButton({className}:Props) {
                     sm:text-[32px]
                   "
                 >
-                  Let's build something great.
+                  Start A Project
                 </h2>
 
                 <p
@@ -326,8 +326,8 @@ export function LetsTalkButton({className}:Props) {
                     text-foreground/60
                   "
                 >
-                  Tell us about your project, we usually
-                  reply within one business day.
+                  Tell us what is not working. We usually reply within one
+                  business day.
                 </p>
               </div>
 
@@ -373,12 +373,11 @@ export function LetsTalkButton({className}:Props) {
                   label="Select a service"
                   placeholder="Select a service"
                   options={[
-                    "Web Development",
-                    "AI Development",
-                    "UI/UX Design",
-                    "Automation",
-                    "UI/UX Design",
-                    "Other",
+                    "Data Engineering",
+                    "AI & Machine Learning",
+                    "Decision Intelligence",
+                    "Enterprise Applications",
+                    "Architecture review / not sure yet",
                   ]}
                   value={values.service}
                   onChange={handleChange("service")}
@@ -422,7 +421,7 @@ export function LetsTalkButton({className}:Props) {
                   variant="dark"
                   className="w-full justify-between px-6 py-3 text-xs"
                 >
-                  Send enquiry
+                  Request a review
                 </PillButton>
 
                 {/* OR */}
@@ -474,7 +473,7 @@ export function LetsTalkButton({className}:Props) {
                   />
 
                   <span>
-                    Book a 30-minute call
+                    Book a 30-minute architecture review
                   </span>
                 </button>
 

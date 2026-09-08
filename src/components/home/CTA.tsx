@@ -6,14 +6,19 @@ import { ArrowUpRight } from "lucide-react";
 import Section from "../global/section/Section";
 import PillButton from "../elements/PillButton";
 
+/**
+ * FINAL CTA — "what should I do next?"
+ *
+ * One action. No competing "get started" / "contact us" alternatives.
+ */
 export default function IntelligenceCTA() {
   return (
     <Section className="overflow-hidden">
       <Section.Header
-        label="Start a conversation"
-        title="Got a data problem"
-        highlight="you're tired of working around?"
-        description="Tell us what's not working. We'll tell you honestly whether we're the right fit to fix it."
+        label="Start here"
+        title="Have a critical data bottleneck?"
+        highlight="Let's architect a solution."
+        description="A 30-minute architecture discovery session with senior data engineers. No sales deck — we look at your pipelines and tell you where the constraint actually is."
         className="relative"
       />
 
@@ -28,8 +33,8 @@ export default function IntelligenceCTA() {
             className="max-w-md"
           >
             <p className="text-sm leading-6 text-muted-foreground">
-              No lengthy proposals up front. A short call is enough for us to
-              tell you honestly whether this is worth pursuing together.
+              You leave the session with a prioritized view of the bottlenecks
+              and what it would take to remove them — with or without us.
             </p>
           </motion.div>
 
@@ -57,7 +62,7 @@ export default function IntelligenceCTA() {
               ease: [0.22, 1, 0.36, 1],
             }}
           >
-            Start a conversation
+            Schedule an Architecture Review
           </PillButton>
         </div>
 
