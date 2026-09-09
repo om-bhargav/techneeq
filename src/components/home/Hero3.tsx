@@ -5,21 +5,14 @@ import { ArrowUpRight } from "lucide-react";
 
 import PillButton from "../elements/PillButton";
 import { hero } from "@/data/home";
+import { HeroVideo } from "./HeroVideo";
 
 export default function Hero() {
     return (
         <section className="relative isolate h-screen overflow-hidden bg-background">
             {/* Background */}
             <div className="absolute inset-0 -z-10">
-                <video
-                    autoPlay
-                    loop
-                    playsInline
-                    muted
-                    src={"/hero/video1.mp4"}
-                    className="rounded-none! object-cover h-full w-full"
-                />
-
+                <HeroVideo/>
                 {/* Readability overlay */}
                 <div className="absolute inset-0 bg-foreground/50" />
             </div>
