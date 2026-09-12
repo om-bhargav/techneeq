@@ -23,7 +23,7 @@ const footerLinks = {
 export default function Footer() {
   const {EMAIL,PHONE} = contactPage;
   return (
-    <footer className="bg-foreground px-6 pb-6 pt-20 text-background md:px-10 md:pb-10 md:pt-28 lg:px-14 lg:pt-36">
+    <footer className="bg-foreground mt-8 md:mt-20 px-6 pb-6 pt-20 text-background md:px-10 md:pb-10 md:pt-28 lg:px-14 lg:pt-36">
       <div className="mx-auto max-w-7xl">
         {/* Main CTA */}
         <div className="border-b border-background/15 pb-20 md:pb-28">
@@ -96,8 +96,7 @@ export default function Footer() {
             </div>
 
             <p className="mt-5 max-w-xs text-sm leading-6 text-background/45">
-              Building thoughtful digital experiences where technology,
-              design, and intelligence meet.
+              A 30-minute architecture discovery session with senior data engineers. No sales deck — we look at your pipelines and tell you where the constraint actually is.
             </p>
           </div>
 

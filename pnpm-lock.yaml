@@ -65,6 +65,9 @@ importers:
       shadcn:
         specifier: ^4.18.0
         version: 4.19.0(typescript@6.0.3)
+      swiper:
+        specifier: ^14.2.0
+        version: 14.2.0
       tailwind-merge:
         specifier: ^3.6.0
         version: 3.6.0
@@ -2262,6 +2265,10 @@ packages:
     resolution: {integrity: sha512-aqldKgX9aZqpoDp3e8/BZ8Dm7x1pJl+qI3ZKxDN0i/IQTWUwBx/ManmlVJ3wowqbno6c2bmiIfs+Um6LbsjJyQ==}
     peerDependencies:
       react: '>=17.0'
+
+  swiper@14.2.0:
+    resolution: {integrity: sha512-GsL4M9Fq7Sg22OyL3SjdNj/0bxTfIxPJJHHW394Li0u5vYtExi0a09iBUc8CuLafJi5pAlH2AHUe1PocxHl45g==}
+    engines: {node: '>= 4.7.0'}
 
   systeminformation@5.33.6:
     resolution: {integrity: sha512-hMOQG/eRUzuopuYGGdl8ntkau0nEC7fOaRoTUg1RSr2GTQIk2VNa76DA0+ApajkGfzmcgAupgIP/vt+jtoe5EA==}
@@ -4543,6 +4550,8 @@ snapshots:
   suspend-react@0.1.3(react@19.2.8):
     dependencies:
       react: 19.2.8
+
+  swiper@14.2.0: {}
 
   systeminformation@5.33.6: {}
 

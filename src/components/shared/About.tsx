@@ -4,7 +4,6 @@ const OurStory = lazy(() => import("../about/OurStory"));
 const Team = lazy(() => import("../about/Team"));
 const HowWeWork = lazy(() => import("../about/HowWeWork"));
 const OurValues = lazy(() => import("../about/OurValues"));
-const CTA = lazy(() => import("../home/CTA"));
 
 export default function About() {
   return (
@@ -14,7 +13,6 @@ export default function About() {
         <Team />
         <HowWeWork />
         <OurValues />
-        <CTA />
       </Suspense>
     </main>
   );

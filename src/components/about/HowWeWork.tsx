@@ -35,7 +35,7 @@ export default function HowWeWork() {
                 }
               >
                 {/* Card content */}
-                <div className="flex h-full min-h-[calc(200px-3.5rem)] max-md:p-4 flex-col md:min-h-[calc(70vh-5rem)]">
+                <div className="flex h-full min-h-36 max-md:p-4 flex-col md:min-h-[calc(70vh-5rem)]">
 
                   {/* Top */}
                   <div className="flex items-start justify-between gap-6">

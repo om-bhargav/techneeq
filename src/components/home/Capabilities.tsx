@@ -1,21 +1,29 @@
 "use client";
 
-import { motion } from "motion/react";
-import { ArrowUpRight } from "lucide-react";
+import { useRef, useState } from "react";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperClass } from "swiper";
+import "swiper/css";
 
 import Section from "../global/section/Section";
 import { capabilityGroups } from "@/data/home";
+import { Button } from "../ui/button";
 
 /**
  * CAPABILITIES — "what can Techneeq actually deliver?"
  *
- * Four strategic groups, not a service grid. This section replaces the three
- * separate capability presentations the homepage used to carry (the six-layer
- * engine, the "one team, every capability" bento, and the "where we go deep"
- * stack) — the individual services live on the dedicated capability pages.
+ * Presented as a horizontal rail. The active slide opens to reveal its
+ * description; the rest stay collapsed to their title so the row reads
+ * as a set of options rather than four competing blocks of copy.
  */
 export default function Capabilities() {
+  const swiperRef = useRef<SwiperClass | null>(null);
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
+
   return (
     <Section id="capabilities">
       <Section.Header
@@ -26,56 +34,64 @@ export default function Capabilities() {
       />
 
       <Section.Body>
-        <div className="grid gap-4 md:grid-cols-2">
+        <Swiper
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+          }}
+          onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+          onProgress={(_, value) => setProgress(value)}
+          spaceBetween={16}
+          slidesPerView={1}
+          breakpoints={{
+            0: { slidesPerView: 1 },
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+          className="max-md:max-w-screen! grid!"
+        >
           {capabilityGroups.map((group, index) => {
             const Icon = group.icon;
+            const isActive = index === activeIndex;
 
             return (
-              <motion.article
-                key={group.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
-                transition={{
-                  duration: 0.7,
-                  delay: index * 0.06,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className="
-                  group relative overflow-hidden rounded-[22px]
-                  border border-foreground/[0.08] bg-muted/30
-                "
-              >
-                {/* Technical background — same treatment as the rest of the site */}
-                <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                  <div
-                    className="
-                      absolute inset-0 opacity-[0.025]
-                      [background-image:linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)]
-                      [background-size:32px_32px]
-                    "
-                  />
+              <SwiperSlide key={group.id} className="h-auto">
+                <article
+                  onClick={() => swiperRef.current?.slideTo(index)}
+                  className="
+                    group relative flex h-[420px] cursor-pointer flex-col
+                    overflow-hidden rounded-[22px]
+                    border border-foreground/[0.08] bg-muted/30
+                    md:h-[460px]
+                  "
+                >
+                  {/* Technical background — same treatment as the rest of the site */}
+                  <div className="pointer-events-none absolute inset-0 overflow-hidden">
+                    <div
+                      className="
+                        absolute inset-0 opacity-[0.025]
+                        [background-image:linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)]
+                        [background-size:32px_32px]
+                      "
+                    />
 
-                  <div
-                    className="
-                      absolute -bottom-24 -right-20 h-64 w-64 rounded-full
-                      border border-foreground/[0.05]
-                      transition-transform duration-1000
-                      group-hover:scale-110
-                    "
-                  />
-                </div>
+                    <div
+                      className="
+                        absolute -bottom-24 -right-20 h-64 w-64 rounded-full
+                        border border-foreground/[0.05]
+                        transition-transform duration-1000
+                        group-hover:scale-110
+                      "
+                    />
+                  </div>
 
-                <div className="relative z-10 flex h-full flex-col p-6 md:p-8 lg:p-9">
                   {/* Icon + number */}
-                  <div className="flex items-start justify-between">
+                  <div className="relative z-10 flex items-start justify-between p-6 md:p-7">
                     <div
                       className="
                         flex size-11 items-center justify-center rounded-xl
                         border border-foreground/10 bg-background/50 backdrop-blur-sm
                         transition-all duration-500
                         group-hover:-translate-y-1
-                        group-hover:bg-foreground group-hover:text-background
                       "
                     >
                       <Icon className="size-5" strokeWidth={1.5} />
@@ -86,47 +102,69 @@ export default function Capabilities() {
                     </span>
                   </div>
 
-                  {/* Heading */}
-                  <div className="mt-10 md:mt-14">
-                    <h3
+                  {/* Title + description */}
+                  <div className="relative z-10 mt-auto p-4 md:p-5">
+                    <div
                       className="
-                        font-display text-2xl leading-[0.95] tracking-[-0.045em]
-                        transition-transform duration-500
-                        group-hover:translate-x-1
-                        sm:text-3xl
+                        rounded-[16px] border border-foreground/[0.08]
+                        bg-background/80 p-5 backdrop-blur-sm
+                        transition-colors duration-500
+                        md:p-6
                       "
                     >
-                      {group.title}
-                    </h3>
+                      <div className="flex items-start justify-between gap-4">
+                        <h3 className="font-display text-xl leading-[1.05] tracking-[-0.03em] sm:text-2xl">
+                          {group.title}
+                        </h3>
 
-                    <p className="mt-4 max-w-sm text-xs leading-6 text-muted-foreground md:text-sm">
-                      {group.description}
-                    </p>
-                  </div>
+                        <Button variant={"outline"} className={"rounded-full h-10 w-10"}>
+                          <ArrowUpRight className="size-4 group-hover:rotate-45 transition-all" strokeWidth={1.5} />
+                        </Button>
+                      </div>
 
-                  {/* What that includes */}
-                  <ul className="mt-8 border-t border-foreground/[0.08]">
-                    {group.points.map((point) => (
-                      <li
-                        key={point}
-                        className="
-                          flex items-baseline gap-3
-                          border-b border-foreground/[0.08] py-2.5
-                          text-xs leading-5 text-muted-foreground
-                        "
+                      <div
+                        className={`
+    grid transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
+    ${isActive
+                            ? "grid-rows-[1fr] opacity-100"
+                            : "grid-rows-[0fr] opacity-0"
+                          }
+    lg:grid-rows-[0fr] lg:opacity-0
+    lg:group-hover:grid-rows-[1fr] lg:group-hover:opacity-100
+  `}
                       >
-                        <span
-                          aria-hidden
-                          className="mt-1.5 h-px w-3 shrink-0 bg-foreground/25"
-                        />
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.article>
+                        <p className="mt-3 overflow-hidden text-xs leading-6 text-muted-foreground md:text-sm">
+                          {group.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </SwiperSlide>
             );
           })}
+        </Swiper>
+
+        {/* Progress line + arrows */}
+        <div className="mt-10 flex items-center gap-6">
+          <div className="h-px min-w-0 flex-1 bg-foreground/10">
+            <div
+              className="h-px bg-foreground transition-[width] duration-500 ease-out"
+              style={{
+                width: `${Math.max(progress, 0.08) * 100}%`,
+              }}
+            />
+          </div>
+
+          <div className="flex shrink-0 items-center gap-2">
+            <Button variant={"outline"} className={"rounded-full h-10 w-10"}>
+              <ArrowLeft className="size-4" strokeWidth={1.5} />
+            </Button>
+
+            <Button variant={"outline"} className={"rounded-full h-10 w-10"}>
+              <ArrowRight className="size-4" strokeWidth={1.5} />
+            </Button>
+          </div>
         </div>
 
         {/* Secondary action — detail lives on the capability pages */}

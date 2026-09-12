@@ -432,10 +432,8 @@ export default function Navbar() {
 
       <header
         className={cn(
-          "left-0 right-0 top-0 z-50 transition-all duration-500",
-          scrolled
-            ? "fixed bg-background shadow-sm"
-            : "absolute bg-transparent"
+          "fixed left-0 right-0 top-0 z-50 transition-all duration-500",
+          scrolled ? "bg-background shadow-sm" : "bg-transparent"
         )}
       >
         <div

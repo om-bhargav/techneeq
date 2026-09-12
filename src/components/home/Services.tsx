@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import {
+  ArrowLeft,
+  ArrowRight,
   ArrowUpRight,
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
@@ -8,21 +10,33 @@ import { Link } from "react-router-dom";
 import Section from "@/components/global/section/Section";
 import SectionHeader from "../global/section/SectionHeader";
 import { services } from "@/data/home";
+import { Button } from "../ui/button";
 
 
-
+const AUTOPLAY_MS = 100000
 export default function Services() {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const [paused, setPaused] = useState(false);
+
   const activeService = services[activeIndex];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % services.length);
-    }, 10000);
+  const goTo = (index: number) => {
+    setActiveIndex((index + services.length) % services.length);
+  };
 
-    return () => clearInterval(interval);
-  }, []);
+  const goPrev = () => goTo(activeIndex - 1);
+  const goNext = () => goTo(activeIndex + 1);
+
+  useEffect(() => {
+    if (paused) return;
+
+    const timeout = setTimeout(() => {
+      setActiveIndex((prev) => (prev + 1) % services.length);
+    }, AUTOPLAY_MS);
+
+    return () => clearTimeout(timeout);
+  }, [activeIndex, paused]);
   return (
     <Section className="overflow-hidden">
 
@@ -173,6 +187,67 @@ export default function Services() {
               </motion.article>
             </AnimatePresence>
           </div>
+          <div
+            className="mt-8 flex items-center gap-6 md:hidden"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+          >
+            {/* Arrows */}
+            <div className="flex shrink-0 items-center gap-2">
+              <Button
+              onClick={goPrev}
+               className={"rounded-full h-10 w-10"}
+               variant={"outline"}
+              >
+                <ArrowLeft className="size-4" strokeWidth={1.5} />
+              </Button>
+
+              <Button onClick={goNext} className={"rounded-full h-10 w-10"} variant={"outline"} >
+                <ArrowRight className="size-4" strokeWidth={1.5} />
+              </Button>
+            </div>
+
+            {/* Progress segments */}
+            <div className="flex min-w-0 flex-1 items-center gap-1.5">
+              {services.map((service, index) => (
+                <button
+                  key={service.id}
+                  type="button"
+                  onClick={() => goTo(index)}
+                  aria-label={`Go to ${service.category}`}
+                  aria-current={index === activeIndex}
+                  className="group relative h-4 flex-1 min-w-0"
+                >
+                  <span className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-foreground/15 transition-colors duration-300 group-hover:bg-foreground/30" />
+
+                  {index < activeIndex && (
+                    <span className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-foreground/40" />
+                  )}
+
+                  {index === activeIndex && (
+                    <motion.span
+                      key={`${activeIndex}-${paused}`}
+                      initial={{ scaleX: paused ? 1 : 0 }}
+                      animate={{ scaleX: 1 }}
+                      transition={{
+                        duration: paused ? 0 : AUTOPLAY_MS / 1000,
+                        ease: "linear",
+                      }}
+                      className="absolute inset-x-0 top-1/2 h-px origin-left -translate-y-1/2 bg-foreground"
+                    />
+                  )}
+                </button>
+              ))}
+            </div>
+
+            {/* Counter */}
+            <span className="shrink-0 font-mono text-[10px] tracking-[0.16em] text-muted-foreground tabular-nums">
+              {String(activeIndex + 1).padStart(2, "0")}
+              <span className="mx-1 text-muted-foreground/40">/</span>
+              {String(services.length).padStart(2, "0")}
+            </span>
+          </div>
+
         </div>
       </Section.Body>
     </Section>

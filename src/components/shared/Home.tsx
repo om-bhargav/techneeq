@@ -40,8 +40,6 @@ const WorkWithUs = lazy(() => import("@/components/home/Services"));
 
 const Faq = lazy(() => import("@/components/home/Faq"));
 
-const CTA = lazy(() => import("@/components/home/CTA"));
-
 function Home() {
   return (
     <div className="grid max-md:gap-10 md:gap-20">
@@ -56,11 +54,8 @@ function Home() {
         <Architecture />
         <BusinessOutcome />
         <Industries />
-        {/* <Proof /> */}
-        {/* <WhyTechneeq /> */}
         <WorkWithUs />
         <Faq />
-        <CTA />
       </Suspense>
     </div>
   );

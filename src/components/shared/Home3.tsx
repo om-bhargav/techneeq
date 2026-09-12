@@ -34,10 +34,6 @@ const Faq = lazy(
   () => import("@/components/home/Faq")
 );
 
-const CTA = lazy(
-  () => import("@/components/home/CTA")
-);
-
 function Home3() {
   return (
     <div className="grid max-md:gap-10 md:gap-20">
@@ -54,7 +50,6 @@ function Home3() {
         <BusinessOutcome />
         <Expertise />
         <Faq />
-        <CTA />
       </Suspense>
     </div>
   );

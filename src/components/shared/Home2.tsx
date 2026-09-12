@@ -34,9 +34,6 @@ const Faq = lazy(
   () => import("@/components/home/Faq")
 );
 
-const CTA = lazy(
-  () => import("@/components/home/CTA")
-);
 
 function Home2() {
   return (
@@ -54,7 +51,6 @@ function Home2() {
         <BusinessOutcome />
         <Expertise />
         <Faq />
-        <CTA />
       </Suspense>
     </div>
   );
