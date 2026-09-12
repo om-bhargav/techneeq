@@ -17,7 +17,7 @@ export default function Hero() {
                 <div className="absolute inset-0 bg-foreground/50" />
             </div>
 
-            <div className="flex h-full md:h-screen max-w-7xl w-full items-center md:items-end justify-between px-2 py-12 pb-8 md:px-4 mx-auto">
+            <div className="flex h-full md:h-screen max-w-7xl w-full items-center md:items-end justify-between px-4 py-12 pb-8 md:px-4 mx-auto">
                 <div className="grid w-full items-center md:items-end gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
                     {/* Left content */}
                     <motion.div
