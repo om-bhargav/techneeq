@@ -158,24 +158,10 @@ function loadImage(src: string): Promise<void> {
   });
 }
 
-function loadVideo(src: string): Promise<void> {
-  return new Promise((resolve) => {
-    const video = document.createElement("video");
-    video.preload = "auto";
-    video.muted = true;
-    // `canplaythrough` means enough is buffered to play without stalling.
-    video.oncanplaythrough = () => resolve();
-    video.onloadeddata = () => resolve();
-    video.onerror = () => resolve();
-    video.src = src;
-    video.load();
-  });
-}
 
 /** SVGs and rasters both go through `Image`; videos need the media element. */
 function loadAsset(src: string): Promise<void> {
   return withTimeout(
-
       loadImage(src),
   );
 }
