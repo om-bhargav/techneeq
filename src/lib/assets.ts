@@ -95,7 +95,13 @@ export const SOLUTION_ASSETS = [
   "/solutions/5.png",
   "/solutions/6.png",
 ] as const;
-
+export const CAPABILITIES_ASSETS = [
+  "/capabilities/1.webp",
+  "/capabilities/2.avif",
+  "/capabilities/3.2.avif",
+  "/capabilities/3.avif",
+  "/capabilities/4.png",
+] as const;
 export const SOLUTION_CONTENT_ASSETS = Array.from(
   { length: 24 },
   (_, i) => `/solutions-contents/${i + 7}.png`,
@@ -115,6 +121,7 @@ export const PUBLIC_IMAGE_ASSETS = [
   ...SOLUTION_ASSETS,
   ...SOLUTION_CONTENT_ASSETS,
   ...MISC_ASSETS,
+  ...CAPABILITIES_ASSETS
 ];
 
 
