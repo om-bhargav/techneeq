@@ -1,55 +1,39 @@
-import { useLayoutEffect, useRef, useState } from "react";
-
-import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
+import type Lenis from "lenis";
+import { ScrollTrigger } from "@/lib/gsap";
 
 import Section from "../global/section/Section";
 import { techStacks } from "@/data/solutions";
 
-type PendingScroll = {
-  index: number;
-  top: number;
-};
 export default function TechStacks() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
-
   const itemRefs = useRef<(HTMLElement | null)[]>([]);
-  const pendingRef = useRef<PendingScroll | null>(null);
 
   const handleSelect = (index: number) => {
-    const el = itemRefs.current[index];
-    pendingRef.current = el
-      ? { index, top: el.getBoundingClientRect().top }
-      : null;
     setActiveIndex(index);
-  };
 
-  useLayoutEffect(() => {
-    const pending = pendingRef.current;
-    if (!pending) return;
-    pendingRef.current = null;
-
-    const el = itemRefs.current[pending.index];
+    const el = itemRefs.current[index];
     if (!el) return;
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      const delta = el.getBoundingClientRect().top - pending.top;
-      if (delta) window.scrollBy(0, delta);
-      return;
-    }
+    const lenis = (window as unknown as { __lenis?: Lenis }).__lenis;
 
-    let raf = 0;
-    const start = performance.now();
+    window.setTimeout(() => {
+      const { top } = el.getBoundingClientRect();
 
-    const tick = (now: number) => {
-      const delta = el.getBoundingClientRect().top - pending.top;
-      if (Math.abs(delta) > 0.5) window.scrollBy(0, delta);
-      if (now - start < 650) raf = requestAnimationFrame(tick);
-    };
+      // Document height changed — ScrollTrigger's cached positions are stale.
+      ScrollTrigger.refresh();
 
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [activeIndex]);
+      if (top >= 0 && top < window.innerHeight * 0.6) return;
+
+      if (lenis) {
+        lenis.scrollTo(el, { offset: -96, duration: 0.8 });
+      } else {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 560);
+  };
+
   return (
     <Section>
       <Section.Header
@@ -69,17 +53,10 @@ export default function TechStacks() {
               </div>
 
               <div className="relative mt-8 h-px w-16 bg-foreground/20">
-                <motion.div
-                  className="absolute inset-y-0 left-0 w-full bg-foreground"
-                />
+                <div className="absolute inset-y-0 left-0 w-full bg-foreground" />
               </div>
 
-              <motion.div
-                key={activeIndex}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="mt-16"
-              >
+              <div key={activeIndex} className="mt-16 animate-in fade-in slide-in-from-bottom-2 duration-500">
                 <span className="font-mono text-[80px] leading-none tracking-[-0.08em] text-foreground/[0.08]">
                   {techStacks[activeIndex].id}
                 </span>
@@ -87,21 +64,22 @@ export default function TechStacks() {
                 <p className="mt-5 max-w-[220px] text-xs leading-5 text-muted-foreground">
                   {techStacks[activeIndex].eyebrow}
                 </p>
-              </motion.div>
+              </div>
             </div>
           </div>
 
           {/* Tech stack list */}
-          <div className="border-t border-foreground/10 [overflow-anchor:none]">
+          <div className="border-t border-foreground/10">
             {techStacks.map((stack, index) => {
               const isActive = activeIndex === index;
 
               return (
-                <motion.article
+                <article
                   key={stack.id}
                   ref={(node) => {
                     itemRefs.current[index] = node;
                   }}
+                  style={{ contain: "layout" }}
                   className="group relative scroll-mt-24 border-b border-foreground/10"
                 >
                   <button
@@ -113,91 +91,74 @@ export default function TechStacks() {
                   >
                     {/* Number */}
                     <span
-                      className={`w-8 shrink-0 font-mono text-[10px] tracking-[0.15em] transition-colors duration-300 ${isActive
-                        ? "text-foreground"
-                        : "text-foreground/25 group-hover:text-foreground/50"
-                        }`}
+                      className={`w-8 shrink-0 font-mono text-[10px] tracking-[0.15em] transition-colors duration-300 ${
+                        isActive
+                          ? "text-foreground"
+                          : "text-foreground/25 group-hover:text-foreground/50"
+                      }`}
                     >
                       {stack.id}
                     </span>
 
                     {/* Name */}
                     <h3
-                      className={`min-w-0 flex-1 font-display text-2xl leading-none tracking-[-0.04em] transition-colors duration-500 sm:text-3xl md:text-4xl ${isActive
-                        ? "text-foreground"
-                        : "text-foreground/45 group-hover:text-foreground/70"
-                        }`}
+                      className={`min-w-0 flex-1 font-display text-2xl leading-none tracking-[-0.04em] transition-colors duration-500 sm:text-3xl md:text-4xl ${
+                        isActive
+                          ? "text-foreground"
+                          : "text-foreground/45 group-hover:text-foreground/70"
+                      }`}
                     >
                       {stack.name}
                     </h3>
 
                     {/* Arrow */}
-                    <motion.span
-                      animate={{
-                        rotate: isActive ? 45 : 0,
-                        x: isActive ? -4 : 0,
-                      }}
-                      transition={{
-                        duration: 0.35,
-                        ease: [0.22, 1, 0.36, 1],
-                      }}
-                      className="flex size-9 shrink-0 items-center justify-center rounded-full border border-foreground/10"
+                    <span
+                      className={`flex size-9 shrink-0 items-center justify-center rounded-full border border-foreground/10 transition-transform duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                        isActive ? "-translate-x-1 rotate-45" : ""
+                      }`}
                     >
                       <ArrowUpRight className="size-4" strokeWidth={1.5} />
-                    </motion.span>
+                    </span>
                   </button>
 
-                  <AnimatePresence initial={false}>
-                    {isActive && (
-                      <motion.div
-                        id={`stack-panel-${stack.id}`}
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{
-                          height: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-                          opacity: { duration: 0.25 },
-                        }}
-                        className="overflow-hidden"
-                      >
-                        <div className="grid gap-8 pb-8 pl-[52px] pr-2 md:grid-cols-[1fr_1fr] md:gap-12 md:pb-10">
-                          {/* Description */}
-                          <motion.div
-                            initial={{ y: 15, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            transition={{ delay: 0.08 }}
-                          >
-                            <span className="font-mono text-[9px] tracking-[0.18em] text-foreground/30">
-                              {stack.eyebrow}
-                            </span>
+                  {/* Panel — grid-rows transition instead of animated height */}
+                  <div
+                    id={`stack-panel-${stack.id}`}
+                    className={`grid transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                      isActive
+                        ? "grid-rows-[1fr] opacity-100"
+                        : "grid-rows-[0fr] opacity-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="grid gap-8 pb-8 pl-[52px] pr-2 md:grid-cols-[1fr_1fr] md:gap-12 md:pb-10">
+                        {/* Description */}
+                        <div>
+                          <span className="font-mono text-[9px] tracking-[0.18em] text-foreground/30">
+                            {stack.eyebrow}
+                          </span>
 
-                            <p className="mt-4 max-w-lg text-sm leading-6 text-muted-foreground">
-                              {stack.description}
-                            </p>
-                          </motion.div>
-
-                          {/* Technologies */}
-                          <motion.div
-                            initial={{ y: 15, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            transition={{ delay: 0.14 }}
-                            className="grid grid-cols-2 gap-x-5 gap-y-4"
-                          >
-                            {stack.points.map((point) => (
-                              <div
-                                key={point}
-                                className="flex items-start gap-2 text-[10px] uppercase tracking-[0.08em] text-foreground/55"
-                              >
-                                <span className="mt-[5px] size-1 shrink-0 rounded-full bg-foreground/40" />
-                                <span>{point}</span>
-                              </div>
-                            ))}
-                          </motion.div>
+                          <p className="mt-4 max-w-lg text-sm leading-6 text-muted-foreground">
+                            {stack.description}
+                          </p>
                         </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.article>
+
+                        {/* Technologies */}
+                        <div className="grid grid-cols-2 gap-x-5 gap-y-4">
+                          {stack.points.map((point) => (
+                            <div
+                              key={point}
+                              className="flex items-start gap-2 text-[10px] uppercase tracking-[0.08em] text-foreground/55"
+                            >
+                              <span className="mt-[5px] size-1 shrink-0 rounded-full bg-foreground/40" />
+                              <span>{point}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </article>
               );
             })}
           </div>

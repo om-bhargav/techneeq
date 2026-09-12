@@ -13,7 +13,7 @@ import PillButton from "../elements/PillButton";
  */
 export default function IntelligenceCTA() {
   return (
-    <Section className="overflow-hidden">
+    <Section className="overflow-hidden"> 
       <Section.Header
         label="Start here"
         title="Have a critical data bottleneck?"

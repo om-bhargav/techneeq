@@ -526,6 +526,7 @@ export const capabilityGroups = [
       "Legacy modernization and application integration",
       "Azure cloud infrastructure and cost control",
     ],
+    image: "/capabilities/2.avif"
   },
   {
     id: "02",
@@ -539,6 +540,7 @@ export const capabilityGroups = [
       "Conversational AI and internal assistants",
       "MLOps, telemetry and model governance",
     ],
+    image: "/capabilities/3.avif"
   },
   {
     id: "03",
@@ -552,6 +554,7 @@ export const capabilityGroups = [
       "Automated scorecards leadership can trust",
       "Architecture audits, latency targets and data strategy",
     ],
+    image: "/capabilities/4.png"
   },
   {
     id: "04",
@@ -565,6 +568,7 @@ export const capabilityGroups = [
       "Workflow automation across ERP, CRM and core platforms",
       "Security, access control and governance guardrails",
     ],
+    image: "/capabilities/1.webp"
   },
 ];
 

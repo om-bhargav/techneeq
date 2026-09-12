@@ -39,6 +39,7 @@ export default function Capabilities() {
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
             }}
+            loop
             onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
             onProgress={(_, value) => setProgress(value)}
             spaceBetween={16}
@@ -48,7 +49,7 @@ export default function Capabilities() {
               640: { slidesPerView: 2 },
               1024: { slidesPerView: 3 },
             }}
-            className="!overflow-hidden !-mx-4 !px-4 md:!mx-0 md:!px-0"
+            className="overflow-hidden! -mx-4! px-4! md:mx-0! md:px-0!"
           >
             {capabilityGroups.map((group, index) => {
               const Icon = group.icon;
@@ -59,30 +60,15 @@ export default function Capabilities() {
                   <article
                     onClick={() => swiperRef.current?.slideTo(index)}
                     className="
-                    group relative flex h-[420px] cursor-pointer flex-col
+                    group relative flex h-105 cursor-pointer flex-col
                     overflow-hidden rounded-[22px]
-                    border border-foreground/[0.08] bg-muted/30
-                    md:h-[460px]
+                    border border-foreground/8 bg-muted/30
+                    md:h-115
                   "
                   >
                     {/* Technical background — same treatment as the rest of the site */}
                     <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                      <div
-                        className="
-                        absolute inset-0 opacity-[0.025]
-                        [background-image:linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)]
-                        [background-size:32px_32px]
-                      "
-                      />
-
-                      <div
-                        className="
-                        absolute -bottom-24 -right-20 h-64 w-64 rounded-full
-                        border border-foreground/[0.05]
-                        transition-transform duration-1000
-                        group-hover:scale-110
-                      "
-                      />
+                      <img src={group.image}  className="h-full w-full object-cover"/>
                     </div>
 
                     {/* Icon + number */}
@@ -107,7 +93,7 @@ export default function Capabilities() {
                     <div className="relative z-10 mt-auto p-4 md:p-5">
                       <div
                         className="
-                        rounded-[16px] border border-foreground/[0.08]
+                        rounded-[16px] border border-foreground/8
                         bg-background/80 p-5 backdrop-blur-sm
                         transition-colors duration-500
                         md:p-6

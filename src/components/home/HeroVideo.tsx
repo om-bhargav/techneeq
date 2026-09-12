@@ -1,32 +1,44 @@
 "use client";
+
 import { useEffect, useRef } from "react";
+import { Video } from "@imagekit/react";
 
 export function HeroVideo() {
   const ref = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    const v = ref.current;
-    if (!v) return;
-    v.muted = true;
-    v.defaultMuted = true;
-    v.playsInline = true;
-    v.play().catch(() => {
-      /* Low Power Mode or user setting — nothing to do */
+    const video = ref.current;
+
+    if (!video) return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+
+    video.play().catch(() => {
+      // Autoplay may be blocked by browser/device settings.
     });
   }, []);
 
   return (
-    <video
+    <Video
       ref={ref}
+      urlEndpoint="https://ik.imagekit.io/pciubsigw"
+      src="/video1.mp4"
       autoPlay
       loop
       muted
       playsInline
-      webkit-playsinline="true"
       preload="auto"
       disableRemotePlayback
       controls={false}
-      src="/hero/video1.mp4"
+      // transformation={[
+      //   {
+      //     width: "1920",
+      //     height: "1080",
+      //     quality: 80
+      //   },
+      // ]}
       className="rounded-none! object-cover h-full w-full"
     />
   );
