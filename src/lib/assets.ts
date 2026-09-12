@@ -117,7 +117,6 @@ export const PUBLIC_IMAGE_ASSETS = [
   ...MISC_ASSETS,
 ];
 
-export const VIDEO_ASSETS = ["/hero/video1.mp4", "/hero/video2.mp4"] as const;
 
 // ---------------------------------------------------------------------------
 // Aggregate
@@ -129,7 +128,7 @@ export const IMAGE_ASSETS: string[] = [
 ];
 
 /** Every URL the loader waits on, images first then videos. */
-export const ALL_ASSETS: string[] = [...IMAGE_ASSETS, ...VIDEO_ASSETS];
+export const ALL_ASSETS: string[] = [...IMAGE_ASSETS];
 
 // ---------------------------------------------------------------------------
 // Preloading
@@ -176,9 +175,8 @@ function loadVideo(src: string): Promise<void> {
 /** SVGs and rasters both go through `Image`; videos need the media element. */
 function loadAsset(src: string): Promise<void> {
   return withTimeout(
-    VIDEO_ASSETS.includes(src as (typeof VIDEO_ASSETS)[number])
-      ? loadVideo(src)
-      : loadImage(src),
+
+      loadImage(src),
   );
 }
 
