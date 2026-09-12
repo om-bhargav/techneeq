@@ -9,7 +9,7 @@ import { HeroVideo } from "./HeroVideo";
 
 export default function Hero() {
     return (
-        <section className="relative isolate h-screen overflow-hidden bg-background">
+        <section className="relative isolate max-md:h-[90vh] h-screen overflow-hidden bg-background">
             {/* Background */}
             <div className="absolute inset-0 -z-10">
                 <HeroVideo/>
@@ -17,8 +17,8 @@ export default function Hero() {
                 <div className="absolute inset-0 bg-foreground/50" />
             </div>
 
-            <div className="flex h-screen max-w-7xl w-full items-end justify-between px-6 py-12 md:px-4 mx-auto">
-                <div className="grid w-full items-end gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+            <div className="flex h-full md:h-screen max-w-7xl w-full items-center md:items-end justify-between px-6 py-12 md:px-4 mx-auto">
+                <div className="grid w-full items-center md:items-end gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
                     {/* Left content */}
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}

@@ -1,15 +1,14 @@
 "use client";
 
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, MoveRight } from "lucide-react";
-import { Sparkles } from "lucide-react";
+import { ArrowRight, MoveRight, Sparkles } from "lucide-react";
 import { useDarkSection } from "@/hooks/useDarkSection";
 import FastMarquee from "react-fast-marquee";
 import SectionHeader from "../global/section/SectionHeader";
 import { LivingGrid } from "./LivingGrid";
-
+import { techStacks } from "@/data/solutions";
 // This checks if your bundler wrapped the component in a module object.
 // If it did, it unwraps it. If it didn't, it just uses it normally.
 const Marquee = (FastMarquee as any).default || FastMarquee;
@@ -76,10 +75,9 @@ export default function ExpertiseTransition() {
                         </div>
                     </div>
                 </motion.div>
-
-                {isMounted &&
+                {isMounted && (
                     <motion.div
-                        className="absolute bottom-0 left-0 z-10 flex bg-background w-full overflow-hidden border-t border-foreground/10 py-6"
+                        className="absolute bottom-0 left-0 z-10 flex w-full overflow-hidden border-t border-foreground/10 bg-background py-6"
                     >
                         <Marquee
                             speed={50}
@@ -87,15 +85,19 @@ export default function ExpertiseTransition() {
                             gradient={false}
                         >
                             <div className="flex items-center gap-8 pr-8">
-                                <span className="font-display text-2xl uppercase tracking-wider text-foreground/90">
-                                    Digital Transformation
-                                </span>
-                                <Sparkles className="size-6 text-foreground/40" />
+                                {techStacks.map((item, index) => (
+                                    <React.Fragment key={index}>
+                                        <span className="font-display text-2xl uppercase tracking-wider text-foreground/90">
+                                            {item.name}
+                                        </span>
+
+                                        <Sparkles className="size-6 text-foreground/40" />
+                                    </React.Fragment>
+                                ))}
                             </div>
                         </Marquee>
                     </motion.div>
-                }
-
+                )}
                 {/* =========================================
         3. HORIZONTAL EXPANDING LINES OVERLAY
     ========================================= */}

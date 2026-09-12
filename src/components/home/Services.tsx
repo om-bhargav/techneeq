@@ -150,7 +150,7 @@ export default function Services() {
                         to="/contact"
                         className="group mt-8 inline-flex items-center gap-3 rounded-full bg-foreground px-6 py-3 text-[11px] font-medium uppercase tracking-[0.15em] text-background transition hover:opacity-85"
                       >
-                        Schedule an Architecture Review
+                        Start a project
                         <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                       </Link>
                     </div>

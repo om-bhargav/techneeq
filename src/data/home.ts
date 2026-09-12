@@ -429,7 +429,7 @@ export const hero = {
   description:
     "Techneeq connects the data and systems an enterprise already runs, and turns them into intelligence people can act on — so decisions get made on what is happening now, not on a report describing last month.",
   primaryCta: {
-    label: "Book A Call",
+    label: "Request a callback",
     href: "/contact",
   },
   secondaryCta: {

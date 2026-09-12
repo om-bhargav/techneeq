@@ -74,7 +74,7 @@ export const solutions: Record<string, Solution> = {
       title: "Clinical and operational reporting that keeps pace with the floor",
       description:
         "HIPAA-compliant streaming telemetry and predictive patient resource allocation. Techneeq connects clinical, operational, and research data into live intelligence your care teams can act on the same shift.",
-      buttonText: "Schedule Architecture Review",
+      buttonText: "START A PROJECT",
       buttonHref: "/contact",
       imageSrc: "/solutions-contents/19.png",
     },
@@ -191,7 +191,7 @@ export const solutions: Record<string, Solution> = {
       title: "Fragmented systems become one connected ecosystem",
       description:
         "De-risk your digital infrastructure. Techneeq decouples legacy on-prem systems and migrates operational workflows to unified, cloud-native digital rails — so records from every platform land in one place, continuously.",
-      buttonText: "Schedule Architecture Review",
+      buttonText: "START A PROJECT",
       buttonHref: "/contact",
       imageSrc: "/solutions-contents/15.png",
     },
@@ -308,7 +308,7 @@ export const solutions: Record<string, Solution> = {
       title: "Institutional data that answers questions during the term, not after it",
       description:
         "From student-facing portals to the systems your staff rely on daily, Techneeq connects LMS, SIS, and departmental data into one live view — and automates the manual work sitting between them.",
-      buttonText: "Schedule Architecture Review",
+      buttonText: "START A PROJECT",
       buttonHref: "/contact",
       imageSrc: "/solutions-contents/22.png",
     },
@@ -414,7 +414,7 @@ export const solutions: Record<string, Solution> = {
       title: "Risk, capital, and performance data in one live view",
       description:
         "Techneeq replaces static monthly reporting with streaming pipelines and production models — so risk and performance signals reach the person making the call, with auditable lineage from source system to board report.",
-      buttonText: "Schedule Architecture Review",
+      buttonText: "START A PROJECT",
       buttonHref: "/contact",
       imageSrc: "/solutions-contents/7.png",
     },

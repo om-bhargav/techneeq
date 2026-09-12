@@ -46,7 +46,7 @@ export default function SectionHeader({
     stagger: 0.025,
     duration: 1.5,
     ease: "power4.out",
-    delay: 1.6,
+    delay: 1.2,
     start: "top 90%",
     once: true,
     maskLines: true,

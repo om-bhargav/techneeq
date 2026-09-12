@@ -177,7 +177,7 @@ export default function Architecture() {
                         though the descriptions differ in length. */}
                     <p
                       className={`
-                        mt-5 max-w-[280px] text-xs leading-6 lg:min-h-24
+                        mt-5 max-w-[280px] text-sm leading-6 lg:min-h-24
                         transition-colors duration-700
                         ${
                           isActive

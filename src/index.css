@@ -75,7 +75,7 @@
      SHADCN UI
      --------------------------------------------------------- */
 
-  --secondary-background: var(--cloud-soft);
+  --secondary-background: var(--cloud-deep);
   --background: var(--cloud);
   --foreground: var(--ink);
 
@@ -138,7 +138,7 @@
 
   --sidebar-border: var(--border);
   --sidebar-ring: var(--teal-600);
-
+--cursor: #5E807E;
   /* ---------------------------------------------------------
      TYPOGRAPHY
      --------------------------------------------------------- */
@@ -282,7 +282,7 @@
 
   --primary: var(--teal-400);
   --primary-foreground: var(--teal-950);
-
+ --cursor: #9CB8B6;
   --secondary: var(--teal-800);
   --secondary-foreground: var(--cloud);
 
@@ -424,7 +424,7 @@
 
 @font-face {
   font-family: "TestSohne";
-  src: url("./fonts/sources/TestSohne-Buch-BF663d89cd32e6a.otf")
+  src: url("./fonts/sources/AeonikTRIAL-Regular.otf")
     format("opentype");
   font-weight: 400;
   font-style: normal;
@@ -433,7 +433,7 @@
 
 @font-face {
   font-family: "NeueMachina";
-  src: url("./fonts/sources/AeonikTRIAL-Regular.otf")
+  src: url("./fonts/sources/NeueMachina-Regular.otf")
     format("opentype");
   font-weight: 400;
   font-style: normal;
@@ -504,12 +504,18 @@ img{
    ========================================================= */
 
 .industry-stack {
-  height: calc(var(--industry-count, 6) * 46vh);
+  /* was smaller on mobile; ~90vh per industry gives a longer scroll per step */
+  height: calc(var(--industry-count) * 90vh);
 }
 
 @media (min-width: 768px) {
-
   .industry-stack {
-    height: calc(var(--industry-count, 6) * 80vh);
+    height: calc(var(--industry-count) * 100vh);
   }
+}
+
+html.has-custom-cursor,
+html.has-custom-cursor body,
+html.has-custom-cursor * {
+  cursor: none !important;
 }

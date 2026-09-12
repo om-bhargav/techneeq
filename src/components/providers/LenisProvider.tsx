@@ -1,39 +1,55 @@
-"use client";
-import React, { useEffect, useState } from "react";
 import Lenis from "lenis";
-import { useAnimationFrame } from "framer-motion";
+import { useEffect } from "react";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 
-export default function SmoothScroll({
-  children,
-}: React.PropsWithChildren) {
-  const [lenis, setLenis] = useState<Lenis | null>(null);
-
+/**
+ * Inertial smooth scrolling for desktop.
+ *
+ * Native scrolling is preserved on mobile/touch devices and
+ * whenever the visitor prefers reduced motion.
+ */
+export default function SmoothScroll() {
   useEffect(() => {
-    const lenisInstance = new Lenis({
-      lerp: 0.075,
+    const reduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    const coarse = window.matchMedia("(pointer: coarse)").matches;
+
+    // Disable Lenis on mobile/touch devices
+    if (reduced || coarse) return;
+
+    const lenis = new Lenis({
+      duration: 1.05,
+      easing: (t: number) => 1 - Math.pow(1 - t, 3),
       smoothWheel: true,
-      allowNestedScroll: true
-      // We keep touch properties completely removed here.
-      // Letting mobile devices handle touch scrolling natively is critical
-      // when your page is also busy running Framer Motion calculations.
+      touchMultiplier: 1,
     });
 
-    setLenis(lenisInstance);
+    (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
+
+    const onScroll = () => {
+      ScrollTrigger.update();
+    };
+
+    lenis.on("scroll", onScroll);
+
+    const raf = (time: number) => {
+      lenis.raf(time * 1000);
+    };
+
+    gsap.ticker.add(raf);
+    gsap.ticker.lagSmoothing(0);
 
     return () => {
-      lenisInstance.destroy();
-      setLenis(null);
+      lenis.off("scroll", onScroll);
+      gsap.ticker.remove(raf);
+
+      delete (window as unknown as { __lenis?: Lenis }).__lenis;
+
+      lenis.destroy();
     };
   }, []);
 
-  // This replaces the standard requestAnimationFrame.
-  // It hooks Lenis directly into Framer Motion's render loop,
-  // eliminating micro-stutters during complex layout animations.
-  useAnimationFrame((time) => {
-    if (lenis) {
-      lenis.raf(time);
-    }
-  });
-
-  return <>{children}</>;
+  return null;
 }

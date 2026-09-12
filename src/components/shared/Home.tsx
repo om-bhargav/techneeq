@@ -35,7 +35,6 @@ const BusinessOutcome = lazy(
 const Capabilities = lazy(() => import("@/components/home/Capabilities"));
 
 const Industries = lazy(() => import("@/components/home/Industries"));
-const WhyTechneeq = lazy(() => import("@/components/home/WhyTechneeq"));
 
 const WorkWithUs = lazy(() => import("@/components/home/Services"));
 
@@ -52,13 +51,13 @@ function Home() {
       </div>
 
       <Suspense fallback={null}>
+        <Capabilities />
         <Problem />
         <Architecture />
         <BusinessOutcome />
-        <Capabilities />
         <Industries />
         {/* <Proof /> */}
-        <WhyTechneeq />
+        {/* <WhyTechneeq /> */}
         <WorkWithUs />
         <Faq />
         <CTA />

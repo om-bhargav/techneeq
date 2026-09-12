@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 
 import Section from "../global/section/Section";
- 
+
 
 export default function Solutions() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -120,47 +120,68 @@ export default function Solutions() {
         ========================================================== */}
         <div className="mt-16 space-y-5 lg:hidden">
           {solutions.map((solution, index) => {
+            const capabilities = getCapabilities(solution.id);
 
             return (
               <motion.article
                 key={solution.id}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{
                   once: true,
-                  amount: 0.2,
+                  amount: 0.15,
                 }}
                 transition={{
                   duration: 0.6,
                   delay: index * 0.04,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="overflow-hidden border border-foreground/10 bg-secondary-background"
+                className={`flex h-full flex-col overflow-hidden border border-foreground/10 bg-secondary-background ${solution.className}`}
               >
-                <img
-                  src={solutions[index].image}
-                  alt=""
-                  className="h-full w-full object-cover"
-                />
+                <div className="relative aspect-[3/2] w-full shrink-0 overflow-hidden sm:aspect-[16/10]">
+                  <img
+                    src={solution.image}
+                    alt={solution.title}
+                    loading="lazy"
+                    className="absolute inset-0 size-full rounded-none! object-cover"
+                  />
+                </div>
 
-                <div className="p-6">
-                  <div className="flex items-center justify-between">
+                <div className="flex flex-1 flex-col p-5 sm:p-6">
+                  <div className="flex items-center justify-between gap-3">
                     <span className="font-mono text-[10px] tracking-[0.16em] text-foreground/35">
                       {solution.id}
                     </span>
 
-                    <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-foreground/30">
-                      Solution
+                    <span className="truncate font-mono text-[9px] uppercase tracking-[0.14em] text-foreground/30">
+                      {solution.variant}
                     </span>
                   </div>
 
-                  <h3 className="mt-8 font-display text-3xl leading-[0.95] tracking-[-0.04em]">
+                  <h3 className="mt-5 font-display text-2xl leading-[1.05] tracking-[-0.03em] sm:mt-6 sm:text-xl sm:leading-[0.95]">
                     {solution.title}
                   </h3>
 
-                  <p className="mt-5 max-w-md text-sm leading-6 text-muted-foreground">
+                  <p className="mt-4 max-w-md text-[13px] leading-6 text-muted-foreground sm:mt-5 sm:text-xs">
                     {solution.description}
                   </p>
+
+                  {capabilities.length > 0 && (
+                    <ul className="mt-6 grid grid-cols-1 gap-x-4 gap-y-2.5 border-t border-foreground/10 pt-5 sm:mt-auto sm:grid-cols-2">
+                      {capabilities.map((capability) => (
+                        <li
+                          key={capability}
+                          className="flex items-start gap-2.5 text-[10px] uppercase leading-4 tracking-[0.08em] text-foreground/55"
+                        >
+                          <span
+                            aria-hidden="true"
+                            className="mt-[5px] size-1 shrink-0 rounded-full bg-foreground/30"
+                          />
+                          <span className="min-w-0">{capability}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </motion.article>
             );

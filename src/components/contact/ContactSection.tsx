@@ -41,7 +41,6 @@ export default function ContactSection() {
                     <Section.Header
                       label={detail.label}
                       title={detail.value}
-                      description={detail.description}
                       titleclassName="text-sm!"
                       wantStrip={false}
                       className="mt-0 gap-0!"

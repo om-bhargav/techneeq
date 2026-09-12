@@ -13,8 +13,6 @@ export const contactPage = {
       icon: MapPin,
       label: "Headquarters",
       value: ADDRESS,
-      description:
-        "Serving enterprise clients across the United States, the United Kingdom, and the European Union.",
     },
     {
       icon: Mail,

@@ -62,7 +62,7 @@ export default function IntelligenceCTA() {
               ease: [0.22, 1, 0.36, 1],
             }}
           >
-            Schedule an Architecture Review
+            Request a callback
           </PillButton>
         </div>
 

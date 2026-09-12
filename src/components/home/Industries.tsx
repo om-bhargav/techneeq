@@ -127,6 +127,7 @@ export default function Industries() {
                             ? "text-foreground"
                             : "text-foreground/50 hover:text-foreground"
                           }`}
+                          
                       >
                         <span
                           className={`w-10 font-mono text-[10px] ${isActive ? "text-foreground" : "text-foreground/30"
@@ -225,7 +226,7 @@ export function ScrollImage({
       <img
         src={env.image}
         alt={env.name}
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute rounded-none! inset-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0 bg-black/10" />
     </motion.div>
