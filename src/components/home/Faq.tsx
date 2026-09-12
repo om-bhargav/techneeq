@@ -21,7 +21,7 @@ function FAQItem({
   onClick: () => void;
 }) {
   return (
-    <div className="border-t border-foreground/10 last:border-b">
+    <div className="border-t border-foreground/10 last:border-b mb-8 md:mb-20">
       <button
         type="button"
         onClick={onClick}
