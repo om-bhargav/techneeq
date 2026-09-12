@@ -240,14 +240,14 @@ export default function Values() {
             {items.map((value) => (
               <article
                 key={value.id}
-                className="overflow-hidden"
+                className="overflow-hidden border"
               >
                 {/* IMAGE */}
                 <div className="aspect-square overflow-hidden">
                   <img
                     src={value.image}
                     alt={value.title}
-                    className="h-full w-full object-cover"
+                    className="h-full rounded-none! w-full object-cover"
                   />
                 </div>
 
