@@ -34,6 +34,7 @@ export default function Capabilities() {
       />
 
       <Section.Body>
+        <div className="grid">
         <Swiper
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
@@ -47,7 +48,7 @@ export default function Capabilities() {
             640: { slidesPerView: 2 },
             1024: { slidesPerView: 3 },
           }}
-          className="max-md:max-w-screen! grid!"
+          className="!overflow-hidden !-mx-4 !px-4 md:!mx-0 md:!px-0"
         >
           {capabilityGroups.map((group, index) => {
             const Icon = group.icon;
@@ -144,7 +145,7 @@ export default function Capabilities() {
             );
           })}
         </Swiper>
-
+          </div>
         {/* Progress line + arrows */}
         <div className="mt-10 flex items-center gap-6">
           <div className="h-px min-w-0 flex-1 bg-foreground/10">
