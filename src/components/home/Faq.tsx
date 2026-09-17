@@ -21,7 +21,7 @@ function FAQItem({
   onClick: () => void;
 }) {
   return (
-    <div className="border-t border-foreground/10 last:border-b mb-8 md:mb-20">
+    <div className="border-t border-foreground/10 last:border-b mb-4">
       <button
         type="button"
         onClick={onClick}
@@ -90,7 +90,7 @@ function FAQItem({
                 duration: 0.35,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="pb-8 pl-14 pr-14 md:pb-4"
+              className="px-14"
             >
               <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
                 {answer}
