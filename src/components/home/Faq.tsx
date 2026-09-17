@@ -21,7 +21,7 @@ function FAQItem({
   onClick: () => void;
 }) {
   return (
-    <div className="border-t border-foreground/10 last:border-b mb-8 md:mb-20">
+    <div className="border-t border-foreground/10 last:border-b">
       <button
         type="button"
         onClick={onClick}
@@ -107,7 +107,7 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <Section>
+    <Section className="mb-8 md:mb-20">
       <Section.Header
         label="FAQ"
         title="Before you"
