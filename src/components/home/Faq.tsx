@@ -21,7 +21,7 @@ function FAQItem({
   onClick: () => void;
 }) {
   return (
-    <div className="border-t border-foreground/10 last:border-b mb-4">
+    <div className="border-t border-foreground/10 last:border-b">
       <button
         type="button"
         onClick={onClick}
@@ -92,7 +92,7 @@ function FAQItem({
               }}
               className="px-14"
             >
-              <p className="max-w-2xl text-sm leading-7 text-muted-foreground">
+              <p className="max-w-2xl text-sm leading-7 text-muted-foreground pb-5">
                 {answer}
               </p>
             </motion.div>
